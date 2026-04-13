@@ -1,0 +1,374 @@
+{
+    "categories": {
+        "base": {
+            "catname": {
+                "expl": "Resurssienhallinta ja työpöytä",
+                "compon": "Windows-komponentit",
+                "wu": "Windows Update",
+                "uwp": "UWP-sovellusten poisto",
+                "sat": "Sammutusajastin",
+                "quick": "Windowsin pika-asetukset",
+                "act": "Windowsin aktivointi",
+                "cm": "Kontekstivalikko",
+                "sr": "Järjestelmä ja palautus",
+                "perf": "Suorituskyky",
+                "per": "Personointi",
+                "procmgr": "Prosessien hallinta",
+                "pci": "PC-tiedot"
+            },
+            "lowtabs": {
+                "rexp": "Käynnistä Resurssienhallinta uudelleen",
+                "set": "Asetukset / Tietoja"
+            },
+            "def": {
+                "statusdef": "Tietoja viimeisimmästä MakuTweaker-toiminnosta...",
+                "on": "Päällä",
+                "off": "Pois",
+                "apply": "Käytä",
+                "rebnotify": "Käyttämäsi toiminto vaatii uudelleenkäynnistyksen.",
+                "rebnotifyexplorer": "Käyttämäsi toiminto vaatii Resurssienhallinnan uudelleenkäynnistyksen.",
+                "rebnotifysfc": "Käynnistä laite uudelleen prosessin päätyttyä!"
+            }
+        },
+        "expl": {
+            "main": {
+                "label": "Resurssienhallinta ja työpöytä",
+                "nonremovable": "Piilota poistamattomat kirjastot Resurssienhallinnassa",
+                "hidden": "Näytä piilotetut tiedostot ja kansiot",
+                "ext": "Näytä tiedostopäätteet",
+                "pchome": "Avaa \"Tämä tietokone\" \"Etusivun\" sijaan Resurssienhallinnassa",
+                "gallery": "Piilota \"Galleria\"-osio",
+                "showpc": "Näytä \"Tämä tietokone\" -kuvake",
+                "shortcut": "Poista \"-pikakuvake\"-pääte uusista pikakuvakkeista",
+                "fixlabel": "Korjaa asemien duplikaatit Resurssienhallinnassa",
+                "e8b": "Korjaa",
+                "driveslabel": "Piilota asemakirjaimet \"Tämä tietokone\" -osiossa",
+                "choose": "Valitse",
+                "showall": "Näytä kaikki kirjaimet"
+            },
+            "status": {
+                "e8": "MakuTweaker korjasi asemien duplikaatit Resurssienhallinnassa.",
+                "hdInfo1": "Valitse asemakirjaimet, jotka haluat piilottaa.",
+                "hdInfo2": "Huomaa, että aseman voi silti avata kirjoittamalla sen kirjaimen ja kaksoispisteen Resurssienhallinnan osoiteriville.",
+                "hide": "Piilota valitut kirjaimet",
+                "cc": "Peruuta"
+            }
+        },
+        "compon": {
+            "main": {
+                "label": "Windows-komponentit",
+                "directplay": "Asenna DirectPlay",
+                "framework": "Asenna .NET Framework 2.0, 3.0, 3.5",
+                "photoviewer": "Ota käyttöön vanha valokuvien katseluohjelma",
+                "powershellscr": "Salli kolmannen osapuolen PowerShell-skriptit",
+                "xboxdvr": "Poista Xbox DVR -ponnahdusikkuna (ms-gamingoverlay)",
+                "forcedis": "Poista Hyper-V käytöstä pakotetusti",
+                "winsxs": "Nollaa vanhentuneet komponentit ja tyhjennä WinSXS-välimuisti",
+                "gpedit": "Ota käyttöön paikallinen ryhmäkäytäntöeditori",
+                "install": "Asenna",
+                "reset": "Nollaa",
+                "enable": "Ota käyttöön"
+            }
+        },
+        "wu": {
+            "main": {
+                "label": "Windows Update",
+                "wu1": "Poista Windows Update käytöstä",
+                "wu2": "Estä päivitykset tietyssä Windows-versiossa",
+                "wu3": "Estä ohjainpäivitykset Windows Updaten kautta",
+                "wu4": "Tyhjennä Windows Updaten välimuisti",
+                "wu5": "Keskeytä Windows Update -palvelu",
+                "wu6": "Poista päivitysten varattu tallennustila käytöstä",
+                "wu5b": "Keskeytä",
+                "wu6b": "Estä"
+            },
+            "status": {
+                "wu4": "Päivitykset on estetty onnistuneesti tietyssä Windows-versiossa.",
+                "wu5": "Voit milloin tahansa mennä Windows Updateen ja valita \"Jatka päivityksiä\"."
+            }
+        },
+        "uwp": {
+            "main": {
+                "label": "UWP-sovellusten poisto",
+                "info1": "Valitse UWP-sovellukset, jotka haluat poistaa.",
+                "info2": "Huomaa: sovellukset poistetaan kaikilta käyttäjiltä.",
+                "u3": "Viestit",
+                "u5": "Tekninen tuki",
+                "u6": "Palautekeskus",
+                "u9": "Puhelinlinkki",
+                "u10": "Kartat",
+                "u13": "Sähköposti, Kalenteri",
+                "u15": "Mediasoitin",
+                "u16": "Elokuvat ja TV",
+                "u17": "Kamera",
+                "u18": "Uutiset",
+                "u19": "Sää",
+                "u20": "Tarralaput",
+                "u22": "Ääninauhuri",
+                "u27": "Hälytykset ja kello",
+                "mode1": "Vain Bloatware",
+                "mode2": "Näytä suositut",
+                "mode3": "Näytä välttämättömät",
+                "b": "Aloita UWP-poisto",
+                "chk": "Tarkistetaan asennettuja UWP-sovelluksia...",
+                "is": "asennettu...",
+                "isnt": "ei asennettu...",
+                "comp": "Tarkistus valmis!",
+                "suredialogT1": "Valitsit poistettavaksi",
+                "suredialogT2": "MakuTweakerilla.",
+                "suredialogT3": "Sinun tulee ymmärtää, ettei tätä sovellusta voi palauttaa järjestelmään,\nja näihin komponentteihin liittyvät toiminnot voivat muuttua epävakaiksi.",
+                "suredialogT4": "Jatkaaksesi kirjoita ILOVEMAKUTWEAKER tekstikenttään ja paina OK.",
+                "suredialogNS": "Peruuta"
+            },
+            "status": {
+                "noapps": "Et valinnut sovelluksia poistettavaksi.",
+                "started": "Poistetaan valittuja UWP-sovelluksia...",
+                "complete": "UWP-sovellukset poistettiin onnistuneesti!"
+            }
+        },
+        "sat": {
+            "main": {
+                "label": "Sammutusajastin",
+                "minho": "Minuuttia / Tuntia: ",
+                "os": "0s",
+                "oned": "1pv",
+                "tenM": "10 minuuttia",
+                "thirtyM": "30 minuuttia",
+                "oneH": "1 tunti",
+                "twoH": "2 tuntia",
+                "fourH": "4 tuntia",
+                "sixH": "6 tuntia",
+                "info": "Syötä minuuttimäärä, jonka jälkeen järjestelmä sammuu.\nPaina \"Käynnistä sammutusajastin\" käynnistääksesi ajastimen.",
+                "b1": "Käynnistä sammutusajastin",
+                "b2": "Peruuta sammutusajastin"
+            }
+        },
+        "quick": {
+            "main": {
+                "label": "Windowsin pika-asetukset",
+                "b": "Käynnistä pika-asetukset",
+                "info": "Käytä valintaruutuja valitaksesi asetukset,\njoita haluat käyttää automaattisessa määrityksessä.",
+                "infodone": "Pika-asetukset on suoritettu!\nMuista käynnistää tietokone uudelleen niiden soveltamisen jälkeen.\nNauti järjestelmästäsi!",
+                "uncheck": "Poista kaikki valinnat",
+                "checkall": "Aktivoi kaikki",
+                "hidewidget": "Piilota \"Tehtävien näkymä\" ja \"Widgetit\" -painikkeet",
+                "removeads": "Poista mainokset Käynnistä-valikosta ja tehtäväpalkista",
+                "clipboard": "Ota leikepöytä käyttöön"
+            }
+        },
+        "act": {
+            "main": {
+                "label": "Windowsin aktivointi",
+                "hwid": "Aktivoi Windows",
+                "offi": "Aktivoi Microsoft Office"
+            },
+            "status": {
+                "inprog": "Aktivoidaan... Tämä voi kestää hetken hitaammilla tietokoneilla...",
+                "err": "Aktivointivirhe!",
+                "alrd": "Järjestelmä on jo aktivoitu!",
+                "success": "Aktivointi onnistui!",
+                "unk": "Tuntematon aktivointivirhe!",
+                "eval": "Käytössäsi on Windowsin kokeiluversio, jota ei voi aktivoida. Aktivointiin tarvitaan toinen versio.",
+                "nocon": "Et ole yhteydessä internetiin. Yhdistä internetiin ja yritä uudelleen.",
+                "error": "Windowsin aktivointi epäonnistui. Tarkista internetyhteys ja valitse oikea versio.",
+                "hwerr": "Windowsia ei voi aktivoida HWID-menetelmällä.",
+                "offierr": "Officea ei voi aktivoida Ohook-menetelmällä. Asenna Office uudelleen ja yritä sitten uudelleen."
+            }
+        },
+        "cm": {
+            "main": {
+                "label": "Kontekstivalikko",
+                "t1": "Ota käyttöön vanha kontekstivalikko",
+                "t2": "Poista kontekstivalikon viive",
+                "t3": "Avaa terminaalissa",
+                "t4": "Lisää suosikkeihin",
+                "t5": "Jaa",
+                "t6": "Palauta aiempi versio",
+                "t8": "Lähetä",
+                "t10": "Kopioi polkuna",
+                "t11": "Kiinnitä aloitusnäyttöön",
+                "t12": "Kiinnitä tehtäväpalkkiin",
+                "t13": "Avaa uudessa välilehdessä",
+                "t14": "NVIDIA-ohjauspaneeli"
+            }
+        },
+        "sr": {
+            "main": {
+                "label": "Järjestelmä ja palautus",
+                "sfclabel": "Palauta järjestelmä SFC:llä",
+                "dismlabel": "Palauta järjestelmä DISM:llä",
+                "templabel": "Tyhjennä TEMP-kansio",
+                "batterylabel": "Luo akkuraportti",
+                "b2": "Palauta",
+                "b4": "Tyhjennä",
+                "oldbootloader": "Ota käyttöön vanha järjestelmän käynnistyslataaja",
+                "advancedboot": "Lisäasetukset jokaisella käynnistyksellä",
+                "bitlocker": "Poista BitLocker-automaattisalaus käytöstä",
+                "coreisol": "Poista ytimen eristys / muistin eheys käytöstä",
+                "hybern": "Poista lepotila (hibernation) käytöstä",
+                "vbs": "Poista Virtualization-based Security käytöstä",
+                "sleeptimeout": "Poista lepotilan ja näytön sammutusajastin käytöstä",
+                "swap": "Poista sivutustiedosto käytöstä",
+                "bing": "Poista Bing-verkkohaku käytöstä",
+                "sticky": "Poista näppäinten suodatus käytöstä",
+                "uac": "Poista käyttäjätilien valvonta (UAC) käytöstä",
+                "smartscreen": "Poista SmartScreen käytöstä",
+                "chkdsk": "Aseta Chkdsk-aikakatkaisuksi 1 minuutti",
+                "reportbutton": "Raportti",
+                "telemetry": "Poista kaikki telemetria ja seuranta järjestelmästä",
+                "ttl": "Ota käyttöön internetin jakamisen rajoitusten ohitus (TTL 65)"
+            },
+            "status": {
+                "o1b": "Akkuraportti luotiin onnistuneesti.",
+                "sr8": "Ryhmäkäytäntöeditori palautettiin onnistuneesti!",
+                "uacwarn": "Kun \"Poista käyttäjätilien valvonta (UAC)\" on käytössä, Windows 11:n tehtäväpalkin raahaaminen (Drag-and-Drop) lakkaa toimimasta. MakuTweaker ei liity tähän ongelmaan. Haluatko varmasti jatkaa?"
+            }
+        },
+        "perfor": {
+            "main": {
+                "label": "Suorituskyky",
+                "applyb": "Käytä rajoitusta",
+                "minb": "Min. suorituskyky",
+                "maxb": "Maks. suorituskyky",
+                "info": "MakuTweakerilla voit pidentää kannettavan akun kestoa rajoittamalla prosessorin tehotasoa ohjelmallisesti.\nPöytäkoneilla tämä auttaa vähentämään lämpöä, virrankulutusta ja tuulettimien melua, tehden järjestelmästä hiljaisemman ja vakaamman.\nMitä pienemmän prosenttiosuuden asetat, sitä alhaisempi suorituskyky on, mutta akun kesto pitenee.\nSaattaa olla, että kannettavan irrottamisen jälkeen laturista rajoitus on asetettava uudelleen.",
+                "flyout": "Prosessorin suorituskykyraja asetettu arvoon "
+            }
+        },
+        "per": {
+            "main": {
+                "label": "Personointi",
+                "defaultnamelabel": "Uusien kansioiden ja tiedostojen oletusnimi",
+                "colorlabel": "Muuta korostusväriä",
+                "verbose": "Ota käyttöön järjestelmän superyksityiskohtaiset tiedot",
+                "smallwindows": "Ota käyttöön pienet ikkunapainikkeet",
+                "blur": "Poista lukitusnäytön sumennus käytöstä",
+                "transparency": "Poista läpinäkyvyys käytöstä",
+                "darktheme": "Ota käyttöön tumma teema",
+                "disablelogo": "Poista Windows-logo järjestelmän käynnistyslataajasta",
+                "disableanim": "Poista animaatiot järjestelmän käynnistyslataajasta",
+                "etask": "Lisää \"Lopeta tehtävä\" -painike tehtäväpalkkiin",
+                "newname": "Uusi tiedosto",
+                "c1": "Vakio",
+                "c2": "Turkoosi",
+                "c3": "Violetti",
+                "c4": "Vihreä",
+                "c5": "Oranssi",
+                "c6": "Punainen",
+                "c7": "Sininen",
+                "c8": "Musta",
+                "b2": "Vakio"
+            },
+            "status": {
+                "apN": "Uusien tiedostojen ja kansioiden oletusnimi muutettu onnistuneesti.",
+                "stN": "Uusien tiedostojen ja kansioiden oletusnimi palautettu onnistuneesti.",
+                "apC": "Korostusväri muutettu onnistuneesti."
+            }
+        },
+        "pci": {
+            "main": {
+                "label": "PC-tiedot",
+                "processorlabel": "Prosessori",
+                "processorname": "Nimi:",
+                "processorcores": "Ytimien määrä:",
+                "processorthr": "Säikeiden määrä:",
+                "processorfreq": "Perustaajuus:",
+                "processorcache": "L3-välimuisti:",
+                "ramlabel": "RAM-muisti",
+                "ramtotal": "Muistia yhteensä:",
+                "ramddr": "DDR-muistityyppi:",
+                "ramfreq": "Taajuus:",
+                "mblabel": "Emolevy",
+                "mbname": "Nimi:",
+                "mbver": "BIOS-versio:",
+                "mbdate": "BIOS-päivityspäivä:",
+                "vlabel": "Näytönohjain",
+                "vname": "Nimi:",
+                "vmem": "Videomuistin määrä:",
+                "ssdl": "SSD, HDD, USB-tikut",
+                "sname": "Nimi:",
+                "smem": "Kokonaiskapasiteetti:",
+                "benchtitle": "Suorituskykytestit MakuTweakerilla",
+                "benchbutton": "Yhden ytimen testi",
+                "benchbutton2": "Monen ytimen testi",
+                "lookresulbutton": "Muut tulokset",
+                "benchtip": "Paina jotakin painikkeista aloittaaksesi testit.",
+                "test1": "Yhden ytimen testi valmis.",
+                "test2": "Pisteet:",
+                "test3": "operaatiota suoritettu.",
+                "running": "Yhden ytimen testi käynnissä...\nOdota 10 sekuntia.",
+                "running_multicore": "Monen ytimen testi käynnissä...\nOdota 10 sekuntia.",
+                "test1multi": "Monen ytimen testi valmis.",
+                "tpmtitle": "TPM-moduuli:",
+                "tpmy": "Löytyy",
+                "tpmn": "Ei löydy",
+                "ramsticktitle": "RAM-kammat",
+                "manu": "Valmistaja:",
+                "capac": "Kapasiteetti:",
+                "partnum": "Osanumero:",
+                "branding": "Brändäys",
+                "modeln": "Malli:",
+                "full_model": "Laite ja malli:",
+                "full_cpu": "Prosessori:",
+                "full_gpu": "Näytönohjain:",
+                "full_ram": "RAM-muisti:",
+                "full_motherboard": "Emolevy:",
+                "full_usbssd": "Kokonaiskapasiteetti:",
+                "tooltip": "Paina F3 ottaaksesi käyttöön sivun kompaktin tilan.\nVoit myös painaa F5 tai Ctrl+S,\ntallentaaksesi sivun sisällön TXT-tiedostoon."
+            }
+        },
+        "pmgr": {
+            "main": {
+                "label": "Prosessien hallinta",
+                "endprocess": "Lopeta prosessi",
+                "onlyfrozen": "Näytä vain jumiutuneet prosessit",
+                "location": "Tiedoston sijainti",
+                "from50mb": "yli 50 MB",
+                "from100mb": "yli 100 MB",
+                "from300mb": "yli 300 MB",
+                "from500mb": "yli 500 MB",
+                "from1000mb": "yli 1 GB",
+                "from2000mb": "yli 2 GB"
+            }
+        },
+        "ab": {
+            "main": {
+                "lang": "Ohjelman kieli",
+                "th": "Ohjelman teema",
+                "sys": "Järjestelmän mukainen",
+                "l": "Vaalea",
+                "d": "Tumma",
+                "st": "Tyyli",
+                "label": "Asetukset",
+                "credL": "Idea ja kehitys:\nOhjelman kuvake:\nErityiskiitokset:",
+                "atop": "Virallinen sivusto"
+            }
+        },
+        "tooltips": {
+            "main": {
+                "sfc": "Yksi kahdesta Windowsin vakio-palautusvaihtoehdosta.\nNopea järjestelmätiedostojen tarkistus ja palautus ilman internetyhteyttä.",
+                "dism": "Yksi kahdesta Windowsin vakio-palautusvaihtoehdosta.\nDISM on syvällisempi ja luotettavampi, koska se ottaa yhteyden Windows Updateen, josta se lataa korjatut tiedostot Microsoftin palvelimilta.",
+                "sticky": "Kun Shift-näppäintä painetaan toistuvasti, ilmestyy \"Näppäinten suodatus\" -toiminnon ikkuna, joka voi häiritä pelatessa.\nMakuTweakerilla tämän toiminnon voi poistaa käytöstä.",
+                "coreisol": "Ytimen eristys heikentää PC:n suorituskykyä (usein heikommilla koneilla) ja joskus jopa rikkoo virtuaalikoneiden toiminnan. Ytimen eristystä yhdessä Virtualization Based Securityn kanssa suositellaan poistettavaksi, jos sinulla on ongelmia VMware Workstation -virtuaalikoneiden käynnistämisessä tai vakavia mikronykimisiä peleissä ja koko järjestelmässä. Tavallinen käyttäjä ei tarvitse näitä toimintoja, ja jopa uusimmilla PC-koneilla tämä voi lisätä suorituskykyä jopa 5 %.\nYtimen eristys ja VBS ovat ylimääräinen turvakerros, mutta Windows Defender tarjoaa riittävän suojan.",
+                "vbs": "Ytimen eristystä yhdessä Virtualization Based Securityn kanssa suositellaan poistettavaksi, jos sinulla on ongelmia VMware Workstation -virtuaalikoneiden käynnistämisessä tai vakavia mikronykimisiä peleissä ja koko järjestelmässä. Tavallinen käyttäjä ei tarvitse näitä toimintoja, ja jopa uusimmilla PC-koneilla tämä voi lisätä suorituskykyä jopa 5 %.\nYtimen eristys ja VBS ovat ylimääräinen turvakerros, mutta Windows Defender tarjoaa riittävän suojan.",
+                "duac": "Kun käynnistät sovelluksen, joka vaatii järjestelmänvalvojan oikeudet, kuten MakuTweakerin, ilmestyy ikkuna \"Sallitko tämän sovelluksen tehdä muutoksia laitteeseesi?\". Monet pitävät tätä häiritsevänä, joten MakuTweaker mahdollistaa tämän ikkunan poistamisen. Huomaa: kun UAC on poistettu käytöstä, kaikki sovellukset käynnistyvät järjestelmänvalvojan oikeuksilla. Jotkut Python-skriptit vaativat käynnistämistä tavallisilla oikeuksilla, koska korotetuilla oikeuksilla ne eivät välttämättä toimi oikein. Windows 11:ssä UAC:n poistamisen jälkeen tehtäväpalkin raahaaminen lakkaa toimimasta. Tämä on Windows 11:n rajoitus, eikä se liity MakuTweakeriin.",
+                "smartscr": "Kun käynnistät allekirjoittamattomia sovelluksia, kuten MakuTweakerin, ilmestyy ikkuna, jossa on pelottavaa tekstiä \"Windows suojasi tietokoneesi\" tai jopa \"Haitallinen tiedosto. Tämä sovellus voi vahingoittaa laitetta\", mikä on usein epätotta. Tällainen ikkuna ilmestyy käynnistettäessä erilaisia repack-versioita ja ohjelmien murtotyökaluja, yrittäen estää sinua piratoimasta. SmartScreen-komponentti vaikuttaa myös Microsoft Edgen latausvaroituksiin. Sen poistamisen jälkeen lataukset alkavat välittömästi ilman ylimääräisiä vahvistusikkunoita.",
+                "hybern": "Lepotilan (hibernation) poistaminen käytöstä voi vapauttaa jopa kymmeniä gigatavuja tilaa järjestelmälevyltä, riippuen PC:n RAM-muistin määrästä. Lepotila on uniasetuksen vastine. Kun uniasetus tallentaa kaikki tiedot RAM-muistiin, lepotila tallentaa kaiken järjestelmälevylle. SSD-levyillä tämä voi nopeuttaa kulumista. Tästä syystä Microsoft on jopa piilottanut tämän kohdan oletuksena, mutta lepotilatiedosto vie silti tilaa levyltä.",
+                "swap": "Sivutustiedoston poistamista käytöstä ei suositella missään nimessä.\nSivutustiedosto on järjestelmän mekanismi, joka käyttää osaa levytilasta lisämuistina, kun RAM-muisti loppuu. Se auttaa järjestelmää estämään kaatumisia ja ohjelmien sulkeutumista korkean kuormituksen aikana. Sivutustiedoston poistaminen voi olla perusteltua vain laitteilla, joissa on pieni SSD (alle 120 GB), koska se voi vapauttaa jopa 20 GB levytilaa.",
+                "oldloader": "Vanhoissa Windowsin käynnistyslataajissa (ennen Windows 7:ää) saattoi painaa F8-näppäintä toistuvasti käynnistyksen aikana päästäkseen vikasietotilaan. Nykyaikaisissa Windows-versioissa tätä varten on keskeytettävä tietokoneen käynnistys manuaalisesti kolme kertaa, mikä hidastaa merkittävästi vikasietotilaan pääsyä järjestelmäongelmien yhteydessä. Voit ottaa käyttöön vanhan käynnistyslataajan ulkoasun, eikä sinun tarvitse pelätä, ettet pääse vikasietotilaan.",
+                "additional": "Lisäkäynnistysasetuksiin pääsemiseksi tämän toiminnon käyttöönotto ei ole välttämätöntä. Voit avata Käynnistä-valikon ja pitämällä Shift-näppäintä pohjassa valita \"Käynnistä uudelleen\".",
+                "chkdsk": "Aina kun HDD-levylle tulee vioittunut sektori, Windows merkitsee osion \"likaiseksi\". Järjestelmä tarkistaa tällaiset levyt jokaisella käynnistyksellä, ja nykyisissä Windows-versioissa skannauksen ohittamiseen annetaan vain yksi sekunti, mikä ei riitä järjestelmään pääsemiseksi. Hitaan 5400 RPM -levyn skannaus voi kestää jopa vuorokauden. Aikakatkaisun pidentäminen 1 sekunnista 1 minuuttiin säästää aikaasi ja antaa mahdollisuuden selvittää ongelmallinen levy.",
+                "bitlocker": "Windows 11 23H2 -versiosta alkaen järjestelmä salaa automaattisesti kaikki levyt BitLockerilla, kun kirjaudut Microsoft-tilille.\nTämä voi olla riskialtista, sillä jos menetät pääsyn Microsoft-tiliisi, voit menettää tiedot levyltä ilman mahdollisuutta edes asentaa järjestelmää uudelleen.",
+                "advanced": "Kun järjestelmä käynnistyy ja sammuu, voit nähdä yksityiskohtaisia tietoja palveluiden käynnistymisestä. Insider-versioissa tämä voi olla hyödyllistä, sillä voit huomata, mikä palvelu hidastaa järjestelmän käynnistymistä.",
+                "photow": "Windows 10:stä poistettiin klassinen valokuvien katseluohjelma Windows Vistasta. Jopa Windows 11:ssä se avautuu salamannopeasti.\nValitettavasti se antaa joskus haamuvirheen muistin loppumisesta, vaikka sitä olisi riittävästi.",
+                "powershell": "Asettaa PowerShellin suorituspolitiikan Unrestricted-tilaan. Sallii kaikkien skriptien suorittamisen, mukaan lukien internetistä ladatut. Jos skriptien suoritus on estetty, esimerkiksi Node.js-pohjaiset skriptit voivat antaa virheen \"cannot be loaded because running scripts is disabled on this system.\"",
+                "xbox": "Windows 10 ja 11 LTSC -versioista puuttuvat Xbox-komponentit, minkä vuoksi pelejä käynnistettäessä voi tulla virhe \"Tarvitset uuden sovelluksen avataksesi tämän ms-gamingoverlay-linkin\".\nPonnahdusikkunan poistamisen jälkeen virhettä ei enää tule.",
+                "hyperv": "Hyper-V-komponentin pakotettu poistaminen käytöstä voi auttaa poistamaan VMware Workstation -virtuaalikoneiden suorituskykyrajoitukset.",
+                "directplay": "DirectPlay vaaditaan vanhojen pelien, kuten GTA Vice Cityn, käynnistämiseen.",
+                "bing": "Nykyaikaisissa Windows 10 ja 11 -versioissa, kun kirjoitat tekstiä Käynnistä-valikon hakuun, järjestelmä tarjoaa tuloksia Bingistä. Jos poistat tämän toiminnon käytöstä, oikealla näytetään tietoja löydetystä tiedostosta.",
+                "MakuTweakerProcessMGR": "Prosessien hallinta -välilehti on paras vastine Windowsin Tehtävienhallinnalle.\n\nLähestymistapa on mahdollisimman käyttäjäystävällinen: järjestelmäprosessit, joita ei joka tapauksessa voi lopettaa, on piilotettu. Vain ne prosessit näytetään, jotka käyttäjä on itse käynnistänyt.\n\nKaikki prosessit lajitellaan automaattisesti suurimmasta kulutuksesta pienimpään. Voit myös asettaa vähimmäiskynnyksen muistinkulutukselle prosessien näyttämiseksi - 50 megatavusta 2 gigatavuun. Tämä on kätevää listan suodattamiseksi ja vain \"raskaimpien\" prosessien jättämiseksi - esimerkiksi editointiohjelmat, virtuaalikoneet tai pelit.\n\nMakuTweakerin prosessien hallinnan pääominaisuus on alareunassa oleva valintaruutu \"Näytä vain jumiutuneet prosessit\". Jos Windowsissa ikkuna on merkitty jumiutuneeksi ja valkoiseksi, voit ottaa käyttöön vain tällaisten ikkunoiden näyttämisen löytääksesi nopeasti jumiutuneen prosessin ja lopettaaksesi sen.\n\nLisäksi klikkaamalla prosessia hiiren oikealla painikkeella voit avata kontekstivalikon. Siinä, toisin kuin Tehtävienhallinnassa, voit avata suoraan prosessin \"Tiedoston sijainnin\". Ja painamalla \"Lopeta prosessi\" - koko prosessipuu lopetetaan välittömästi.\n\nRAM-muistin kulutuksen laskentajärjestelmä MakuTweakerissa eroaa Tehtävienhallinnasta - MakuTweakerissa arvot ovat realistisempia.\nOhjelma ottaa huomioon käytetyt järjestelmäresurssit sekä sovellusten varaaman ylimääräisen muistin, jonka Tehtävienhallinta piilottaa. Tämän ansiosta voit esimerkiksi selvittää editointiohjelmien todellisen kulutuksen, jotka varaavat RAM-muistia videoiden esikatselua varten. Tämä pätee kaikkiin ohjelmiin.",
+                "MakuTweakerProcessMGR1": "Paina painiketta avataksesi ohjeikkunan.",
+                "ttl": "Venäjän mobiilioperaattorit (esim. MTS, Beeline, MegaFon, Tele2, Yota) estävät usein rajoittamattoman internetin jakamisen älypuhelimesta PC:lle tai vaativat siitä lisämaksun. He seuraavat tätä TTL-parametrin perusteella, joka on Windowsissa oletuksena 128 ja puhelimissa 64.\nTTL:n lukitseminen arvoon 65 johtaa siihen, että puhelimen läpi kulkiessa arvo pienenee 1:llä, ja operaattori saa tavallisen \"älypuhelinpaketin\" arvolla 64. He näkevät, että verkkoa jaetaan muka toiselle älypuhelimelle, ei tietokoneelle, joten tämä voi pelastaa ylimääräisiltä laskuilta.\n\nMakuTweaker ei takaa, että tämä toimii.\nVenäjällä tämä rekisteriparametri on yleistymässä.\nVenäläiset MakuTweaker-käyttäjät pyysivät sen lisäämistä."
+            }
+        }
+    }
+}

@@ -1,0 +1,374 @@
+{
+    "categories": {
+        "base": {
+            "catname": {
+                "expl": "Explorateur et Bureau",
+                "compon": "Composants Windows",
+                "wu": "Windows Update",
+                "uwp": "Suppression des applications UWP",
+                "sat": "Minuteur d'arrêt",
+                "quick": "Configuration rapide de Windows",
+                "act": "Activation de Windows",
+                "cm": "Menu contextuel",
+                "sr": "Système et récupération",
+                "perf": "Performances",
+                "per": "Personnalisation",
+                "procmgr": "Gestion des processus",
+                "pci": "Informations PC"
+            },
+            "lowtabs": {
+                "rexp": "Redémarrer l'Explorateur",
+                "set": "Paramètres / À propos"
+            },
+            "def": {
+                "statusdef": "Informations sur la dernière action dans MakuTweaker...",
+                "on": "Activé",
+                "off": "Désactivé",
+                "apply": "Appliquer",
+                "rebnotify": "La fonction que vous avez appliquée nécessite un redémarrage.",
+                "rebnotifyexplorer": "La fonction que vous avez appliquée nécessite un redémarrage de l'Explorateur.",
+                "rebnotifysfc": "Une fois le processus terminé, redémarrez l'appareil !"
+            }
+        },
+        "expl": {
+            "main": {
+                "label": "Explorateur et Bureau",
+                "nonremovable": "Masquer les bibliothèques non supprimables dans l'Explorateur",
+                "hidden": "Afficher les fichiers et dossiers masqués",
+                "ext": "Afficher les extensions de fichiers",
+                "pchome": "Ouvrir \"Ce PC\" au lieu de \"Accueil\" dans l'Explorateur",
+                "gallery": "Masquer la section \"Galerie\"",
+                "showpc": "Afficher l'icône \"Ce PC\"",
+                "shortcut": "Supprimer le suffixe \"-Raccourci\" des nouveaux raccourcis",
+                "fixlabel": "Corriger la duplication des disques dans l'Explorateur",
+                "e8b": "Corriger",
+                "driveslabel": "Masquer les lettres de lecteur dans \"Ce PC\"",
+                "choose": "Choisir",
+                "showall": "Tout afficher"
+            },
+            "status": {
+                "e8": "MakuTweaker a corrigé la duplication des disques dans l'Explorateur.",
+                "hdInfo1": "Sélectionnez les lettres de lecteur que vous souhaitez masquer.",
+                "hdInfo2": "Notez que le disque reste accessible en saisissant sa lettre suivie de deux-points dans la barre d'adresse de l'Explorateur.",
+                "hide": "Masquer les lettres sélectionnées",
+                "cc": "Annuler"
+            }
+        },
+        "compon": {
+            "main": {
+                "label": "Composants Windows",
+                "directplay": "Installer DirectPlay",
+                "framework": "Installer .NET Framework 2.0, 3.0, 3.5",
+                "photoviewer": "Activer l'ancienne visionneuse de photos",
+                "powershellscr": "Autoriser les scripts PowerShell tiers",
+                "xboxdvr": "Désactiver la fenêtre contextuelle Xbox DVR (ms-gamingoverlay)",
+                "forcedis": "Forcer la désactivation d'Hyper-V",
+                "winsxs": "Réinitialiser les composants obsolètes et vider le cache WinSXS",
+                "gpedit": "Activer l'éditeur de stratégie de groupe locale",
+                "install": "Installer",
+                "reset": "Réinitialiser",
+                "enable": "Activer"
+            }
+        },
+        "wu": {
+            "main": {
+                "label": "Windows Update",
+                "wu1": "Désactiver Windows Update",
+                "wu2": "Bloquer les mises à jour sur une version spécifique de Windows",
+                "wu3": "Désactiver la mise à jour des pilotes via Windows Update",
+                "wu4": "Vider le cache de Windows Update",
+                "wu5": "Suspendre le service Windows Update",
+                "wu6": "Désactiver le stockage réservé pour les mises à jour",
+                "wu5b": "Suspendre",
+                "wu6b": "Bloquer"
+            },
+            "status": {
+                "wu4": "Vous avez bloqué avec succès les mises à jour sur cette version de Windows.",
+                "wu5": "Vous pourrez à tout moment accéder à Windows Update et cliquer sur \"Reprendre les mises à jour\"."
+            }
+        },
+        "uwp": {
+            "main": {
+                "label": "Suppression des applications UWP",
+                "info1": "Sélectionnez les applications UWP que vous souhaitez supprimer.",
+                "info2": "Attention: les applications seront supprimées pour tous les utilisateurs.",
+                "u3": "Messagerie",
+                "u5": "Support technique",
+                "u6": "Hub de commentaires",
+                "u9": "Lien avec le téléphone",
+                "u10": "Cartes",
+                "u13": "Courrier et Calendrier",
+                "u15": "Lecteur multimédia",
+                "u16": "Films et TV",
+                "u17": "Caméra",
+                "u18": "Actualités",
+                "u19": "Météo",
+                "u20": "Bloc-notes",
+                "u22": "Enregistreur vocal",
+                "u27": "Horloges et alarmes",
+                "mode1": "Bloatware uniquement",
+                "mode2": "Afficher les populaires",
+                "mode3": "Afficher les nécessaires",
+                "b": "Démarrer la suppression UWP",
+                "chk": "Vérification des applications UWP installées...",
+                "is": "installé...",
+                "isnt": "non installé...",
+                "comp": "Vérification terminée !",
+                "suredialogT1": "Vous avez choisi de supprimer",
+                "suredialogT2": "avec MakuTweaker.",
+                "suredialogT3": "Vous devez comprendre que cette application ne pourra pas être réinstallée dans le système,\net que le fonctionnement lié à ces composants pourrait devenir instable.",
+                "suredialogT4": "Pour continuer, saisissez ILOVEMAKUTWEAKER dans le champ de texte et cliquez sur OK.",
+                "suredialogNS": "Annuler"
+            },
+            "status": {
+                "noapps": "Vous n'avez sélectionné aucune application à supprimer.",
+                "started": "Suppression des applications UWP sélectionnées en cours...",
+                "complete": "Les applications UWP ont été supprimées avec succès !"
+            }
+        },
+        "sat": {
+            "main": {
+                "label": "Minuteur d'arrêt",
+                "minho": "Minutes / Heures : ",
+                "os": "0s",
+                "oned": "1j",
+                "tenM": "10 minutes",
+                "thirtyM": "30 minutes",
+                "oneH": "1 heure",
+                "twoH": "2 heures",
+                "fourH": "4 heures",
+                "sixH": "6 heures",
+                "info": "Entrez le nombre de minutes après lequel le système doit s'éteindre.\nCliquez sur le bouton \"Démarrer le minuteur d'arrêt\" pour lancer le compte à rebours.",
+                "b1": "Démarrer le minuteur d'arrêt",
+                "b2": "Annuler le minuteur d'arrêt"
+            }
+        },
+        "quick": {
+            "main": {
+                "label": "Configuration rapide de Windows",
+                "b": "Lancer la configuration rapide",
+                "info": "Utilisez les cases à cocher pour sélectionner les paramètres\nque vous souhaitez appliquer lors de la configuration automatique.",
+                "infodone": "Les paramètres de configuration rapide sont terminés !\nAprès les avoir appliqués, n'oubliez pas de redémarrer.\nBonne utilisation du système !",
+                "uncheck": "Tout décocher",
+                "checkall": "Tout activer",
+                "hidewidget": "Masquer les boutons \"Affichage des tâches\" et \"Widgets\"",
+                "removeads": "Supprimer les publicités dans le menu Démarrer et la barre des tâches",
+                "clipboard": "Activer le presse-papiers"
+            }
+        },
+        "act": {
+            "main": {
+                "label": "Activation de Windows",
+                "hwid": "Activer Windows",
+                "offi": "Activer Microsoft Office"
+            },
+            "status": {
+                "inprog": "Activation en cours... Cela peut prendre un certain temps sur les PC lents...",
+                "err": "Erreur d'activation !",
+                "alrd": "Le système est déjà activé !",
+                "success": "Activation réussie !",
+                "unk": "Erreur d'activation inconnue !",
+                "eval": "Vous utilisez une version d'évaluation de Windows qui ne peut pas être activée. Une autre édition est nécessaire pour l'activation.",
+                "nocon": "Vous n'êtes pas connecté à Internet. Connectez-vous et réessayez.",
+                "error": "Impossible d'activer Windows. Vérifiez votre connexion Internet et sélectionnez la bonne édition.",
+                "hwerr": "Windows ne peut pas être activé via la méthode HWID.",
+                "offierr": "Office ne peut pas être activé via la méthode Ohook. Réinstallez Office puis réessayez."
+            }
+        },
+        "cm": {
+            "main": {
+                "label": "Menu contextuel",
+                "t1": "Activer l'ancien menu contextuel",
+                "t2": "Supprimer le délai du menu contextuel",
+                "t3": "Ouvrir dans le terminal",
+                "t4": "Ajouter aux favoris",
+                "t5": "Partager",
+                "t6": "Restaurer la version précédente",
+                "t8": "Envoyer vers",
+                "t10": "Copier en tant que chemin d'accès",
+                "t11": "Épingler à l'écran de démarrage",
+                "t12": "Épingler à la barre des tâches",
+                "t13": "Ouvrir dans un nouvel onglet",
+                "t14": "Panneau de configuration NVIDIA"
+            }
+        },
+        "sr": {
+            "main": {
+                "label": "Système et récupération",
+                "sfclabel": "Réparer le système avec SFC",
+                "dismlabel": "Réparer le système avec DISM",
+                "templabel": "Vider le dossier TEMP",
+                "batterylabel": "Générer un rapport sur l'état de la batterie",
+                "b2": "Réparer",
+                "b4": "Nettoyer",
+                "oldbootloader": "Activer l'ancien chargeur de démarrage",
+                "advancedboot": "Options avancées à chaque démarrage",
+                "bitlocker": "Désactiver le chiffrement automatique BitLocker",
+                "coreisol": "Désactiver l'isolation du noyau / intégrité de la mémoire",
+                "hybern": "Désactiver l'hibernation",
+                "vbs": "Désactiver la sécurité basée sur la virtualisation (VBS)",
+                "sleeptimeout": "Désactiver la mise en veille et l'extinction de l'écran",
+                "swap": "Désactiver le fichier d'échange",
+                "bing": "Désactiver la recherche en ligne via Bing",
+                "sticky": "Désactiver les touches rémanentes",
+                "uac": "Désactiver le contrôle de compte d'utilisateur (UAC)",
+                "smartscreen": "Désactiver SmartScreen",
+                "chkdsk": "Définir le délai d'attente Chkdsk à 1 minute",
+                "reportbutton": "Rapport",
+                "telemetry": "Désactiver toute la télémétrie et le suivi système",
+                "ttl": "Activer le contournement des restrictions de partage de connexion (TTL 65)"
+            },
+            "status": {
+                "o1b": "Vous avez généré avec succès le rapport sur l'état de la batterie.",
+                "sr8": "L'éditeur de stratégie de groupe a été restauré avec succès !",
+                "uacwarn": "En activant l'option \"Désactiver le contrôle de compte d'utilisateur (UAC)\", le glisser-déposer dans la barre des tâches cesse de fonctionner sous Windows 11. MakuTweaker n'est pas responsable de ce problème. Voulez-vous vraiment continuer ?"
+            }
+        },
+        "perfor": {
+            "main": {
+                "label": "Performances",
+                "applyb": "Appliquer la limite",
+                "minb": "Performance min.",
+                "maxb": "Performance max.",
+                "info": "Avec MakuTweaker, vous pouvez augmenter l'autonomie de votre ordinateur portable en limitant logiciellement la puissance du processeur.\nSur les PC de bureau, cela aide à réduire la chaleur, la consommation d'énergie et le bruit des ventilateurs, rendant le système plus silencieux et stable.\nPlus le pourcentage est bas, plus les performances seront réduites, mais plus l'autonomie sur batterie sera longue.\nIl est possible que vous deviez réappliquer la limite après avoir débranché le chargeur.",
+                "flyout": "Limite de performance du processeur réglée sur "
+            }
+        },
+        "per": {
+            "main": {
+                "label": "Personnalisation",
+                "defaultnamelabel": "Nom par défaut des nouveaux dossiers et fichiers",
+                "colorlabel": "Changer la couleur de sélection",
+                "verbose": "Activer les informations système détaillées",
+                "smallwindows": "Activer les petits boutons de fenêtre",
+                "blur": "Désactiver le flou sur l'écran de verrouillage",
+                "transparency": "Désactiver la transparence",
+                "darktheme": "Activer le thème sombre",
+                "disablelogo": "Désactiver le logo Windows au démarrage",
+                "disableanim": "Désactiver l'animation au démarrage",
+                "etask": "Ajouter le bouton \"Terminer la tâche\" dans la barre des tâches",
+                "newname": "Nouveau fichier",
+                "c1": "Standard",
+                "c2": "Turquoise",
+                "c3": "Violet",
+                "c4": "Vert",
+                "c5": "Orange",
+                "c6": "Rouge",
+                "c7": "Bleu",
+                "c8": "Noir",
+                "b2": "Par défaut"
+            },
+            "status": {
+                "apN": "Vous avez modifié avec succès le nom par défaut des nouveaux fichiers et dossiers.",
+                "stN": "Vous avez restauré avec succès le nom par défaut des nouveaux fichiers et dossiers.",
+                "apC": "Vous avez modifié avec succès la couleur de sélection."
+            }
+        },
+        "pci": {
+            "main": {
+                "label": "Informations PC",
+                "processorlabel": "Processeur",
+                "processorname": "Nom:",
+                "processorcores": "Nombre de cœurs:",
+                "processorthr": "Nombre de threads:",
+                "processorfreq": "Fréquence de base:",
+                "processorcache": "Cache L3:",
+                "ramlabel": "Mémoire vive (RAM)",
+                "ramtotal": "Mémoire totale:",
+                "ramddr": "Type de mémoire DDR:",
+                "ramfreq": "Fréquence:",
+                "mblabel": "Carte mère",
+                "mbname": "Nom:",
+                "mbver": "Version du BIOS:",
+                "mbdate": "Date de mise à jour du BIOS:",
+                "vlabel": "Carte graphique",
+                "vname": "Nom:",
+                "vmem": "Mémoire vidéo:",
+                "ssdl": "SSD, HDD, clés USB",
+                "sname": "Nom:",
+                "smem": "Capacité totale:",
+                "benchtitle": "Benchmarks avec MakuTweaker",
+                "benchbutton": "Test monocœur",
+                "benchbutton2": "Test multicœur",
+                "lookresulbutton": "Autres résultats",
+                "benchtip": "Cliquez sur l'un des boutons pour lancer les tests.",
+                "test1": "Test monocœur terminé.",
+                "test2": "Score:",
+                "test3": "opérations effectuées.",
+                "running": "Test monocœur en cours...\nVeuillez patienter 10 secondes.",
+                "running_multicore": "Test multicœur en cours...\nVeuillez patienter 10 secondes.",
+                "test1multi": "Test multicœur terminé.",
+                "tpmtitle": "Module TPM:",
+                "tpmy": "Présent",
+                "tpmn": "Absent",
+                "ramsticktitle": "Barrettes de RAM",
+                "manu": "Fabricant:",
+                "capac": "Capacité:",
+                "partnum": "Référence:",
+                "branding": "Marque",
+                "modeln": "Modèle:",
+                "full_model": "Appareil et modèle:",
+                "full_cpu": "Processeur:",
+                "full_gpu": "Carte graphique:",
+                "full_ram": "Mémoire vive:",
+                "full_motherboard": "Carte mère:",
+                "full_usbssd": "Capacité totale des disques:",
+                "tooltip": "Appuyez sur F3 pour activer le mode compact.\nVous pouvez également appuyer sur F5 ou Ctrl+S\npour enregistrer le contenu de la page dans un fichier TXT."
+            }
+        },
+        "pmgr": {
+            "main": {
+                "label": "Gestion des processus",
+                "endprocess": "Terminer le processus",
+                "onlyfrozen": "Afficher uniquement les processus gelés",
+                "location": "Emplacement du fichier",
+                "from50mb": "> 50 Mo",
+                "from100mb": "> 100 Mo",
+                "from300mb": "> 300 Mo",
+                "from500mb": "> 500 Mo",
+                "from1000mb": "> 1 Go",
+                "from2000mb": "> 2 Go"
+            }
+        },
+        "ab": {
+            "main": {
+                "lang": "Langue du programme",
+                "th": "Thème du programme",
+                "sys": "Système",
+                "l": "Clair",
+                "d": "Sombre",
+                "st": "Style",
+                "label": "Paramètres",
+                "credL": "Idée et développement:\nIcône du programme:\nRemerciements particuliers:",
+                "atop": "Site officiel"
+            }
+        },
+        "tooltips": {
+            "main": {
+                "sfc": "L'une des deux options standard de réparation de Windows.\nVérification rapide et réparation des fichiers système sans connexion Internet.",
+                "dism": "L'une des deux options standard de réparation de Windows.\nDISM est plus approfondi et fiable car il utilise Windows Update pour télécharger des fichiers corrigés depuis les serveurs Microsoft.",
+                "sticky": "Appuyer plusieurs fois sur la touche Maj active la fonction\n\"Touches rémanentes\", ce qui peut gêner pendant les jeux.\nDans MakuTweaker, cette fonction peut être désactivée.",
+                "coreisol": "L'isolation du noyau réduit les performances du PC (souvent sur les machines modestes) et peut parfois empêcher le fonctionnement des machines virtuelles. Il est recommandé de désactiver l'isolation du noyau et la sécurité basée sur la virtualisation (VBS) si vous rencontrez des problèmes avec VMware Workstation ou des micro-saccades dans les jeux et le système. Pour un utilisateur classique, ces fonctions ne sont pas nécessaires, et même sur les PC récents, cela peut augmenter les performances jusqu'à 5 %.\nL'isolation du noyau et VBS sont des couches de sécurité supplémentaires, mais Windows Defender offre un niveau de protection suffisant.",
+                "vbs": "Il est recommandé de désactiver l'isolation du noyau et la sécurité basée sur la virtualisation (VBS) si vous rencontrez des problèmes avec VMware Workstation ou des micro-saccades dans les jeux et le système. Pour un utilisateur classique, ces fonctions ne sont pas nécessaires, et même sur les PC récents, cela peut augmenter les performances jusqu'à 5 %.\nL'isolation du noyau et VBS sont des couches de sécurité supplémentaires, mais Windows Defender offre un niveau de protection suffisant.",
+                "duac": "Lors du lancement d'une application nécessitant des droits d'administrateur,\ncomme MakuTweaker, une fenêtre \"Autoriser cette application à apporter des modifications à votre appareil ?\" apparaît. Beaucoup trouvent cela gênant, c'est pourquoi MakuTweaker permet de désactiver cette fenêtre. Attention: avec l'UAC désactivé, toutes les applications s'exécutent avec des droits d'administrateur. Certains scripts Python nécessitent des droits standards pour fonctionner correctement. De plus, sous Windows 11, le glisser-déposer dans la barre des tâches cesse de fonctionner si l'UAC est désactivé. C'est une limitation de Windows 11, sans lien avec MakuTweaker.",
+                "smartscr": "Lors du lancement d'applications non signées, comme MakuTweaker, une fenêtre effrayante \"Windows a protégé votre ordinateur\" ou \"Fichier malveillant\" peut apparaître, ce qui est souvent faux. Cette fenêtre apparaît lors du lancement de divers logiciels modifiés pour vous empêcher de les utiliser. SmartScreen affecte également les avertissements de téléchargement dans Microsoft Edge. Après sa désactivation, les téléchargements commenceront immédiatement, sans boîtes de dialogue de confirmation inutiles.",
+                "hybern": "Désactiver l'hibernation peut libérer jusqu'à plusieurs dizaines de gigaoctets sur votre disque système, selon la quantité de RAM. L'hibernation est un mode similaire à la veille. Alors que la veille enregistre les données dans la RAM, l'hibernation les enregistre sur le disque. Sur les SSD, cela peut accélérer l'usure. Microsoft a masqué cette option par défaut, mais le fichier d'hibernation occupe toujours de l'espace.",
+                "swap": "Il est fortement déconseillé de désactiver complètement le fichier d'échange.\nLe fichier d'échange est un mécanisme système qui utilise une partie du disque comme mémoire virtuelle supplémentaire en cas de manque de RAM. Il aide à prévenir les plantages et la fermeture des programmes en cas de forte charge. La désactivation n'est justifiée que sur les appareils avec de petits SSD (jusqu'à 120 Go) pour libérer jusqu'à 20 Go d'espace.",
+                "oldloader": "Dans les anciens chargeurs de démarrage Windows (avant Windows 7), on pouvait appuyer sur F8 au démarrage pour accéder au mode sans échec. Dans les versions modernes, il faut interrompre manuellement le démarrage trois fois, ce qui ralentit considérablement l'accès au mode sans échec. Vous pouvez réactiver l'ancien design du chargeur pour accéder facilement au mode sans échec.",
+                "additional": "Il n'est pas nécessaire d'activer cette fonction pour accéder aux options de démarrage avancées. Vous pouvez ouvrir le menu Démarrer et, tout en maintenant la touche Maj enfoncée, cliquer sur \"Redémarrer\".",
+                "chkdsk": "Chaque fois qu'un disque dur présente un secteur défectueux, Windows marque la partition comme \"sale\". Le système vérifie ces disques à chaque démarrage, et dans les versions modernes, une seule seconde est accordée pour ignorer l'analyse, ce qui est insuffisant. L'analyse d'un disque lent (5400 tr/min) peut prendre des heures. Augmenter le délai à 1 minute vous fera gagner du temps et vous permettra de gérer le disque problématique.",
+                "bitlocker": "Depuis Windows 11 23H2, le système chiffre automatiquement tous les disques avec BitLocker lors de la connexion à un compte Microsoft.\nCela peut être risqué, car en cas de perte d'accès au compte Microsoft, vous pourriez perdre vos données sans possibilité de réinstaller le système.",
+                "advanced": "Au démarrage et à l'arrêt du système, vous pourrez voir des détails sur le lancement des services. Sur les versions Insider, cela peut être utile pour identifier quel service ralentit le démarrage.",
+                "photow": "La visionneuse de photos classique de Windows Vista a été supprimée dans Windows 10. Même sous Windows 11, elle s'ouvre instantanément.\nMalheureusement, elle affiche parfois une erreur fantôme de manque de mémoire vive, même si celle-ci est suffisante.",
+                "powershell": "Définit la politique d'exécution PowerShell sur \"Unrestricted\". Autorise l'exécution de tous les scripts, y compris ceux téléchargés sur Internet. Si l'exécution est désactivée, certains scripts (ex: Node.js) peuvent afficher l'erreur \"cannot be loaded because running scripts is disabled on this system.\"",
+                "xbox": "Dans Windows 10 et 11 LTSC, les composants Xbox sont absents, ce qui peut provoquer l'erreur \"Vous avez besoin d'une nouvelle application pour ouvrir ce lien ms-gamingoverlay\" lors du lancement de jeux.\nAprès la désactivation de la fenêtre contextuelle, l'erreur ne s'affichera plus.",
+                "hyperv": "Forcer la désactivation d'Hyper-V peut aider à résoudre les limitations de performance des machines virtuelles VMware Workstation.",
+                "directplay": "DirectPlay est nécessaire pour lancer d'anciens jeux, comme GTA Vice City.",
+                "bing": "Dans les versions modernes de Windows 10 et 11, la recherche dans le menu Démarrer propose des résultats Bing. Si vous désactivez cette fonction, les informations sur le fichier trouvé s'afficheront à droite.",
+                "MakuTweakerProcessMGR": "L'onglet \"Gestion des processus\" est la meilleure alternative au Gestionnaire des tâches de Windows.\n\nL'approche est conviviale: les processus système qui ne peuvent pas être terminés sont masqués. Seuls les processus lancés par l'utilisateur sont affichés.\n\nTous les processus sont triés par consommation de ressources. Vous pouvez définir un seuil de consommation mémoire pour filtrer la liste (de 50 Mo à 2 Go). C'est pratique pour ne garder que les processus les plus \"lourds\" (montage vidéo, machines virtuelles, jeux).\n\nLa fonctionnalité principale de MakuTweaker est la case \"Afficher uniquement les processus gelés\". Si une fenêtre est marquée comme gelée dans Windows, vous pouvez filtrer la liste pour trouver rapidement le processus responsable et le terminer.\n\nDe plus, un clic droit sur un processus permet d'ouvrir le menu contextuel. Contrairement au gestionnaire des tâches, vous pouvez ouvrir directement l'\"Emplacement du fichier\". Et en cliquant sur \"Terminer le processus\", toute l'arborescence est fermée.\n\nLe système de calcul de la RAM dans MakuTweaker est plus réaliste que celui du gestionnaire des tâches, car il prend en compte les ressources réellement utilisées et la mémoire réservée inutilement par les applications. Cela permet de connaître la consommation réelle des logiciels de montage qui réservent de la RAM pour la prévisualisation.",
+                "MakuTweakerProcessMGR1": "Cliquez sur le bouton pour afficher l'aide.",
+                "ttl": "Les opérateurs mobiles (ex: Orange, SFR, Bouygues, Free) bloquent souvent ou facturent le partage de connexion illimité depuis un smartphone vers un PC. Ils utilisent le paramètre TTL (128 par défaut pour Windows, 64 pour les téléphones).\nFixer le TTL à 65 permet, après passage par le téléphone, d'obtenir une valeur de 64. L'opérateur verra une connexion provenant d'un autre smartphone et non d'un ordinateur, ce qui peut éviter des frais supplémentaires.\n\nMakuTweaker ne garantit absolument pas que cela fonctionnera.\nCe paramètre de registre est de plus en plus utilisé par les utilisateurs russes."
+            }
+        }
+    }
+}

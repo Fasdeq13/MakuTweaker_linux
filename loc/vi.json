@@ -1,0 +1,374 @@
+{
+    "categories": {
+        "base": {
+            "catname": {
+                "expl": "Explorer và Màn hình nền",
+                "compon": "Thành phần Windows",
+                "wu": "Windows Update",
+                "uwp": "Gỡ cài đặt ứng dụng UWP",
+                "sat": "Hẹn giờ tắt máy",
+                "quick": "Cấu hình nhanh Windows",
+                "act": "Kích hoạt Windows",
+                "cm": "Menu ngữ cảnh",
+                "sr": "Hệ thống và Khôi phục",
+                "perf": "Hiệu suất",
+                "per": "Cá nhân hóa",
+                "procmgr": "Quản lý tiến trình",
+                "pci": "Thông tin PC"
+            },
+            "lowtabs": {
+                "rexp": "Khởi động lại Explorer",
+                "set": "Cài đặt / Giới thiệu"
+            },
+            "def": {
+                "statusdef": "Thông tin về hành động gần nhất trong MakuTweaker...",
+                "on": "Bật",
+                "off": "Tắt",
+                "apply": "Áp dụng",
+                "rebnotify": "Tính năng bạn vừa áp dụng yêu cầu khởi động lại.",
+                "rebnotifyexplorer": "Tính năng bạn vừa áp dụng yêu cầu khởi động lại Explorer.",
+                "rebnotifysfc": "Sau khi hoàn tất quá trình, hãy khởi động lại thiết bị!"
+            }
+        },
+        "expl": {
+            "main": {
+                "label": "Explorer và Màn hình nền",
+                "nonremovable": "Ẩn các thư viện không thể xóa trong Explorer",
+                "hidden": "Hiển thị tệp và thư mục ẩn",
+                "ext": "Hiển thị phần mở rộng tệp",
+                "pchome": "Mở trang \"This PC\" thay vì \"Home\" trong Explorer",
+                "gallery": "Ẩn mục \"Gallery\"",
+                "showpc": "Hiển thị biểu tượng \"This PC\"",
+                "shortcut": "Xóa hậu tố \"-Shortcut\" trên các lối tắt mới",
+                "fixlabel": "Sửa lỗi trùng lặp ổ đĩa trong Explorer",
+                "e8b": "Sửa lỗi",
+                "driveslabel": "Ẩn ký tự ổ đĩa trong mục 'This PC'",
+                "choose": "Chọn",
+                "showall": "Hiển thị tất cả ký tự"
+            },
+            "status": {
+                "e8": "MakuTweaker đã sửa lỗi trùng lặp ổ đĩa trong Explorer.",
+                "hdInfo1": "Chọn các ký tự ổ đĩa bạn muốn ẩn.",
+                "hdInfo2": "Lưu ý rằng ổ đĩa vẫn có thể được mở bằng cách nhập ký tự và dấu hai chấm vào thanh địa chỉ của Explorer.",
+                "hide": "Ẩn các ký tự đã chọn",
+                "cc": "Hủy"
+            }
+        },
+        "compon": {
+            "main": {
+                "label": "Thành phần Windows",
+                "directplay": "Cài đặt DirectPlay",
+                "framework": "Cài đặt .NET Framework 2.0, 3.0, 3.5",
+                "photoviewer": "Bật trình xem ảnh cũ",
+                "powershellscr": "Cho phép chạy tập lệnh PowerShell của bên thứ ba",
+                "xboxdvr": "Tắt cửa sổ bật lên Xbox DVR (ms-gamingoverlay)",
+                "forcedis": "Buộc tắt Hyper-V",
+                "winsxs": "Đặt lại các thành phần cũ và dọn dẹp bộ nhớ đệm WinSXS",
+                "gpedit": "Bật trình chỉnh sửa chính sách nhóm cục bộ (gpedit)",
+                "install": "Cài đặt",
+                "reset": "Đặt lại",
+                "enable": "Bật"
+            }
+        },
+        "wu": {
+            "main": {
+                "label": "Windows Update",
+                "wu1": "Tắt Windows Update",
+                "wu2": "Chặn cập nhật trên phiên bản Windows cụ thể",
+                "wu3": "Tắt cập nhật trình điều khiển qua Windows Update",
+                "wu4": "Dọn dẹp bộ nhớ đệm Windows Update",
+                "wu5": "Tạm dừng dịch vụ Windows Update",
+                "wu6": "Tắt bộ nhớ dự trữ cho các bản cập nhật",
+                "wu5b": "Tạm dừng",
+                "wu6b": "Chặn"
+            },
+            "status": {
+                "wu4": "Bạn đã chặn thành công các bản cập nhật trên phiên bản Windows cụ thể.",
+                "wu5": "Bạn có thể vào Windows Update bất cứ lúc nào và nhấn \"Tiếp tục cập nhật\"."
+            }
+        },
+        "uwp": {
+            "main": {
+                "label": "Gỡ cài đặt ứng dụng UWP",
+                "info1": "Chọn các ứng dụng UWP bạn muốn gỡ cài đặt.",
+                "info2": "Lưu ý: Ứng dụng sẽ không bị gỡ bỏ cho tất cả người dùng.",
+                "u3": "Tin nhắn",
+                "u5": "Hỗ trợ kỹ thuật",
+                "u6": "Trung tâm phản hồi",
+                "u9": "Điện thoại của bạn",
+                "u10": "Bản đồ",
+                "u13": "Người liên hệ, Thư, Lịch",
+                "u15": "Media Player",
+                "u16": "Phim và TV",
+                "u17": "Máy ảnh",
+                "u18": "Tin tức",
+                "u19": "Thời tiết",
+                "u20": "Ghi chú",
+                "u22": "Ghi âm",
+                "u27": "Báo thức và Đồng hồ",
+                "mode1": "Chỉ Bloatware",
+                "mode2": "Hiển thị phổ biến",
+                "mode3": "Hiển thị cần thiết",
+                "b": "Bắt đầu gỡ cài đặt UWP",
+                "chk": "Đang kiểm tra các ứng dụng UWP đã cài đặt...",
+                "is": "đã cài đặt...",
+                "isnt": "chưa cài đặt...",
+                "comp": "Kiểm tra hoàn tất!",
+                "suredialogT1": "Bạn đã chọn gỡ cài đặt",
+                "suredialogT2": "bằng MakuTweaker.",
+                "suredialogT3": "Bạn cần hiểu rằng ứng dụng này sẽ không thể khôi phục lại hệ thống,\nvà các tác vụ liên quan đến các thành phần này có thể không ổn định.",
+                "suredialogT4": "Để tiếp tục, hãy nhập ILOVEMAKUTWEAKER vào ô văn bản và nhấn OK.",
+                "suredialogNS": "Hủy"
+            },
+            "status": {
+                "noapps": "Bạn chưa chọn ứng dụng nào để gỡ cài đặt.",
+                "started": "Đang gỡ cài đặt các ứng dụng UWP đã chọn...",
+                "complete": "Các ứng dụng UWP đã được gỡ cài đặt thành công!"
+            }
+        },
+        "sat": {
+            "main": {
+                "label": "Hẹn giờ tắt máy",
+                "minho": "Phút / Giờ: ",
+                "os": "0s",
+                "oned": "1 ngày",
+                "tenM": "10 phút",
+                "thirtyM": "30 phút",
+                "oneH": "1 giờ",
+                "twoH": "2 giờ",
+                "fourH": "4 giờ",
+                "sixH": "6 giờ",
+                "info": "Nhập số phút sau đó hệ thống sẽ tắt.\nNhấn nút \"Bắt đầu hẹn giờ tắt máy\" để khởi chạy.",
+                "b1": "Bắt đầu hẹn giờ tắt máy",
+                "b2": "Hủy hẹn giờ tắt máy"
+            }
+        },
+        "quick": {
+            "main": {
+                "label": "Cấu hình nhanh Windows",
+                "b": "Chạy cấu hình nhanh",
+                "info": "Sử dụng các ô kiểm để chọn các cài đặt\nmà bạn muốn áp dụng trong cấu hình tự động.",
+                "infodone": "Đã hoàn tất các thông số cấu hình nhanh!\nSau khi áp dụng - đừng quên khởi động lại.\nChúc bạn sử dụng hệ thống vui vẻ!",
+                "uncheck": "Bỏ chọn tất cả",
+                "checkall": "Kích hoạt tất cả",
+                "hidewidget": "Ẩn nút \"Task View\" và \"Widgets\"",
+                "removeads": "Loại bỏ quảng cáo trong \"Start Menu\" và trên thanh tác vụ",
+                "clipboard": "Bật bộ nhớ tạm (Clipboard)"
+            }
+        },
+        "act": {
+            "main": {
+                "label": "Kích hoạt Windows",
+                "hwid": "Kích hoạt Windows",
+                "offi": "Kích hoạt Microsoft Office"
+            },
+            "status": {
+                "inprog": "Đang kích hoạt... Việc này có thể mất chút thời gian trên các PC cấu hình yếu...",
+                "err": "Lỗi kích hoạt!",
+                "alrd": "Hệ thống đã được kích hoạt!",
+                "success": "Kích hoạt thành công!",
+                "unk": "Lỗi kích hoạt không xác định!",
+                "eval": "Bạn đang sử dụng phiên bản dùng thử của Windows, không thể kích hoạt. Cần một phiên bản khác để kích hoạt Windows.",
+                "nocon": "Bạn chưa kết nối Internet. Hãy kết nối và thử lại.",
+                "error": "Không thể kích hoạt Windows. Kiểm tra kết nối Internet và chọn đúng phiên bản.",
+                "hwerr": "Windows không thể được kích hoạt bằng phương pháp HWID.",
+                "offierr": "Office không thể được kích hoạt bằng phương pháp Ohook. Hãy cài đặt lại Office và thử lại."
+            }
+        },
+        "cm": {
+            "main": {
+                "label": "Menu ngữ cảnh",
+                "t1": "Bật menu ngữ cảnh cũ",
+                "t2": "Loại bỏ độ trễ của menu ngữ cảnh",
+                "t3": "Mở trong Terminal",
+                "t4": "Thêm vào mục yêu thích",
+                "t5": "Chia sẻ",
+                "t6": "Khôi phục phiên bản cũ",
+                "t8": "Gửi đến",
+                "t10": "Sao chép dưới dạng đường dẫn",
+                "t11": "Ghim vào Start",
+                "t12": "Ghim vào thanh tác vụ",
+                "t13": "Mở trong tab mới",
+                "t14": "Bảng điều khiển NVIDIA"
+            }
+        },
+        "sr": {
+            "main": {
+                "label": "Hệ thống và Khôi phục",
+                "sfclabel": "Khôi phục hệ thống bằng SFC",
+                "dismlabel": "Khôi phục hệ thống bằng DISM",
+                "templabel": "Dọn dẹp thư mục TEMP",
+                "batterylabel": "Tạo báo cáo thông số pin",
+                "b2": "Khôi phục",
+                "b4": "Dọn dẹp",
+                "oldbootloader": "Bật trình khởi động hệ thống cũ",
+                "advancedboot": "Tùy chọn nâng cao mỗi khi khởi động hệ thống",
+                "bitlocker": "Tắt tự động mã hóa BitLocker",
+                "coreisol": "Tắt cách ly nhân / toàn vẹn bộ nhớ",
+                "hybern": "Tắt chế độ ngủ đông (Hibernation)",
+                "vbs": "Tắt Virtualization-based Security",
+                "sleeptimeout": "Tắt hẹn giờ chế độ ngủ và tắt màn hình",
+                "swap": "Tắt tệp hoán đổi (Swap file)",
+                "bing": "Tắt tìm kiếm trực tuyến qua Bing",
+                "sticky": "Tắt phím dính (Sticky Keys)",
+                "uac": "Tắt kiểm soát tài khoản người dùng (UAC)",
+                "smartscreen": "Tắt Smart Screen",
+                "chkdsk": "Đặt thời gian chờ cho Chkdsk là 1 phút",
+                "reportbutton": "Báo cáo",
+                "telemetry": "Tắt toàn bộ telemetry và theo dõi trong hệ thống",
+                "ttl": "Bật vượt giới hạn chia sẻ Internet (TTL 65)"
+            },
+            "status": {
+                "o1b": "Bạn đã tạo thành công báo cáo thông số pin.",
+                "sr8": "Trình chỉnh sửa chính sách nhóm đã được khôi phục thành công!",
+                "uacwarn": "Khi bật tùy chọn \"Tắt kiểm soát tài khoản người dùng (UAC)\", tính năng kéo thả (Drag-and-Drop) trên thanh tác vụ sẽ ngừng hoạt động trên Windows 11. MakuTweaker không liên quan đến vấn đề này. Bạn có thực sự muốn tiếp tục?"
+            }
+        },
+        "perfor": {
+            "main": {
+                "label": "Hiệu suất",
+                "applyb": "Áp dụng giới hạn",
+                "minb": "Hiệu suất tối thiểu",
+                "maxb": "Hiệu suất tối đa",
+                "info": "Với MakuTweaker, bạn có thể tăng thời lượng pin cho laptop bằng cách giới hạn mức năng lượng của CPU.\nTrên máy tính để bàn, điều này giúp giảm nhiệt độ, tiêu thụ điện năng và tiếng ồn quạt, giúp hệ thống ổn định hơn.\nPhần trăm càng thấp, hiệu suất càng giảm nhưng thời lượng pin càng dài.\nCó thể sau khi rút sạc laptop, bạn sẽ cần thiết lập lại giới hạn.",
+                "flyout": "Giới hạn hiệu suất CPU được đặt ở mức "
+            }
+        },
+        "per": {
+            "main": {
+                "label": "Cá nhân hóa",
+                "defaultnamelabel": "Tên mặc định cho thư mục và tệp mới",
+                "colorlabel": "Thay đổi màu nhấn (Accent color)",
+                "verbose": "Bật thông tin hệ thống chi tiết",
+                "smallwindows": "Bật nút cửa sổ nhỏ",
+                "blur": "Tắt làm mờ trên màn hình khóa",
+                "transparency": "Tắt độ trong suốt",
+                "darktheme": "Bật chủ đề tối",
+                "disablelogo": "Tắt logo Windows trong trình khởi động hệ thống",
+                "disableanim": "Tắt hoạt ảnh trong trình khởi động hệ thống",
+                "etask": "Thêm nút \"Kết thúc tác vụ\" trên thanh tác vụ",
+                "newname": "Tệp mới",
+                "c1": "Mặc định",
+                "c2": "Xanh ngọc",
+                "c3": "Tím",
+                "c4": "Xanh lá",
+                "c5": "Cam",
+                "c6": "Đỏ",
+                "c7": "Xanh dương",
+                "c8": "Đen",
+                "b2": "Mặc định"
+            },
+            "status": {
+                "apN": "Bạn đã thay đổi thành công tên mặc định cho tệp và thư mục mới.",
+                "stN": "Bạn đã khôi phục thành công tên mặc định cho tệp và thư mục mới.",
+                "apC": "Bạn đã thay đổi thành công màu nhấn."
+            }
+        },
+        "pci": {
+            "main": {
+                "label": "Thông tin PC",
+                "processorlabel": "Bộ xử lý",
+                "processorname": "Tên:",
+                "processorcores": "Số nhân:",
+                "processorthr": "Số luồng:",
+                "processorfreq": "Tần số cơ bản:",
+                "processorcache": "Bộ nhớ đệm L3:",
+                "ramlabel": "Bộ nhớ RAM",
+                "ramtotal": "Tổng dung lượng:",
+                "ramddr": "Loại bộ nhớ DDR:",
+                "ramfreq": "Tần số:",
+                "mblabel": "Bo mạch chủ",
+                "mbname": "Tên:",
+                "mbver": "Phiên bản BIOS:",
+                "mbdate": "Ngày cập nhật BIOS:",
+                "vlabel": "Card đồ họa",
+                "vname": "Tên:",
+                "vmem": "Dung lượng VRAM:",
+                "ssdl": "SSD, HDD, USB",
+                "sname": "Tên:",
+                "smem": "Tổng dung lượng:",
+                "benchtitle": "Điểm chuẩn (Benchmark) với MakuTweaker",
+                "benchbutton": "Kiểm tra đơn nhân",
+                "benchbutton2": "Kiểm tra đa nhân",
+                "lookresulbutton": "Kết quả khác",
+                "benchtip": "Nhấn vào một trong các nút để bắt đầu kiểm tra.",
+                "test1": "Kiểm tra đơn nhân hoàn tất.",
+                "test2": "Điểm:",
+                "test3": "thao tác đã thực hiện.",
+                "running": "Đang kiểm tra đơn nhân...\nVui lòng đợi 10 giây.",
+                "running_multicore": "Đang kiểm tra đa nhân...\nVui lòng đợi 10 giây.",
+                "test1multi": "Kiểm tra đa nhân hoàn tất.",
+                "tpmtitle": "Mô-đun TPM:",
+                "tpmy": "Có",
+                "tpmn": "Không",
+                "ramsticktitle": "Thanh RAM",
+                "manu": "Nhà sản xuất:",
+                "capac": "Dung lượng:",
+                "partnum": "Số hiệu:",
+                "branding": "Thương hiệu",
+                "modeln": "Mẫu:",
+                "full_model": "Thiết bị và mẫu:",
+                "full_cpu": "Bộ xử lý:",
+                "full_gpu": "Card đồ họa:",
+                "full_ram": "Bộ nhớ RAM:",
+                "full_motherboard": "Bo mạch chủ:",
+                "full_usbssd": "Tổng dung lượng lưu trữ:",
+                "tooltip": "Nhấn F3 để bật chế độ thu gọn trang.\nBạn cũng có thể nhấn F5 hoặc Ctrl+S\nđể lưu nội dung trang vào tệp TXT."
+            }
+        },
+        "pmgr": {
+            "main": {
+                "label": "Quản lý tiến trình",
+                "endprocess": "Kết thúc tiến trình",
+                "onlyfrozen": "Chỉ hiển thị các tiến trình bị treo",
+                "location": "Vị trí tệp",
+                "from50mb": "từ 50 MB",
+                "from100mb": "từ 100 MB",
+                "from300mb": "từ 300 MB",
+                "from500mb": "từ 500 MB",
+                "from1000mb": "từ 1 GB",
+                "from2000mb": "từ 2 GB"
+            }
+        },
+        "ab": {
+            "main": {
+                "lang": "Ngôn ngữ chương trình",
+                "th": "Chủ đề chương trình",
+                "sys": "Hệ thống",
+                "l": "Sáng",
+                "d": "Tối",
+                "st": "Kiểu",
+                "label": "Cài đặt",
+                "credL": "Ý tưởng và phát triển:\nBiểu tượng chương trình:\nĐặc biệt cảm ơn:",
+                "atop": "Trang web chính thức"
+            }
+        },
+        "tooltips": {
+            "main": {
+                "sfc": "Một trong hai tùy chọn khôi phục Windows tiêu chuẩn.\nKiểm tra và sửa chữa nhanh các tệp hệ thống mà không cần kết nối Internet.",
+                "dism": "Một trong hai tùy chọn khôi phục Windows tiêu chuẩn.\nDISM sâu và đáng tin cậy hơn vì nó kết nối với Windows Update để tải các tệp đã sửa từ máy chủ Microsoft.",
+                "sticky": "Khi nhấn phím Shift nhiều lần, cửa sổ \"Sticky Keys\" sẽ xuất hiện, gây khó chịu khi chơi game.\nTrong MakuTweaker, bạn có thể tắt tính năng này.",
+                "coreisol": "Cách ly nhân làm giảm hiệu suất PC (đặc biệt là máy yếu) và đôi khi làm hỏng máy ảo. Nên tắt cách ly nhân cùng với Virtualization Based Security nếu bạn gặp sự cố khi chạy máy ảo VMware Workstation hoặc bị giật lag trong game. Người dùng thông thường không cần các tính năng này, và ngay cả trên PC mới nhất, việc tắt chúng có thể tăng tới 5% hiệu suất.\nCách ly nhân và VBS là lớp bảo mật bổ sung, nhưng Windows Defender đã cung cấp mức bảo vệ đủ tốt.",
+                "vbs": "Nên tắt cách ly nhân cùng với Virtualization Based Security nếu bạn gặp sự cố khi chạy máy ảo VMware Workstation hoặc bị giật lag trong game. Người dùng thông thường không cần các tính năng này, và ngay cả trên PC mới nhất, việc tắt chúng có thể tăng tới 5% hiệu suất.\nCách ly nhân và VBS là lớp bảo mật bổ sung, nhưng Windows Defender đã cung cấp mức bảo vệ đủ tốt.",
+                "duac": "Khi chạy ứng dụng yêu cầu quyền quản trị, ví dụ như MakuTweaker, cửa sổ \"Bạn có muốn cho phép ứng dụng này thực hiện thay đổi không?\" sẽ xuất hiện. Nhiều người thấy phiền, vì vậy MakuTweaker cho phép tắt cửa sổ này. Lưu ý: khi tắt UAC, tất cả ứng dụng sẽ chạy với quyền quản trị. Một số tập lệnh Python yêu cầu chạy với quyền bình thường vì chúng có thể hoạt động không chính xác với quyền nâng cao. Trên Windows 11, sau khi tắt UAC, tính năng kéo thả trên thanh tác vụ sẽ ngừng hoạt động. Đây là hạn chế của Windows 11 và không liên quan đến MakuTweaker.",
+                "smartscr": "Khi chạy các ứng dụng chưa ký, ví dụ như MakuTweaker, cửa sổ \"Windows đã bảo vệ máy tính của bạn\" hoặc \"Tệp độc hại\" sẽ xuất hiện, điều này thường không đúng. Cửa sổ này xuất hiện khi chạy các bản repack hoặc crack. SmartScreen cũng ảnh hưởng đến cảnh báo tải xuống trong Microsoft Edge. Sau khi tắt, quá trình tải xuống sẽ bắt đầu ngay lập tức mà không cần xác nhận.",
+                "hybern": "Tắt chế độ ngủ đông có thể giải phóng hàng chục GB dung lượng trên ổ đĩa hệ thống, tùy thuộc vào dung lượng RAM. Ngủ đông là tương tự chế độ ngủ (Sleep), nhưng lưu dữ liệu vào ổ đĩa thay vì RAM. Trên SSD, điều này có thể làm tăng độ hao mòn. Vì lý do này, Microsoft đã ẩn tùy chọn này theo mặc định, nhưng tệp ngủ đông vẫn chiếm dung lượng.",
+                "swap": "Không khuyến khích tắt tệp hoán đổi (Swap file).\nĐây là cơ chế hệ thống sử dụng một phần ổ đĩa làm bộ nhớ ảo khi RAM không đủ. Nó giúp ngăn ngừa lỗi và đóng ứng dụng đột ngột. Việc tắt tệp hoán đổi chỉ nên thực hiện trên các thiết bị có SSD nhỏ dưới 120 GB để giải phóng tới 20 GB dung lượng.",
+                "oldloader": "Trong các trình khởi động Windows cũ (trước Windows 7), bạn có thể nhấn F8 để vào chế độ an toàn (Safe Mode). Trong các phiên bản hiện đại, bạn phải ngắt khởi động ba lần, rất bất tiện. Bạn có thể bật thiết kế trình khởi động cũ để dễ dàng truy cập Safe Mode.",
+                "additional": "Để vào các tùy chọn khởi động nâng cao, không cần bật tính năng này. Bạn có thể mở Start Menu, giữ phím Shift và nhấn \"Khởi động lại\".",
+                "chkdsk": "Mỗi khi HDD có sector bị hỏng, Windows đánh dấu phân vùng là \"bẩn\". Hệ thống kiểm tra các ổ đĩa này mỗi khi khởi động, và Windows hiện đại chỉ cho 1 giây để bỏ qua, không đủ để vào hệ thống. Việc quét ổ đĩa chậm có thể mất cả ngày. Mở rộng thời gian chờ từ 1 giây lên 1 phút sẽ giúp bạn tiết kiệm thời gian và xử lý ổ đĩa lỗi.",
+                "bitlocker": "Từ Windows 11 23H2, hệ thống tự động mã hóa tất cả ổ đĩa bằng BitLocker khi đăng nhập tài khoản Microsoft.\nĐiều này có thể rủi ro vì nếu mất quyền truy cập tài khoản Microsoft, bạn có thể mất dữ liệu mà không thể cài lại hệ thống.",
+                "advanced": "Khi khởi động và tắt máy, bạn có thể xem chi tiết về các dịch vụ đang chạy. Trên các bản Insider, điều này hữu ích để biết dịch vụ nào làm chậm quá trình khởi động.",
+                "photow": "Trình xem ảnh cổ điển từ Windows Vista đã bị xóa trong Windows 10. Ngay cả trên Windows 11, nó vẫn mở cực nhanh.\nTuy nhiên, đôi khi nó báo lỗi thiếu RAM ảo ngay cả khi vẫn đủ bộ nhớ.",
+                "powershell": "Đặt chính sách thực thi PowerShell thành Unrestricted. Cho phép chạy bất kỳ tập lệnh nào, kể cả từ Internet. Nếu bị tắt, các tập lệnh như Node.js có thể báo lỗi \"cannot be loaded because running scripts is disabled on this system.\"",
+                "xbox": "Trên Windows 10 và 11 LTSC, các thành phần Xbox bị thiếu, gây lỗi \"Bạn cần ứng dụng mới để mở liên kết ms-gamingoverlay\".\nSau khi tắt cửa sổ bật lên, lỗi sẽ không xuất hiện nữa.",
+                "hyperv": "Buộc tắt Hyper-V có thể giúp loại bỏ giới hạn hiệu suất của máy ảo VMware Workstation.",
+                "directplay": "DirectPlay cần thiết để chạy các trò chơi cũ, ví dụ như GTA Vice City.",
+                "bing": "Trong Windows 10 và 11, khi tìm kiếm trong Start Menu, hệ thống gợi ý kết quả từ Bing. Nếu tắt, thông tin về tệp tìm thấy sẽ hiển thị ở bên phải.",
+                "MakuTweakerProcessMGR": "Tab \"Quản lý tiến trình\" là giải pháp thay thế tốt nhất cho Task Manager.\n\nCách tiếp cận rất thân thiện: các tiến trình hệ thống không thể kết thúc đã được ẩn đi. Chỉ hiển thị các tiến trình do người dùng khởi chạy.\n\nCác tiến trình được sắp xếp tự động theo mức tiêu thụ tài nguyên. Bạn có thể đặt ngưỡng bộ nhớ tối thiểu để hiển thị - từ 50 MB đến 2 GB. Điều này giúp lọc danh sách để chỉ giữ lại các tiến trình \"nặng\" - ví dụ: phần mềm dựng phim, máy ảo hoặc trò chơi.\n\nTính năng chính của MakuTweaker là ô \"Chỉ hiển thị các tiến trình bị treo\". Nếu một cửa sổ bị treo và chuyển sang màu trắng, bạn có thể lọc để tìm và kết thúc nó nhanh chóng.\n\nNgoài ra, khi nhấn chuột phải vào tiến trình, bạn có thể mở \"Vị trí tệp\". Khi nhấn \"Kết thúc tiến trình\", toàn bộ cây tiến trình sẽ bị đóng.\n\nHệ thống tính toán RAM của MakuTweaker thực tế hơn Task Manager vì nó tính cả tài nguyên hệ thống và bộ nhớ dự trữ mà Task Manager thường ẩn đi.",
+                "MakuTweakerProcessMGR1": "Nhấn nút để mở cửa sổ trợ giúp.",
+                "ttl": "Các nhà mạng di động (như MTS, Beeline, MegaFon, Tele2, Yota) thường chặn hoặc thu phí chia sẻ Internet từ smartphone sang PC. Họ theo dõi qua tham số TTL (Windows mặc định là 128, điện thoại là 64).\nCố định TTL ở mức 65 sẽ khiến giá trị giảm còn 64 khi qua điện thoại, nhà mạng sẽ thấy như đang dùng trên smartphone thay vì PC.\n\nMakuTweaker không đảm bảo điều này sẽ hoạt động 100%.\nĐây là tham số registry phổ biến tại Nga và được người dùng yêu cầu thêm vào."
+            }
+        }
+    }
+}

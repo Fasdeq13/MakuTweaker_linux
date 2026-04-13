@@ -1,0 +1,374 @@
+{
+    "categories": {
+        "base": {
+            "catname": {
+                "expl": "Explorer un darbvirsma",
+                "compon": "Windows komponenti",
+                "wu": "Windows Update",
+                "uwp": "UWP lietotņu noņemšana",
+                "sat": "Izslēgšanas taimeris",
+                "quick": "Ātrā Windows iestatīšana",
+                "act": "Windows aktivizēšana",
+                "cm": "Konteksta izvēlne",
+                "sr": "Sistēma un atkopšana",
+                "perf": "Veiktspēja",
+                "per": "Personalizēšana",
+                "procmgr": "Procesu pārvaldība",
+                "pci": "Datora informācija"
+            },
+            "lowtabs": {
+                "rexp": "Restartēt Explorer",
+                "set": "Iestatījumi / Par programmu"
+            },
+            "def": {
+                "statusdef": "Informācija par pēdējo darbību MakuTweaker...",
+                "on": "Iesl.",
+                "off": "Izsl.",
+                "apply": "Pielietot",
+                "rebnotify": "Funkcijai, kuru pielietojāt, nepieciešama restartēšana.",
+                "rebnotifyexplorer": "Funkcijai, kuru pielietojāt, nepieciešama Explorer restartēšana.",
+                "rebnotifysfc": "Pēc procesa pabeigšanas restartējiet ierīci!"
+            }
+        },
+        "expl": {
+            "main": {
+                "label": "Explorer un darbvirsma",
+                "nonremovable": "Paslēpt nenoņemamās bibliotēkas Explorer",
+                "hidden": "Rādīt slēptos failus un mapes",
+                "ext": "Rādīt failu paplašinājumus",
+                "pchome": "Explorer atvērt \"Šis dators\" nevis \"Sākums\"",
+                "gallery": "Paslēpt sadaļu \"Galerija\"",
+                "showpc": "Rādīt ikonu \"Šis dators\"",
+                "shortcut": "Noņemt \"-Īsceļš\" jauniem īsceļiem",
+                "fixlabel": "Labot disku dublēšanos Explorer",
+                "e8b": "Labot",
+                "driveslabel": "Paslēpt disku burtus sadaļā 'Šis dators'",
+                "choose": "Izvēlēties",
+                "showall": "Rādīt visus burtus"
+            },
+            "status": {
+                "e8": "MakuTweaker novērsa disku dublēšanos Explorer.",
+                "hdInfo1": "Izvēlieties disku burtus, kurus vēlaties paslēpt.",
+                "hdInfo2": "Ņemiet vērā, ka disku joprojām var atvērt, ievadot tā burtu un kolu Explorer adreses joslā.",
+                "hide": "Paslēpt izvēlētos burtus",
+                "cc": "Atcelt"
+            }
+        },
+        "compon": {
+            "main": {
+                "label": "Windows komponenti",
+                "directplay": "Instalēt DirectPlay",
+                "framework": "Instalēt .NET Framework 2.0, 3.0, 3.5",
+                "photoviewer": "Ieslēgt veco fotoattēlu skatītāju",
+                "powershellscr": "Ieslēgt trešo pušu PowerShell skriptus",
+                "xboxdvr": "Atspējot Xbox DVR uznirstošo logu (ms-gamingoverlay)",
+                "forcedis": "Piespiedu kārtā atspējot Hyper-V",
+                "winsxs": "Atiestatīt novecojušos komponentus un iztīrīt WinSXS kešatmiņu",
+                "gpedit": "Ieslēgt vietējās grupas politikas redaktoru",
+                "install": "Instalēt",
+                "reset": "Atiestatīt",
+                "enable": "Ieslēgt"
+            }
+        },
+        "wu": {
+            "main": {
+                "label": "Windows Update",
+                "wu1": "Atspējot Windows Update",
+                "wu2": "Bloķēt atjauninājumus noteiktai Windows versijai",
+                "wu3": "Atspējot draiveru atjaunināšanu caur Windows Update",
+                "wu4": "Iztīrīt Windows Update kešatmiņu",
+                "wu5": "Pauzēt Windows Update pakalpojumu",
+                "wu6": "Atspējot rezervēto krātuvi atjauninājumiem",
+                "wu5b": "Pauzēt",
+                "wu6b": "Bloķēt"
+            },
+            "status": {
+                "wu4": "Jūs veiksmīgi bloķējāt atjauninājumus noteiktai Windows versijai.",
+                "wu5": "Jūs jebkurā laikā varat doties uz Windows Update un nospiest \"Atsākt atjaunināšanu\"."
+            }
+        },
+        "uwp": {
+            "main": {
+                "label": "UWP lietotņu noņemšana",
+                "info1": "Izvēlieties UWP lietotnes, kuras vēlaties noņemt.",
+                "info2": "Lūdzu, ņemiet vērā: lietotnes tiks noņemtas ne tikai jums, bet visiem lietotājiem.",
+                "u3": "Ziņojumi",
+                "u5": "Tehniskais atbalsts",
+                "u6": "Atsauksmju centrs",
+                "u9": "Jūsu tālrunis",
+                "u10": "Kartes",
+                "u13": "Personas, Pasts, Kalendārs",
+                "u15": "Multivides atskaņotājs",
+                "u16": "Filmas un TV",
+                "u17": "Kamera",
+                "u18": "Ziņas",
+                "u19": "Laikapstākļi",
+                "u20": "Piezīmes",
+                "u22": "Skaņas ierakstītājs",
+                "u27": "Modinātāji un pulkstenis",
+                "mode1": "Tikai Bloatware",
+                "mode2": "Rādīt populārās",
+                "mode3": "Rādīt nepieciešamās",
+                "b": "Sākt UWP noņemšanu",
+                "chk": "Pārbauda instalētās UWP lietotnes...",
+                "is": "instalēta...",
+                "isnt": "nav instalēta...",
+                "comp": "Pārbaude pabeigta!",
+                "suredialogT1": "Jūs izvēlējāties noņemt",
+                "suredialogT2": "izmantojot MakuTweaker.",
+                "suredialogT3": "Jums jāsaprot, ka šo lietotni sistēmā vairs nevarēs atgriezt,\nun darbs, kas saistīts ar šiem komponentiem, var kļūt nestabils.",
+                "suredialogT4": "Lai turpinātu, ievadiet ILOVEMAKUTWEAKER teksta laukā un nospiediet OK.",
+                "suredialogNS": "Atcelt"
+            },
+            "status": {
+                "noapps": "Jūs neizvēlējāties lietotnes noņemšanai.",
+                "started": "Notiek izvēlēto UWP lietotņu noņemšana...",
+                "complete": "UWP lietotnes tika veiksmīgi noņemtas!"
+            }
+        },
+        "sat": {
+            "main": {
+                "label": "Izslēgšanas taimeris",
+                "minho": "Minūtes / Stundas: ",
+                "os": "0s",
+                "oned": "1d",
+                "tenM": "10 minūtes",
+                "thirtyM": "30 minūtes",
+                "oneH": "1 stunda",
+                "twoH": "2 stundas",
+                "fourH": "4 stundas",
+                "sixH": "6 stundas",
+                "info": "Ievadiet minūšu skaitu, pēc kura sistēmai jāizslēdzas.\nNospiediet pogu \"Palaist izslēgšanas taimeri\", lai sāktu taimeri.",
+                "b1": "Palaist izslēgšanas taimeri",
+                "b2": "Atcelt izslēgšanas taimeri"
+            }
+        },
+        "quick": {
+            "main": {
+                "label": "Ātrā Windows iestatīšana",
+                "b": "Palaist ātro iestatīšanu",
+                "info": "Izmantojiet izvēles rūtiņas, lai izvēlētos iestatījumus,\nkurus vēlaties pielietot automātiskajā iestatīšanā.",
+                "infodone": "Ātrās iestatīšanas parametri ir beigušies!\nPēc to pielietošanas - neaizmirstiet restartēt datoru.\nVeiksmīgu sistēmas lietošanu!",
+                "uncheck": "Noņemt visu",
+                "checkall": "Aktivizēt visu",
+                "hidewidget": "Paslēpt pogas \"Uzdevumu skats\" un \"Logrīki\"",
+                "removeads": "Noņemt reklāmas \"Sākuma izvēlnē\" un uzdevumjoslā",
+                "clipboard": "Ieslēgt starpliktuvi"
+            }
+        },
+        "act": {
+            "main": {
+                "label": "Windows aktivizēšana",
+                "hwid": "Aktivizēt Windows",
+                "offi": "Aktivizēt Microsoft Office"
+            },
+            "status": {
+                "inprog": "Notiek aktivizēšana... Tas var aizņemt kādu laiku uz vājākiem datoriem...",
+                "err": "Aktivizācijas kļūda!",
+                "alrd": "Sistēma jau ir aktivizēta!",
+                "success": "Aktivizēšana veiksmīgi pabeigta!",
+                "unk": "Nezināma aktivizācijas kļūda!",
+                "eval": "Jums ir instalēta Windows izmēģinājuma versija, kuru nevar aktivizēt. Lai aktivizētu Windows, nepieciešama cita redakcija.",
+                "nocon": "Jūs neesat pieslēgts internetam. Pieslēdzieties internetam un mēģiniet vēlreiz.",
+                "error": "Neizdevās aktivizēt Windows. Pārbaudiet interneta savienojumu un izvēlieties pareizo redakciju.",
+                "hwerr": "Windows nevar aktivizēt, izmantojot HWID metodi.",
+                "offierr": "Office nevar aktivizēt, izmantojot Ohook metodi. Pārinstalējiet Office un pēc tam mēģiniet vēlreiz."
+            }
+        },
+        "cm": {
+            "main": {
+                "label": "Konteksta izvēlne",
+                "t1": "Ieslēgt veco konteksta izvēlni",
+                "t2": "Noņemt konteksta izvēlnes aizkavi",
+                "t3": "Atvērt terminālī",
+                "t4": "Pievienot izlasei",
+                "t5": "Kopīgot",
+                "t6": "Atjaunot iepriekšējo versiju",
+                "t8": "Nosūtīt",
+                "t10": "Kopēt kā ceļu",
+                "t11": "Piespraust sākuma ekrānam",
+                "t12": "Piespraust uzdevumjoslai",
+                "t13": "Atvērt jaunā cilnē",
+                "t14": "NVIDIA vadības panelis"
+            }
+        },
+        "sr": {
+            "main": {
+                "label": "Sistēma un atkopšana",
+                "sfclabel": "Atjaunot sistēmu ar SFC",
+                "dismlabel": "Atjaunot sistēmu ar DISM",
+                "templabel": "Iztīrīt TEMP mapi",
+                "batterylabel": "Izveidot akumulatora stāvokļa atskaiti",
+                "b2": "Atjaunot",
+                "b4": "Iztīrīt",
+                "oldbootloader": "Ieslēgt veco sistēmas ielādētāju",
+                "advancedboot": "Papildu parametri katrā sistēmas ielādē",
+                "bitlocker": "Izslēgt automātisko BitLocker šifrēšanu",
+                "coreisol": "Atspējot kodola izolāciju / atmiņas integritāti",
+                "hybern": "Atspējot hibernāciju",
+                "vbs": "Izslēgt Virtualization-based Security",
+                "sleeptimeout": "Atspējot miega režīma un displeja izslēgšanas taimeri",
+                "swap": "Atspējot virtuālās atmiņas failu (swap)",
+                "bing": "Atspējot tiešsaistes meklēšanu caur Bing",
+                "sticky": "Atspējot lipīgos taustiņus",
+                "uac": "Atspējot lietotāja konta kontroli (UAC)",
+                "smartscreen": "Atspējot Smart Screen",
+                "chkdsk": "Iestatīt Chkdsk taimautu uz 1 minūti",
+                "reportbutton": "Atskaite",
+                "telemetry": "Atspējot visu telemetriju un izsekošanu sistēmā",
+                "ttl": "Ieslēgt interneta koplietošanas ierobežojumu apiešanu (TTL 65)"
+            },
+            "status": {
+                "o1b": "Jūs veiksmīgi izveidojāt akumulatora stāvokļa atskaiti.",
+                "sr8": "Grupas politikas redaktors veiksmīgi atgriezts!",
+                "uacwarn": "Ieslēdzot opciju \"Atspējot lietotāja konta kontroli (UAC)\", Windows 11 pārstāj darboties vilkšana (Drag-and-Drop) uz uzdevumjoslas. MakuTweaker nav saistīts ar šo problēmu. Vai tiešām vēlaties turpināt?"
+            }
+        },
+        "perfor": {
+            "main": {
+                "label": "Veiktspēja",
+                "applyb": "Pielietot ierobežojumu",
+                "minb": "Min. veiktspēja",
+                "maxb": "Maks. veiktspēja",
+                "info": "Ar MakuTweaker palīdzību varat palielināt klēpjdatora darbības laiku, programmatiski ierobežojot procesora jaudas līmeni.\nGalddatoriem tas palīdz samazināt uzkaršanu, enerģijas patēriņu un ventilatoru troksni, padarot sistēmas darbību klusāku un stabilāku.\nJo mazāku procentu uzstādīsiet, jo zemāka būs veiktspēja, bet ilgāks darbības laiks no akumulatora.\nIespējams, pēc klēpjdatora atvienošanas no lādētāja, limits būs jāuzstāda no jauna.",
+                "flyout": "Procesora veiktspējas limits uzstādīts uz "
+            }
+        },
+        "per": {
+            "main": {
+                "label": "Personalizēšana",
+                "defaultnamelabel": "Jaunu mapju un failu noklusējuma nosaukums",
+                "colorlabel": "Mainīt izcelšanas krāsu",
+                "verbose": "Ieslēgt superdetalizētu informāciju par sistēmu",
+                "smallwindows": "Ieslēgt mazas logu pogas",
+                "blur": "Izslēgt aizmiglojumu bloķēšanas ekrānā",
+                "transparency": "Izslēgt caurspīdīgumu",
+                "darktheme": "Ieslēgt tumšo tēmu",
+                "disablelogo": "Izslēgt Windows logotipu sistēmas ielādētājā",
+                "disableanim": "Izslēgt animāciju sistēmas ielādētājā",
+                "etask": "Pievienot pogu \"Beigt uzdevumu\" uzdevumjoslā",
+                "newname": "Jauns fails",
+                "c1": "Standarta",
+                "c2": "Tirkīza",
+                "c3": "Violeta",
+                "c4": "Zaļa",
+                "c5": "Oranža",
+                "c6": "Sarkana",
+                "c7": "Zila",
+                "c8": "Melna",
+                "b2": "Standarts"
+            },
+            "status": {
+                "apN": "Jūs veiksmīgi mainījāt noklusējuma nosaukumu jauniem failiem un mapēm.",
+                "stN": "Jūs veiksmīgi atjaunojāt noklusējuma nosaukumu jauniem failiem un mapēm.",
+                "apC": "Jūs veiksmīgi mainījāt izcelšanas krāsu."
+            }
+        },
+        "pci": {
+            "main": {
+                "label": "Datora informācija",
+                "processorlabel": "Procesors",
+                "processorname": "Nosaukums:",
+                "processorcores": "Kodolu skaits:",
+                "processorthr": "Plūsmu skaits:",
+                "processorfreq": "Bāzes frekvence:",
+                "processorcache": "L3 līmeņa kešatmiņa:",
+                "ramlabel": "Operatīvā atmiņa",
+                "ramtotal": "Kopā atmiņas:",
+                "ramddr": "Atmiņas tips DDR:",
+                "ramfreq": "Frekvence:",
+                "mblabel": "Mātesplate",
+                "mbname": "Nosaukums:",
+                "mbver": "BIOS versija:",
+                "mbdate": "BIOS atjaunināšanas datums:",
+                "vlabel": "Videokarte",
+                "vname": "Nosaukums:",
+                "vmem": "Videoatmiņas daudzums:",
+                "ssdl": "SSD, HDD, USB zibatmiņas",
+                "sname": "Nosaukums:",
+                "smem": "Pilns apjoms:",
+                "benchtitle": "Benčmarki ar MakuTweaker",
+                "benchbutton": "Vienkodola tests",
+                "benchbutton2": "Daudzkodolu tests",
+                "lookresulbutton": "Citi rezultāti",
+                "benchtip": "Nospiediet uz vienas no pogām, lai sāktu testus.",
+                "test1": "Vienkodola tests pabeigts.",
+                "test2": "Punkti:",
+                "test3": "operācijas izpildītas.",
+                "running": "Notiek vienkodola tests...\nUzgaidiet 10 sekundes.",
+                "running_multicore": "Notiek daudzkodolu tests...\nUzgaidiet 10 sekundes.",
+                "test1multi": "Daudzkodolu tests pabeigts.",
+                "tpmtitle": "TPM modulis:",
+                "tpmy": "Ir",
+                "tpmn": "Nav",
+                "ramsticktitle": "RAM moduļi",
+                "manu": "Ražotājs:",
+                "capac": "Apjoms:",
+                "partnum": "Detaļas numurs:",
+                "branding": "Zīmols",
+                "modeln": "Modelis:",
+                "full_model": "Ierīce un modelis:",
+                "full_cpu": "Procesors:",
+                "full_gpu": "Videokarte:",
+                "full_ram": "Operatīvā atmiņa:",
+                "full_motherboard": "Mātesplate:",
+                "full_usbssd": "Visu disku apjoms:",
+                "tooltip": "Nospiediet F3, lai ieslēgtu lapas kompakto režīmu.\nVarat arī nospiest F5 vai Ctrl+S,\nlai saglabātu lapas saturu TXT failā."
+            }
+        },
+        "pmgr": {
+            "main": {
+                "label": "Procesu pārvaldība",
+                "endprocess": "Beigt procesu",
+                "onlyfrozen": "Rādīt tikai uzkārušos procesus",
+                "location": "Faila atrašanās vieta",
+                "from50mb": "no 50 MB",
+                "from100mb": "no 100 MB",
+                "from300mb": "no 300 MB",
+                "from500mb": "no 500 MB",
+                "from1000mb": "no 1 GB",
+                "from2000mb": "no 2 GB"
+            }
+        },
+        "ab": {
+            "main": {
+                "lang": "Programmas valoda",
+                "th": "Programmas tēma",
+                "sys": "Sistēmas",
+                "l": "Gaišā",
+                "d": "Tumšā",
+                "st": "Stils",
+                "label": "Iestatījumi",
+                "credL": "Ideja un izstrāde:\nProgrammas ikona:\nĪpašs paldies:",
+                "atop": "Oficiālā vietne"
+            }
+        },
+        "tooltips": {
+            "main": {
+                "sfc": "Viens no diviem standarta Windows atjaunošanas variantiem.\nĀtra sistēmas failu pārbaude un atjaunošana bez interneta pieslēguma.",
+                "dism": "Viens no diviem standarta Windows atjaunošanas variantiem.\nDISM ir dziļāks un uzticamāks, jo vēršas pie Windows Update, kur lejupielādē labotus failus no Microsoft serveriem.",
+                "sticky": "Vairākkārt nospiežot Shift taustiņu, parādās \"Lipīgo taustiņu\" funkcijas logs, kas var traucēt spēļu laikā.\nMakuTweaker šo funkciju var atspējot.",
+                "coreisol": "Kodola izolācija pasliktina datora veiktspēju (bieži vājākiem), un dažreiz pat traucē virtuālo mašīnu darbību. Kodola izolāciju kopā ar Virtualization Based Security ieteicams izslēgt, ja jums ir problēmas ar VMware Workstation virtuālo mašīnu palaišanu vai nopietni mikrostutteri spēlēs un visā sistēmā. Parastam lietotājam šīs funkcijas nav vajadzīgas, un pat uz jaunākajiem datoriem tas var dot līdz 5% veiktspējas pieaugumu.\nKodola izolācija un VBS ir papildu drošības slānis, taču Windows Defender nodrošina pietiekamu aizsardzības līmeni.",
+                "vbs": "Kodola izolāciju kopā ar Virtualization Based Security ieteicams izslēgt, ja jums ir problēmas ar VMware Workstation virtuālo mašīnu palaišanu vai nopietni mikrostutteri spēlēs un visā sistēmā. Parastam lietotājam šīs funkcijas nav vajadzīgas, un pat uz jaunākajiem datoriem tas var dot līdz 5% veiktspējas pieaugumu.\nKodola izolācija un VBS ir papildu drošības slānis, taču Windows Defender nodrošina pietiekamu aizsardzības līmeni.",
+                "duac": "Palaižot lietotni, kurai nepieciešamas administratora tiesības, piemēram, MakuTweaker - parādās logs \"Vai atļaut šai lietotnei veikt izmaiņas jūsu ierīcē?\". Daudziem tas traucē, tāpēc MakuTweaker ļauj atspējot šī loga parādīšanos. Ņemiet vērā: ar atspējotu UAC visas lietotnes palaižas ar administratora tiesībām. Daži Python skripti prasa palaišanu ar parastām tiesībām, jo ar paaugstinātām tiesībām tie var darboties nepareizi. Un Windows 11 - pēc UAC atspējošanas pārstās darboties vilkšana uz uzdevumjoslas. Tas ir Windows 11 ierobežojums, un tam nav saistības ar MakuTweaker.",
+                "smartscr": "Palaižot neparakstītas lietotnes, piemēram, MakuTweaker - parādās logs ar biedējošu tekstu \"Windows sistēma aizsargāja jūsu datoru\", vai pat \"Ļaunprātīgs fails. Šī lietotne var kaitēt ierīcei\", kas bieži vien nav patiesība. Šāds logs parādās, palaižot dažādus repakus un programmu uzlauzumus, mēģinot jūs apturēt no pirātisma. SmartScreen komponents ietekmē arī brīdinājumus Microsoft Edge lejupielādēs. Pēc tā atspējošanas lejupielādes sāksies uzreiz, bez liekiem apstiprinājuma dialogiem.",
+                "hybern": "Hibernācijas atspējošana var atbrīvot līdz pat vairākiem desmitiem gigabaitu atmiņas sistēmas diskā, atkarībā no datora operatīvās atmiņas apjoma. Hibernācija ir miega režīma analogs. Kamēr miegs saglabā visus datus operatīvajā atmiņā, hibernācija saglabā visu sistēmas diskā. SSD diskos tas var paātrināt nolietojumu. Šī iemesla dēļ Microsoft pat noklusējumā paslēpa šo punktu, taču hibernācijas fails joprojām aizņem vietu diskā.",
+                "swap": "Virtuālās atmiņas failu (swap) atspējot stingri nav ieteicams.\nTas ir sistēmas mehānisms, kas izmanto daļu diska vietas kā papildu virtuālo atmiņu, ja nepietiek operatīvās atmiņas. Tas palīdz sistēmai novērst kļūmes un programmu aizvēršanos lielas slodzes laikā. Virtuālās atmiņas faila atspējošana var būt attaisnojama tikai ierīcēs ar maziem SSD (līdz 120 GB), jo tas var atbrīvot līdz 20 GB diska vietas.",
+                "oldloader": "Vecajos Windows ielādētājos (līdz Windows 7) varēja vairākkārt spiest F8, palaižot datoru, lai nokļūtu drošajā režīmā. Mūsdienu Windows versijās tam nepieciešams manuāli pārtraukt datora ielādi trīs reizes, kas ievērojami palēnina drošā režīma procesu. Varat ieslēgt veco ielādētāja dizainu un nebaidīties, ka nevarēsiet nokļūt drošajā režīmā.",
+                "additional": "Lai ieietu papildu palaišanas parametros, šo funkciju ieslēgt nav obligāti. Varat atvērt Sākuma izvēlni un, turot Shift taustiņu, nospiest \"Restartēt\".",
+                "chkdsk": "Katru reizi, kad HDD parādās kāds bojāts sektors, Windows atzīmē sadaļu kā \"netīru\". Sistēma pārbauda šādus diskus katrā palaišanas reizē, un, par nelaimi, mūsdienu Windows versijās skenēšanas izlaišanai tiek dota tikai viena sekunde, kas ir absolūti nepietiekami normālai sistēmas ielādei. Lēna diska ar 5400 apgriezieniem skenēšana var aizņemt pat diennakti. Taimauta pagarināšana no 1 sekundes līdz 1 minūtei ietaupīs jūsu laiku un ļaus tikt galā ar problemātisko disku.",
+                "bitlocker": "Sākot ar Windows 11 23H2, sistēma jebkurā redakcijā, pieslēdzoties Microsoft kontam, automātiski šifrē visus diskus ar BitLocker.\nTas var būt riskanti, jo, zaudējot piekļuvi Microsoft kontam, var zaudēt datus diskā, pat nevarot pārinstalēt sistēmu.",
+                "advanced": "Ieslēdzot sistēmu un to izslēdzot, varēsiet vērot detalizētu informāciju par pakalpojumu palaišanu. Insider versijās tas var būt noderīgi, jo var pamanīt, kurš pakalpojums palēnina sistēmas ielādi.",
+                "photow": "Windows 10 tika noņemts klasiskais fotoattēlu skatītājs no Windows Vista. Pat Windows 11 tas atveras zibenīgi.\nBet, diemžēl, dažreiz tas izmet fantoma kļūdu par operatīvās atmiņas trūkumu, pat ja tās ir pietiekami.",
+                "powershell": "Uzstāda PowerShell izpildes politiku uz Unrestricted režīmu. Atļauj jebkādu skriptu palaišanu, ieskaitot tos, kas lejupielādēti no interneta. Ja skriptu palaišanas iespēja ir atspējota, skripti, piemēram, uz Node.js bāzes, var izmest kļūdu \"cannot be loaded because running scripts is disabled on this system.\"",
+                "xbox": "Windows 10 un 11 LTSC trūkst Xbox komponentu, tāpēc spēļu palaišanas laikā var parādīties kļūda \"Jums būs nepieciešama jauna lietotne, lai atvērtu šo saiti ms-gamingoverlay\".\nPēc uznirstošā loga atspējošanas kļūda vairs neparādīsies.",
+                "hyperv": "Piespiedu Hyper-V komponenta atspējošana var palīdzēt novērst VMware Workstation virtuālo mašīnu veiktspējas ierobežojumus.",
+                "directplay": "DirectPlay ir nepieciešams veco spēļu palaišanai, piemēram, GTA Vice City.",
+                "bing": "Mūsdienu Windows 10 un Windows 11 versijās, ievadot tekstu \"Sākuma\" izvēlnes meklēšanā, sistēma piedāvā rezultātus no Bing. Ja atspējosiet šo funkciju, labajā pusē tiks rādīta informācija par atrasto failu.",
+                "MakuTweakerProcessMGR": "Cilne \"Procesu pārvaldība\" ir labākais Windows Uzdevumu pārvaldnieka analogs.\n\nPieeja ir maksimāli draudzīga: sistēmas procesi, kurus tik un tā nevar beigt, ir paslēpti. Tiek rādīti tikai tie procesi, kurus lietotājs patiešām palaidis pats.\n\nVisi procesi automātiski tiek kārtoti no lielākā patēriņa uz mazāko. Var arī uzstādīt minimālo atmiņas patēriņa slieksni procesu rādīšanai - no 50 megabaitiem līdz 2 gigabaitiem. Tas ir ērti, lai filtrētu sarakstu un atstātu tikai \"smagākos\" procesus - piemēram, montāžas programmas, virtuālās mašīnas vai spēles.\n\nGalvenā MakuTweaker procesu pārvaldības fīča - apakšā ir izvēles rūtiņa \"Rādīt tikai uzkārušos procesus\". Ja Windows logs ir atzīmēts kā uzkāries un kļuvis balts, var ieslēgt tikai šādu logu rādīšanu, lai ātri atrastu procesu, kas uzkāries, un to beigtu.\n\nTāpat, nospiežot ar peles labo pogu uz procesa, varēsiet atvērt konteksta izvēlni. Tajā, atšķirībā no uzdevumu pārvaldnieka, var uzreiz atvērt procesa \"Faila atrašanās vietu\". Bet, nospiežot \"Beigt procesu\" - uzreiz tiek beigts viss procesu koks.\n\nOperatīvās atmiņas patēriņa skaitīšanas sistēma MakuTweaker atšķiras no uzdevumu pārvaldnieka - MakuTweaker vērtības ir reālistiskākas.\nLieta tāda, ka programma ņem vērā izmantotos sistēmas resursus, kā arī lieko lietotņu rezervēto atmiņu, kuru uzdevumu pārvaldnieks slēpj. Pateicoties tam, piemēram, var uzzināt faktisko montāžas programmu patēriņu, kuras rezervē operatīvo atmiņu video priekšskatīšanai. Tas attiecas uz jebkurām programmām.",
+                "MakuTweakerProcessMGR1": "Nospiediet pogu, lai izvērstu palīdzības logu.",
+                "ttl": "Krievijas mobilo sakaru operatori (piemēram - MTS, Beeline, MegaFon, Tele2, Yota) bieži bloķē vai prasa papildu maksu par neierobežota interneta koplietošanu no viedtālruņa uz datoru. Viņi to izseko pēc TTL parametra, kas Windows pēc noklusējuma ir 128, bet tālruņiem - 64.\nTTL fiksēšana uz 65 novedīs pie tā, ka, izejot caur tālruni, vērtība samazināsies par 1, un operators saņems standarta \"viedtālruņa\" paketi ar vērtību 64. Viņš redzēs, ka tīkls tiek koplietots it kā uz citu viedtālruni, nevis datoru, tāpēc tas var pasargāt no liekas prasības apmaksāt rēķinu.\n\nMakuTweaker absolūti negarantē, ka tas nostrādās.\nKrievijā šis reģistra parametrs iegūst popularitāti.\nTo lūdza pievienot MakuTweaker lietotāji no Krievijas."
+            }
+        }
+    }
+}

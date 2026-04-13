@@ -1,0 +1,374 @@
+{
+    "categories": {
+        "base": {
+            "catname": {
+                "expl": "Explorer və İş masası",
+                "compon": "Windows komponentləri",
+                "wu": "Windows Update",
+                "uwp": "UWP tətbiqlərinin silinməsi",
+                "sat": "Söndürmə taymeri",
+                "quick": "Windows-un sürətli sazlanması",
+                "act": "Windows aktivasiyası",
+                "cm": "Kontekst menyusu",
+                "sr": "Sistem və bərpa",
+                "perf": "Məhsuldarlıq",
+                "per": "Fərdiləşdirmə",
+                "procmgr": "Proseslərin idarə edilməsi",
+                "pci": "PC haqqında məlumat"
+            },
+            "lowtabs": {
+                "rexp": "Explorer-i yenidən başladın",
+                "set": "Ayarlar / Proqram haqqında"
+            },
+            "def": {
+                "statusdef": "MakuTweaker-də sonuncu əməliyyat haqqında məlumat...",
+                "on": "Aç.",
+                "off": "Bağ.",
+                "apply": "Tətbiq et",
+                "rebnotify": "Tətbiq etdiyiniz funksiya yenidən başlatma tələb edir.",
+                "rebnotifyexplorer": "Tətbiq etdiyiniz funksiya Explorer-in yenidən başladılmasını tələb edir.",
+                "rebnotifysfc": "Proses bitdikdən sonra cihazı yenidən başladın!"
+            }
+        },
+        "expl": {
+            "main": {
+                "label": "Explorer və İş masası",
+                "nonremovable": "Explorer-də silinə bilməyən kitabxanaları gizlət",
+                "hidden": "Gizli fayl və qovluqları göstər",
+                "ext": "Fayl genişlənmələrini göstər",
+                "pchome": "Explorer-də \"Ana səhifə\" əvəzinə \"Bu PC\" səhifəsini aç",
+                "gallery": "Qalereya bölməsini gizlət",
+                "showpc": "\"Bu PC\" ikonunu göstər",
+                "shortcut": "Yeni qısa yollardan \"-Qısa yol\" sonluğunu sil",
+                "fixlabel": "Explorer-də disklərin dublikatını düzəlt",
+                "e8b": "Düzəlt",
+                "driveslabel": "'Bu PC' bölməsində disk hərflərini gizlət",
+                "choose": "Seç",
+                "showall": "Bütün hərfləri göstər"
+            },
+            "status": {
+                "e8": "MakuTweaker Explorer-də disk dublikatlarını aradan qaldırdı.",
+                "hdInfo1": "Gizlətmək istədiyiniz disk hərflərini seçin.",
+                "hdInfo2": "Nəzərə alın ki, Explorer-in ünvan sətrinə disk hərfini və qoşa nöqtəni daxil etməklə diski hələ də açmaq olar.",
+                "hide": "Seçilmiş hərfləri gizlət",
+                "cc": "Ləğv et"
+            }
+        },
+        "compon": {
+            "main": {
+                "label": "Windows komponentləri",
+                "directplay": "DirectPlay-i quraşdır",
+                "framework": ".NET Framework 2.0, 3.0, 3.5 quraşdır",
+                "photoviewer": "Köhnə şəkil görüntüləyicisini aktivləşdir",
+                "powershellscr": "Kənar PowerShell skriptlərini aktivləşdir",
+                "xboxdvr": "Xbox DVR pop-up pəncərəsini söndür (ms-gamingoverlay)",
+                "forcedis": "Hyper-V-ni məcburi söndür",
+                "winsxs": "Köhnəlmiş komponentləri sıfırla və WinSXS keşini təmizlə",
+                "gpedit": "Yerli qrup siyasəti redaktorunu aktivləşdir",
+                "install": "Quraşdır",
+                "reset": "Sıfırla",
+                "enable": "Aktivləşdir"
+            }
+        },
+        "wu": {
+            "main": {
+                "label": "Windows Update",
+                "wu1": "Windows Update-i söndür",
+                "wu2": "Windows-un müəyyən versiyasında yeniləmələri blokla",
+                "wu3": "Yeniləmə mərkəzi vasitəsilə drayver yeniləmələrini söndür",
+                "wu4": "Windows Update keşini təmizlə",
+                "wu5": "Windows Update xidmətini dayandır",
+                "wu6": "Yeniləmələr üçün ayrılmış yaddaşı söndür",
+                "wu5b": "Dayandır",
+                "wu6b": "Blokla"
+            },
+            "status": {
+                "wu4": "Windows-un müəyyən versiyasında yeniləmələri uğurla blokladınız.",
+                "wu5": "İstənilən vaxt Windows Update-ə daxil olub \"Yeniləmələri davam et\" düyməsinə basa bilərsiniz."
+            }
+        },
+        "uwp": {
+            "main": {
+                "label": "UWP tətbiqlərinin silinməsi",
+                "info1": "Silmək istədiyiniz UWP tətbiqlərini seçin.",
+                "info2": "Nəzərə alın: tətbiqlər bütün istifadəçilər üçün silinməyəcək.",
+                "u3": "Mesajlar",
+                "u5": "Texniki dəstək",
+                "u6": "Rəy mərkəzi",
+                "u9": "Telefonunuz",
+                "u10": "Xəritələr",
+                "u13": "İnsanlar, Poçt, Təqvim",
+                "u15": "Media pleyer",
+                "u16": "Filmlər və TV",
+                "u17": "Kamera",
+                "u18": "Xəbərlər",
+                "u19": "Hava",
+                "u20": "Qeydlər",
+                "u22": "Səs yazıcı",
+                "u27": "Zəngli saat və saat",
+                "mode1": "Yalnız Bloatware",
+                "mode2": "Populyarları göstər",
+                "mode3": "Lazımlıları göstər",
+                "b": "UWP silinməsinə başla",
+                "chk": "Quraşdırılmış UWP tətbiqləri yoxlanılır...",
+                "is": "quraşdırılıb...",
+                "isnt": "quraşdırılmayıb...",
+                "comp": "Yoxlama tamamlandı!",
+                "suredialogT1": "Siz silmək üçün seçdiniz",
+                "suredialogT2": "MakuTweaker vasitəsilə.",
+                "suredialogT3": "Anlamalısınız ki, bu tətbiqi sistemə geri qaytarmaq mümkün olmayacaq və bu komponentlərlə bağlı işlər qeyri-sabit ola bilər.",
+                "suredialogT4": "Davam etmək üçün mətn sahəsinə ILOVEMAKUTWEAKER daxil edin və OK düyməsinə basın.",
+                "suredialogNS": "Ləğv et"
+            },
+            "status": {
+                "noapps": "Silmək üçün tətbiq seçməmisiniz.",
+                "started": "Seçilmiş UWP tətbiqləri silinir...",
+                "complete": "UWP tətbiqləri uğurla silindi!"
+            }
+        },
+        "sat": {
+            "main": {
+                "label": "Söndürmə taymeri",
+                "minho": "Dəqiqə / Saat: ",
+                "os": "0s",
+                "oned": "1g",
+                "tenM": "10 dəqiqə",
+                "thirtyM": "30 dəqiqə",
+                "oneH": "1 saat",
+                "twoH": "2 saat",
+                "fourH": "4 saat",
+                "sixH": "6 saat",
+                "info": "Sistemin neçə dəqiqədən sonra sönəcəyini daxil edin.\nTaymeri işə salmaq üçün \"Söndürmə taymerini işə sal\" düyməsinə basın.",
+                "b1": "Söndürmə taymerini işə sal",
+                "b2": "Söndürmə taymerini ləğv et"
+            }
+        },
+        "quick": {
+            "main": {
+                "label": "Windows-un sürətli sazlanması",
+                "b": "Sürətli sazlamanı işə sal",
+                "info": "Avtomatik sazlamada tətbiq etmək istədiyiniz\nayarları seçmək üçün qutuculardan istifadə edin.",
+                "infodone": "Sürətli sazlama parametrləri bitdi!\nTətbiq etdikdən sonra yenidən başlatmağı unutmayın.\nSistemdən xoş istifadə!",
+                "uncheck": "Hamısını seçmə",
+                "checkall": "Hamısını aktivləşdir",
+                "hidewidget": "\"Tapşırıq görünüşü\" və \"Vidjetlər\" düymələrini gizlət",
+                "removeads": "\"Başlat\" menyusunda və tapşırıq panelində reklamları sil",
+                "clipboard": "Mübadilə buferini aktivləşdir"
+            }
+        },
+        "act": {
+            "main": {
+                "label": "Windows aktivasiyası",
+                "hwid": "Windows-u aktivləşdir",
+                "offi": "Microsoft Office-i aktivləşdir"
+            },
+            "status": {
+                "inprog": "Aktivasiya gedir... Zəif PC-lərdə bu bir qədər vaxt apara bilər...",
+                "err": "Aktivasiya xətası!",
+                "alrd": "Sistem artıq aktivləşdirilib!",
+                "success": "Aktivasiya uğurla tamamlandı!",
+                "unk": "Naməlum aktivasiya xətası!",
+                "eval": "Sizdə aktivləşdirilməsi mümkün olmayan Windows-un sınaq versiyası quraşdırılıb. Windows-u aktivləşdirmək üçün başqa redaksiya lazımdır.",
+                "nocon": "İnternetə qoşulmamısınız. İnternetə qoşulun və yenidən cəhd edin.",
+                "error": "Windows-u aktivləşdirmək mümkün olmadı. İnternet bağlantısını yoxlayın və düzgün redaksiyanı seçin.",
+                "hwerr": "Windows HWID metodu istifadə edilərək aktivləşdirilə bilməz.",
+                "offierr": "Office Ohook metodu istifadə edilərək aktivləşdirilə bilməz. Office-i yenidən quraşdırın və yenidən cəhd edin."
+            }
+        },
+        "cm": {
+            "main": {
+                "label": "Kontekst menyusu",
+                "t1": "Köhnə kontekst menyusunu aktivləşdir",
+                "t2": "Kontekst menyusunun gecikməsini aradan qaldır",
+                "t3": "Terminalda aç",
+                "t4": "Seçilmişlərə əlavə et",
+                "t5": "Paylaş",
+                "t6": "Əvvəlki versiyanı bərpa et",
+                "t8": "Göndər",
+                "t10": "Yol kimi kopyala",
+                "t11": "Başlanğıc ekranına bərkit",
+                "t12": "Tapşırıq panelinə bərkit",
+                "t13": "Yeni tab-da aç",
+                "t14": "NVIDIA İdarəetmə Paneli"
+            }
+        },
+        "sr": {
+            "main": {
+                "label": "Sistem və bərpa",
+                "sfclabel": "Sistemi SFC ilə bərpa et",
+                "dismlabel": "Sistemi DISM ilə bərpa et",
+                "templabel": "TEMP qovluğunu təmizlə",
+                "batterylabel": "Batareya xüsusiyyətləri haqqında hesabat hazırla",
+                "b2": "Bərpa et",
+                "b4": "Təmizlə",
+                "oldbootloader": "Köhnə sistem yükləyicisini aktivləşdir",
+                "advancedboot": "Hər sistem yüklənməsində əlavə parametrlər",
+                "bitlocker": "BitLocker avtomatik şifrələməsini söndür",
+                "coreisol": "Nüvə izolyasiyasını / yaddaş bütövlüyünü söndür",
+                "hybern": "Hibernasiyanı söndür",
+                "vbs": "Virtualization-based Security-ni söndür",
+                "sleeptimeout": "Yuxu rejimi və ekranın sönmə taymerini söndür",
+                "swap": "Səhifələmə faylını (swap) söndür",
+                "bing": "Bing vasitəsilə onlayn axtarışı söndür",
+                "sticky": "Yapışqan düymələri söndür",
+                "uac": "İstifadəçi hesabı nəzarətini (UAC) söndür",
+                "smartscreen": "Smart Screen-i söndür",
+                "chkdsk": "Chkdsk üçün taym-autu 1 dəqiqəyə təyin et",
+                "reportbutton": "Hesabat",
+                "telemetry": "Sistemdə bütün telemetriya və izləməni söndür",
+                "ttl": "İnternet paylaşımı məhdudiyyətlərini keçməyi aktivləşdir (TTL 65)"
+            },
+            "status": {
+                "o1b": "Batareya xüsusiyyətləri haqqında hesabatı uğurla yaratdınız.",
+                "sr8": "Qrup siyasəti redaktoru uğurla geri qaytarıldı!",
+                "uacwarn": "\"İstifadəçi hesabı nəzarətini (UAC) söndür\" funksiyasını aktivləşdirdikdə, Windows 11-də tapşırıq panelində sürüklə-burax (Drag-and-Drop) funksiyası işləmir. MakuTweaker-in bu problemlə əlaqəsi yoxdur. Həqiqətən davam etmək istəyirsiniz?"
+            }
+        },
+        "perfor": {
+            "main": {
+                "label": "Məhsuldarlıq",
+                "applyb": "Məhdudiyyəti tətbiq et",
+                "minb": "Min. məhsuldarlıq",
+                "maxb": "Maks. məhsuldarlıq",
+                "info": "MakuTweaker vasitəsilə prosessorun güc səviyyəsini proqramlı şəkildə məhdudlaşdıraraq noutbukun batareya ömrünü artıra bilərsiniz.\nStasionar PC-lərdə bu, qızmanın, enerji istehlakının və ventilyator səs-küyünün azalmasına kömək edir, sistemin işini daha sakit və stabil edir.\nFaizi nə qədər aşağı təyin etsəniz, məhsuldarlıq bir o qədər aşağı olacaq, lakin batareya ömrü bir o qədər uzun olacaq.\nNoutbuku şarjdan ayırdıqdan sonra limiti yenidən təyin etmək lazım ola bilər.",
+                "flyout": "Prosessorun məhsuldarlıq limiti təyin edildi: "
+            }
+        },
+        "per": {
+            "main": {
+                "label": "Fərdiləşdirmə",
+                "defaultnamelabel": "Yeni qovluq və faylların standart adı",
+                "colorlabel": "Seçim rəngini dəyiş",
+                "verbose": "Sistem haqqında super ətraflı məlumatı aktivləşdir",
+                "smallwindows": "Kiçik pəncərə düymələrini aktivləşdir",
+                "blur": "Kilid ekranında bulanıqlığı söndür",
+                "transparency": "Şəffaflığı söndür",
+                "darktheme": "Qaranlıq mövzunu aktivləşdir",
+                "disablelogo": "Sistem yükləyicisində Windows loqosunu söndür",
+                "disableanim": "Sistem yükləyicisində animasiyanı söndür",
+                "etask": "Tapşırıq panelinə \"Tapşırığı bitir\" düyməsini əlavə et",
+                "newname": "Yeni fayl",
+                "c1": "Standart",
+                "c2": "Firuzəyi",
+                "c3": "Bənövşəyi",
+                "c4": "Yaşıl",
+                "c5": "Narıncı",
+                "c6": "Qırmızı",
+                "c7": "Mavi",
+                "c8": "Qara",
+                "b2": "Standart"
+            },
+            "status": {
+                "apN": "Yeni fayl və qovluqlar üçün standart adı uğurla dəyişdiniz.",
+                "stN": "Yeni fayl və qovluqlar üçün standart adı uğurla bərpa etdiniz.",
+                "apC": "Seçim rəngini uğurla dəyişdiniz."
+            }
+        },
+        "pci": {
+            "main": {
+                "label": "PC haqqında məlumat",
+                "processorlabel": "Prosessor",
+                "processorname": "Adı:",
+                "processorcores": "Nüvə sayı:",
+                "processorthr": "Axın sayı:",
+                "processorfreq": "Baza tezliyi:",
+                "processorcache": "3-cü səviyyə keş:",
+                "ramlabel": "Operativ yaddaş (RAM)",
+                "ramtotal": "Ümumi yaddaş:",
+                "ramddr": "DDR yaddaş növü:",
+                "ramfreq": "Tezlik:",
+                "mblabel": "Ana plata",
+                "mbname": "Adı:",
+                "mbver": "BIOS versiyası:",
+                "mbdate": "BIOS yenilənmə tarixi:",
+                "vlabel": "Video kart",
+                "vname": "Adı:",
+                "vmem": "Video yaddaş həcmi:",
+                "ssdl": "SSD, HDD, USB fləş kartlar",
+                "sname": "Adı:",
+                "smem": "Tam həcm:",
+                "benchtitle": "MakuTweaker ilə bençmarklar",
+                "benchbutton": "Tək nüvəli test",
+                "benchbutton2": "Çox nüvəli test",
+                "lookresulbutton": "Digər nəticələr",
+                "benchtip": "Testlərə başlamaq üçün düymələrdən birinə basın.",
+                "test1": "Tək nüvəli test tamamlandı.",
+                "test2": "Bal:",
+                "test3": "əməliyyat yerinə yetirildi.",
+                "running": "Tək nüvəli test gedir...\n10 saniyə gözləyin.",
+                "running_multicore": "Çox nüvəli test gedir...\n10 saniyə gözləyin.",
+                "test1multi": "Çox nüvəli test tamamlandı.",
+                "tpmtitle": "TPM Modulu:",
+                "tpmy": "Var",
+                "tpmn": "Yoxdur",
+                "ramsticktitle": "RAM lövhələri",
+                "manu": "İstehsalçı:",
+                "capac": "Həcm:",
+                "partnum": "Detalların nömrəsi:",
+                "branding": "Brendinq",
+                "modeln": "Model:",
+                "full_model": "Cihaz və model:",
+                "full_cpu": "Prosessor:",
+                "full_gpu": "Video kart:",
+                "full_ram": "Operativ yaddaş:",
+                "full_motherboard": "Ana plata:",
+                "full_usbssd": "Bütün disklərin həcmi:",
+                "tooltip": "Səhifənin kompakt rejimini aktivləşdirmək üçün F3 düyməsinə basın.\nHəmçinin səhifənin məzmununu TXT faylına saxlamaq üçün\nF5 və ya Ctrl+S düymələrinə basa bilərsiniz."
+            }
+        },
+        "pmgr": {
+            "main": {
+                "label": "Proseslərin idarə edilməsi",
+                "endprocess": "Prosesi bitir",
+                "onlyfrozen": "Yalnız donmuş prosesləri göstər",
+                "location": "Faylın yerləşdiyi yer",
+                "from50mb": "50 MB-dan",
+                "from100mb": "100 MB-dan",
+                "from300mb": "300 MB-dan",
+                "from500mb": "500 MB-dan",
+                "from1000mb": "1 GB-dan",
+                "from2000mb": "2 GB-dan"
+            }
+        },
+        "ab": {
+            "main": {
+                "lang": "Proqramın dili",
+                "th": "Proqramın mövzusu",
+                "sys": "Sistem",
+                "l": "İşıqlı",
+                "d": "Qaranlıq",
+                "st": "Üslub",
+                "label": "Ayarlar",
+                "credL": "İdeya və işlənmə:\nProqram ikonu:\nXüsusi təşəkkür:",
+                "atop": "Rəsmi sayt"
+            }
+        },
+        "tooltips": {
+            "main": {
+                "sfc": "Windows-un bərpası üçün iki standart variantdan biri.\nİnternetə qoşulmadan sistem fayllarının sürətli yoxlanılması və bərpası.",
+                "dism": "Windows-un bərpası üçün iki standart variantdan biri.\nDISM daha dərin və etibarlıdır, çünki Microsoft serverlərindən düzəldilmiş faylları yükləyən Windows Update mərkəzinə müraciət edir.",
+                "sticky": "Shift düyməsinə dəfələrlə basdıqda oyun zamanı mane ola bilən\n\"Yapışqan düymələr\" funksiyası pəncərəsi açılır.\nMakuTweaker-də bu funksiyanı söndürmək olar.",
+                "coreisol": "Nüvə izolyasiyası PC-nin (əsasən zəif olanların) məhsuldarlığını pisləşdirir, bəzən isə virtual maşınların işini pozur. Əgər VMware Workstation virtual maşınlarını işə salarkən problemləriniz varsa və ya oyunlarda və sistemdə ciddi donmalar müşahidə edirsinizsə, Nüvə izolyasiyasını Virtualization Based Security ilə birlikdə söndürmək tövsiyə olunur. Adi istifadəçiyə bu funksiyalar qətiyyən lazım deyil və hətta ən yeni PC-lərdə belə bu, 5%-ə qədər məhsuldarlıq artıra bilər.\nNüvə izolyasiyası və VBS əlavə təhlükəsizlik qatıdır, lakin Windows Defender kifayət qədər qorunma səviyyəsini təmin edir.",
+                "vbs": "Nüvə izolyasiyasını Virtualization Based Security ilə birlikdə söndürmək tövsiyə olunur, əgər virtual maşınların işə salınmasında problemləriniz varsa və ya sistemdə ciddi donmalar müşahidə edirsinizsə. Adi istifadəçiyə bu funksiyalar qətiyyən lazım deyil və hətta ən yeni PC-lərdə belə bu, 5%-ə qədər məhsuldarlıq artıra bilər.\nNüvə izolyasiyası və VBS əlavə təhlükəsizlik qatıdır, lakin Windows Defender kifayət qədər qorunma səviyyəsini təmin edir.",
+                "duac": "MakuTweaker kimi administrator hüquqları tələb edən tətbiqi işə saldıqda \"Bu tətbiqin cihazınızda dəyişiklik etməsinə icazə verirsinizmi?\" pəncərəsi görünür. Bir çoxlarına bu mane olur, buna görə də MakuTweaker bu pəncərənin görünməsini söndürməyə imkan verir. Nəzərə alın: UAC söndürüldükdə bütün tətbiqlər administrator hüquqları ilə işə düşür. Bəzi Python skriptləri adi hüquqlarla işə salınmağı tələb edir, çünki yüksək hüquqlarla onlar düzgün işləməyə bilər. Windows 11-də isə UAC söndürüldükdən sonra tapşırıq panelində sürüklə-burax funksiyası işləməyəcək. Bu, Windows 11-in məhdudiyyətidir və MakuTweaker-lə əlaqəsi yoxdur.",
+                "smartscr": "MakuTweaker kimi imzalanmamış tətbiqləri işə saldıqda, \"Windows sistemi kompüterinizi qorudu\" və ya \"Zərərli fayl. Bu tətbiq cihaza zərər verə bilər\" kimi qorxuducu mətnli pəncərə görünür ki, bu da çox vaxt həqiqətə uyğun deyil. Belə pəncərə müxtəlif repak və proqram sındırmalarını işə saldıqda sizi piratlıqdan çəkindirmək üçün çıxır. SmartScreen komponenti həmçinin Microsoft Edge yükləmələrindəki xəbərdarlıqlara da təsir edir. O söndürüldükdən sonra yükləmələr heç bir əlavə təsdiq dialoqu olmadan dərhal başlayacaq.",
+                "hybern": "Hibernasiyanı söndürmək PC-nizdəki operativ yaddaşın həcmindən asılı olaraq sistem diskində bir neçə onlarla giqabayt yaddaşı azad edə bilər. Hibernasiya yuxu rejiminin analoqudur. Yuxu rejimi bütün məlumatları operativ yaddaşda saxladığı halda, hibernasiya hər şeyi sistem diskində saxlayır. SSD disklərdə bu, köhnəlməni sürətləndirə bilər. Bu səbəbdən Microsoft bu bəndi standart olaraq gizlədib, lakin hibernasiya faylı hələ də diskdə yer tutur.",
+                "swap": "Səhifələmə faylını (swap) söndürmək qətiyyən tövsiyə edilmir.\nSəhifələmə faylı operativ yaddaş çatışmadıqda diskdəki yerin bir hissəsini əlavə virtual yaddaş kimi istifadə edən sistem mexanizmidir. O, yüksək yüklənmə zamanı sistemin nasazlıqlarının və proqramların bağlanmasının qarşısını almağa kömək edir. Səhifələmə faylının söndürülməsi yalnız 120 GB-a qədər kiçik SSD-ləri olan cihazlarda əsaslandırıla bilər, çünki bu, 20 GB-a qədər disk sahəsini azad edə bilər.",
+                "oldloader": "Köhnə Windows yükləyicilərində (Windows 7-yə qədər) PC-ni işə salarkən təhlükəsiz rejimə düşmək üçün F8 düyməsinə dəfələrlə basmaq mümkün idi. Müasir Windows versiyalarında bunun üçün kompüterin yüklənməsini əllə üç dəfə kəsmək lazımdır ki, bu da sistemin işə salınması ilə bağlı problemlər olduqda təhlükəsiz rejimə giriş prosesini əhəmiyyətli dərəcədə ləngidir. Köhnə yükləyici dizaynını aktivləşdirə və təhlükəsiz rejimə düşə bilməyəcəyinizdən qorxmaya bilərsiniz.",
+                "additional": "Əlavə yükləmə parametrlərinə daxil olmaq üçün bu funksiyanı aktivləşdirmək lazım deyil. Başlat menyusunu aça və Shift düyməsini basılı saxlayaraq \"Yenidən başlat\" düyməsinə basa bilərsiniz.",
+                "chkdsk": "HDD-də hər hansı zədələnmiş sektor yarandıqda, Windows bölməni \"çirkli\" kimi qeyd edir. Sistem belə diskləri hər yüklənmədə yoxlayır və müasir Windows versiyalarında skan etməni keçmək üçün cəmi bir saniyə vaxt verilir ki, bu da sistemə normal giriş üçün tamamilə kifayət deyil. 5400 dövr/dəq sürətli yavaş diskin skan edilməsi hətta bir sutka belə çəkə bilər. Taym-autu 1 saniyədən 1 dəqiqəyə qədər artırmaq sizə vaxt qazandıracaq və problemli diski həll etməyə imkan verəcək.",
+                "bitlocker": "Windows 11 23H2-dən başlayaraq, sistem istənilən redaksiyada Microsoft hesabına daxil olduqda bütün diskləri BitLocker ilə avtomatik şifrələyir.\nBu riskli ola bilər, çünki Microsoft hesabına girişi itirdikdə sistemi yenidən quraşdırmaq imkanı olmadan diskdəki məlumatları itirə bilərsiniz.",
+                "advanced": "Sistemi işə saldıqda və söndürdükdə xidmətlərin işə salınması haqqında ətraflı məlumatları müşahidə edə biləcəksiniz. İnsayder yığımlarında bu faydalı ola bilər, çünki hansı xidmətin sistemin yüklənməsini ləngitdiyini görmək olar.",
+                "photow": "Windows 10-da Windows Vista-dan olan klassik şəkil görüntüləyicisi silinmişdi. Hətta Windows 11-də belə o, ildırım sürəti ilə açılır.\nLakin, təəssüf ki, bəzən kifayət qədər operativ yaddaş olsa belə, o, yaddaş çatışmazlığı haqqında xəyali xəta verir.",
+                "powershell": "PowerShell icra siyasətini Unrestricted rejiminə təyin edir. İnternetdən yüklənənlər də daxil olmaqla istənilən skriptin işə salınmasına icazə verir. Əgər skriptlərin işə salınması imkanı söndürülübsə, məsələn, Node.js əsaslı skriptlər \"cannot be loaded because running scripts is disabled on this system\" xətası verə bilər.",
+                "xbox": "Windows 10 və 11 LTSC-də Xbox komponentləri yoxdur, buna görə də oyunları işə salarkən \"ms-gamingoverlay linkini açmaq üçün sizə yeni tətbiq lazım olacaq\" xətası görünə bilər.\nPop-up pəncərəni söndürdükdən sonra xəta görünməyəcək.",
+                "hyperv": "Hyper-V komponentinin məcburi söndürülməsi VMware Workstation virtual maşınlarının məhsuldarlıq məhdudiyyətini aradan qaldırmağa kömək edə bilər.",
+                "directplay": "DirectPlay köhnə oyunları, məsələn, GTA Vice City-ni işə salmaq üçün tələb olunur.",
+                "bing": "Müasir Windows 10 və Windows 11 versiyalarında \"Başlat\" menyusunda axtarışda mətn daxil etdikdə sistem Bing-dən nəticələr təklif edir. Bu funksiyanı söndürsəniz, sağ tərəfdə tapılmış fayl haqqında məlumat göstəriləcək.",
+                "MakuTweakerProcessMGR": "\"Proseslərin idarə edilməsi\" tabı Windows Tapşırıq Menecerinin ən yaxşı analoqudur.\n\n yanaşma maksimum dərəcədə dostanədir: onsuz da bitirilməsi mümkün olmayan sistem prosesləri gizlədilib. Yalnız istifadəçinin özünün işə saldığı proseslər göstərilir.\n\nBütün proseslər avtomatik olaraq daha çox istehlakdan az istehlaka doğru sıralanır. Həmçinin prosesləri göstərmək üçün minimum yaddaş istehlakı həddini təyin etmək olar - 50 meqabaytdan 2 giqabayta qədər. Bu, siyahını filtrləmək və yalnız ən \"ağır\" prosesləri - məsələn, montaj proqramları, virtual maşınlar və ya oyunları saxlamaq üçün rahatdır.\n\nMakuTweaker-də proseslərin idarə edilməsinin əsas xüsusiyyəti - aşağıda \"Yalnız donmuş prosesləri göstər\" qutucuğu var. Əgər Windows-da pəncərə donmuş və ağarmış kimi işarələnibsə, yalnız belə pəncərələrin göstərilməsini aktivləşdirərək donmuş prosesi tez tapıb bitirə bilərsiniz.\n\nHəmçinin prosesin üzərinə sağ düymə ilə basaraq kontekst menyusunu aça bilərsiniz. Tapşırıq menecerindən fərqli olaraq, orada dərhal prosesin \"Faylın yerləşdiyi yer\"-ni aça bilərsiniz. \"Prosesi bitir\" düyməsinə basdıqda isə dərhal bütün proseslər ağacı bitirilir.\n\nMakuTweaker-də operativ yaddaş istehlakının hesablanması sistemi tapşırıq menecerindən fərqlənir - MakuTweaker-də dəyərlər daha realistdir.\nSöhbət ondadır ki, proqram sistemin istifadə olunan resurslarını, həmçinin tapşırıq menecerinin gizlətdiyi tətbiqlər tərəfindən ayrılmış artıq yaddaşı nəzərə alır. Bunun sayəsində, məsələn, videoların önizlənməsi üçün operativ yaddaş ayıran montaj proqramlarının faktiki istehlakını öyrənmək olar. Bu, istənilən proqrama aiddir.",
+                "MakuTweakerProcessMGR1": "Kömək pəncərəsini açmaq üçün düyməyə basın.",
+                "ttl": "Rusiya mobil operatorları (məsələn - MTS, Beeline, MegaFon, Tele2, Yota) tez-tez smartfondan PC-yə limitsiz internet paylaşımını bloklayır və ya əlavə ödəniş tələb edir. Onlar bunu Windows-da standart olaraq 128, telefonlarda isə 64 olan TTL parametri ilə izləyirlər.\nTTL-in 65 dəyərində fiksə edilməsi ona gətirib çıxaracaq ki, telefondan keçərkən dəyər 1 vahid azalacaq və operator 64 dəyəri ilə standart \"smartfon\" paketi alacaq. O, şəbəkənin kompüterə deyil, guya başqa smartfona paylandığını görəcək, buna görə də bu, əlavə hesab ödəmə tələbindən xilas edə bilər.\n\nMakuTweaker bunun işləyəcəyinə qətiyyən zəmanət vermir.\nRF-də bu reyestr parametri populyarlıq qazanır.\nBunu MakuTweaker-in Rusiyadan olan istifadəçiləri əlavə etməyi xahiş ediblər."
+            }
+        }
+    }
+}
