@@ -99,78 +99,47 @@ namespace MakuTweakerNew
             ExpTimer();
             if (Properties.Settings.Default.firRun)
             {
-                string systemLanguage = CultureInfo.CurrentCulture.Name;
-                switch (systemLanguage)
+                string systemLang = CultureInfo.CurrentUICulture.Name.ToLower();
+                string isoLang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToLower();
+                string detectedTag = systemLang switch
                 {
-                    case string lang when lang.StartsWith("uk-"):
-                        Properties.Settings.Default.lang = "ua";
-                        Settings.Default.langSI = 2;
-                        break;
-                    case string lang when lang.StartsWith("ru-"):
-                        Properties.Settings.Default.lang = "ru";
-                        Settings.Default.langSI = 1;
-                        break;
-                    case string lang when lang.StartsWith("cs-"):
-                        Properties.Settings.Default.lang = "cz";
-                        Settings.Default.langSI = 3;
-                        break;
-                    case string lang when lang.StartsWith("de-"):
-                        Properties.Settings.Default.lang = "de";
-                        Settings.Default.langSI = 4;
-                        break;
-                    case string lang when lang.StartsWith("es-"):
-                        Properties.Settings.Default.lang = "es";
-                        Settings.Default.langSI = 5;
-                        break;
-                    case string lang when lang.StartsWith("pl-"):
-                        Properties.Settings.Default.lang = "pl";
-                        Settings.Default.langSI = 6;
-                        break;
-                    case string lang when lang.StartsWith("et-"):
-                        Properties.Settings.Default.lang = "et";
-                        Settings.Default.langSI = 7;
-                        break;
-                    case string lang when lang.ToLower().StartsWith("zh"):
-                        Properties.Settings.Default.lang = "zh";
-                        Settings.Default.langSI = 8;
-                        break;
-                    case string lang when lang.ToLower().StartsWith("ja"):
-                        Properties.Settings.Default.lang = "ja";
-                        Settings.Default.langSI = 9;
-                        break;
-                    case string lang when lang.ToLower().StartsWith("tl"):
-                        Properties.Settings.Default.lang = "tl";
-                        Settings.Default.langSI = 10;
-                        break;
-                    case string lang when lang.StartsWith("en-"):
-                        Properties.Settings.Default.lang = "en";
-                        Settings.Default.langSI = 0;
-                        break;
-                    default:
-                        Properties.Settings.Default.lang = "en";
-                        Settings.Default.langSI = 0;
-                        break;
-                }
-                Settings.Default.firRun = false;
-                var currentSystemTheme = MicaWPFServiceUtility.ThemeService.CurrentTheme;
-                string themeToSave = currentSystemTheme == WindowsTheme.Dark ? "Dark" : "Light";
-                Properties.Settings.Default.theme = themeToSave;
+                    "zh-tw" or "zh-hk" or "zh-mo" => "tw",
+                    "zh-cn" or "zh-sg" or "zh-chs" => "zh",
+                    _ => isoLang switch
+                    {
+                        "uk" or "cs" or "ru" or "az" or "es" or "tl" or "tr" or "ko" or
+                        "zh" or "it" or "de" or "fr" or "be" or "vi" or "id" or "hi" or
+                        "ja" or "kk" or "pt" or "lv" or "fi" or "et" or "pl" or "th" => isoLang,
+                        "fil" => "tl",
+                        _ => "en"
+                    }
+                };
 
-                Properties.Settings.Default.firRun = false;
-                Properties.Settings.Default.Save();
+                Settings.Default.lang = detectedTag;
+                var tagsOrder = new List<string>
+                {
+                    "en", "ru", "uk", "be", "kk", "cs", "de", "fr", "es", "it",
+                    "pt", "fi", "et", "lv", "pl", "az", "tr", "zh", "tw", "ja",
+                    "ko", "vi", "th", "id", "tl", "hi"
+                };
+                int index = tagsOrder.IndexOf(detectedTag);
+                Settings.Default.langSI = index != -1 ? index : 0;
+
+                var currentSystemTheme = MicaWPFServiceUtility.ThemeService.CurrentTheme;
+                Settings.Default.theme = currentSystemTheme == WindowsTheme.Dark ? "Dark" : "Light";
+
+                Settings.Default.firRun = false;
+                Settings.Default.Save();
                 ApplyTheme(currentSystemTheme);
-                Properties.Settings.Default.Save();
             }
             else
             {
                 string themeString = Properties.Settings.Default.theme;
-
                 if (string.IsNullOrEmpty(themeString) || themeString == "Auto")
                 {
                     var systemTheme = MicaWPFServiceUtility.ThemeService.CurrentTheme;
                     ApplyTheme(systemTheme);
                     Properties.Settings.Default.theme = systemTheme == WindowsTheme.Dark ? "Dark" : "Light";
-                    Properties.Settings.Default.Save();
                 }
                 else if (Enum.TryParse<WindowsTheme>(themeString, out var parsedTheme))
                 {
@@ -183,8 +152,7 @@ namespace MakuTweakerNew
             }
 
             LoadLang(Properties.Settings.Default.lang);
-            CheckForUpd();
-
+            _ = CheckForUpd();
         }
 
         private void ApplyTheme(WindowsTheme theme)
