@@ -34,6 +34,7 @@ namespace MakuTweakerNew
             if (checkWinVer() < 22000)
             {
                 endtask.Visibility = Visibility.Collapsed;
+                oldcont.Visibility = Visibility.Collapsed;
             }
             isLoaded = true;
         }
@@ -186,6 +187,8 @@ namespace MakuTweakerNew
             endtask.Header = per["main"]["etask"];
             disablelogo.Header = per["main"]["disablelogo"];
             disableanim.Header = per["main"]["disableanim"];
+            oldcont.Header = per["main"]["oldcont"];
+            contdel.Header = per["main"]["delcont"];
 
             smallwindows.OffContent = basel["def"]["off"];
             blur.OffContent = basel["def"]["off"];
@@ -195,6 +198,8 @@ namespace MakuTweakerNew
             disableanim.OffContent = basel["def"]["off"];
             verbose.OffContent = basel["def"]["off"];
             endtask.OffContent = basel["def"]["off"];
+            oldcont.OffContent = basel["def"]["off"];
+            contdel.OffContent = basel["def"]["off"];
 
             smallwindows.OnContent = basel["def"]["on"];
             blur.OnContent = basel["def"]["on"];
@@ -204,6 +209,8 @@ namespace MakuTweakerNew
             disableanim.OnContent = basel["def"]["on"];
             verbose.OnContent = basel["def"]["on"];
             endtask.OnContent = basel["def"]["on"];
+            oldcont.OnContent = basel["def"]["on"];
+            contdel.OnContent = basel["def"]["on"];
 
             sys_tooltip_verbose.Content = tooltips["main"]["advanced"];
         }
@@ -218,6 +225,10 @@ namespace MakuTweakerNew
             darktheme.IsOn = (Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize")?.GetValue("AppsUseLightTheme") is int a && a == 0)&& (Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize")?.GetValue("SystemUsesLightTheme") is int b && b == 0);
             verbose.IsOn = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System")?.GetValue("verbosestatus")?.Equals(1) ?? false;
             endtask.IsOn = (Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings")?.GetValue("TaskbarEndTask") is int v && v == 1);
+
+            contdel.IsOn = Registry.CurrentUser.OpenSubKey(@"Control Panel\Desktop")?.GetValue("MenuShowDelay")?.Equals("50") ?? false;
+            oldcont.IsOn = Registry.CurrentUser.OpenSubKey(@"Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32")?.GetValue("")?.Equals("") ?? false;
+
             try
             {
                 using (Process p = new Process())
@@ -355,8 +366,6 @@ namespace MakuTweakerNew
                         break;
                 }
                 mw.RebootNotify(2);
-                System.Windows.Forms.Application.Restart();
-                Application.Current.Shutdown();
             }
         }
 
@@ -409,6 +418,44 @@ namespace MakuTweakerNew
                         mw.RebootNotify(1);
                         break;
                 }
+            }
+        }
+
+        private void oldcont_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (isLoaded)
+            {
+                switch (oldcont.IsOn)
+                {
+                    case true:
+                        Process.Start("cmd.exe", "/c \"reg.exe add \"HKCU\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32\" /f /ve\"");
+                        Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel").SetValue("{20D04FE0-3AEA-1069-A2D8-08002B30309D}", 0);
+                        break;
+                    case false:
+                        {
+                            Process.Start("cmd.exe", "/c \"reg delete \"HKCU\\Software\\Classes\\CLSID\\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\\InprocServer32\" /f\"");
+                            Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel").SetValue("{20D04FE0-3AEA-1069-A2D8-08002B30309D}", 0);
+                            break;
+                        }
+                }
+                mw.RebootNotify(2);
+            }
+        }
+
+        private void contdel_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (isLoaded)
+            {
+                switch (contdel.IsOn)
+                {
+                    case true:
+                        Registry.CurrentUser.CreateSubKey(@"Control Panel\Desktop").SetValue("MenuShowDelay", "50");
+                        break;
+                    case false:
+                        Registry.CurrentUser.CreateSubKey(@"Control Panel\Desktop").SetValue("MenuShowDelay", "400");
+                        break;
+                }
+                mw.RebootNotify(2);
             }
         }
     }

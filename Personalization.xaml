@@ -7,47 +7,64 @@
       xmlns:controls="clr-namespace:MicaWPF.Controls;assembly=MicaWPF"
       xmlns:ui="http://schemas.modernwpf.com/2019"
       mc:Ignorable="d" 
-      d:DesignHeight="702" d:DesignWidth="704.04"
+      d:DesignHeight="1002" d:DesignWidth="704.0"
       Title="Personalization">
 
     <Grid>
-        <ScrollViewer>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel>
                 <TextBlock x:Name="label" HorizontalAlignment="Left" Margin="24,11,0,0" TextWrapping="Wrap" Text="Personalization" VerticalAlignment="Top" FontSize="32" FontFamily="Segoe UI Semibold"/>
+
                 <TextBlock x:Name="defaultnamelabel" HorizontalAlignment="Left" Margin="24,14,0,0" TextWrapping="Wrap" Text="Default Name for New Files and New Folders" VerticalAlignment="Top" FontSize="16"/>
-                <controls:TextBox x:Name="newname" Margin="24,5,424,0" MaxLength="40" Watermark="New File" Height="31" VerticalAlignment="Top"/>
-                <controls:Button x:Name="apN" Margin="0,-35,310,0" Content="Apply" Height="36" VerticalAlignment="Top" HorizontalAlignment="Right" Width="106" Click="apN_Click"/>
-                <controls:Button x:Name="stN" Margin="0,-36,194,0" Content="Standard" VerticalAlignment="Top" Height="36" HorizontalAlignment="Right" Width="107" Click="stN_Click" />
-                <TextBlock x:Name="colorlabel" HorizontalAlignment="Left" Margin="24,9,0,0" TextWrapping="Wrap" Text="Change Selection Colors" VerticalAlignment="Top" FontSize="16"/>
-                <ComboBox x:Name="color" Padding="10,0,0,0" Margin="24,5,0,0" FontSize="14" MinWidth="177" MaxWidth="177" HorizontalAlignment="Left" Width="177" Height="25" VerticalAlignment="Top">
-                    <ComboBoxItem x:Name="c1" Content="Standard"/>
-                    <ComboBoxItem x:Name="c2" Content="Cyan"/>
-                    <ComboBoxItem x:Name="c3" Content="Purple"/>
-                    <ComboBoxItem x:Name="c4" Content="Green"/>
-                    <ComboBoxItem x:Name="c5" Content="Orange"/>
-                    <ComboBoxItem x:Name="c6" Content="Red"/>
-                    <ComboBoxItem x:Name="c7" Content="Blue"/>
-                    <ComboBoxItem x:Name="c8" Content="Black"/>
-                </ComboBox>
-                <controls:Button x:Name="apC" Margin="210,-30,0,0" Content="Apply" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="106" Click="apC_Click"/>
+
+                <StackPanel Orientation="Horizontal" Margin="24,5,0,0">
+                    <controls:TextBox x:Name="newname" Width="250" MaxLength="32" Watermark="New File" Height="34" VerticalAlignment="Center"/>
+                    <controls:Button x:Name="apN" Margin="10,0,4,0" Content="Apply" Height="34" Padding="20,5" Click="apN_Click"/>
+                    <controls:Button x:Name="stN" Margin="5,0,0,0" Content="Standard" Height="34" Padding="20,5" Click="stN_Click" />
+                </StackPanel>
+
+                <TextBlock x:Name="colorlabel" HorizontalAlignment="Left" Margin="24,12,0,0" TextWrapping="Wrap" Text="Change Selection Colors" VerticalAlignment="Top" FontSize="16"/>
+
+                <StackPanel Orientation="Horizontal" Margin="24,5,0,0">
+                    <ComboBox x:Name="color" Padding="10,0,0,0" FontSize="14" Width="177" Height="30" VerticalAlignment="Center">
+                        <ComboBoxItem x:Name="c1" Content="Standard"/>
+                        <ComboBoxItem x:Name="c2" Content="Cyan"/>
+                        <ComboBoxItem x:Name="c3" Content="Purple"/>
+                        <ComboBoxItem x:Name="c4" Content="Green"/>
+                        <ComboBoxItem x:Name="c5" Content="Orange"/>
+                        <ComboBoxItem x:Name="c6" Content="Red"/>
+                        <ComboBoxItem x:Name="c7" Content="Blue"/>
+                        <ComboBoxItem x:Name="c8" Content="Black"/>
+                    </ComboBox>
+                    <controls:Button x:Name="apC" Margin="10,0,0,0" Content="Apply" Height="30" Padding="20,5" Click="apC_Click"/>
+                </StackPanel>
+                
                 <ui:ToggleSwitch x:Name="endtask" Header="Enable End Task in Taskbar" Margin="24,11,0,0" VerticalAlignment="Top" FontSize="16" Toggled="endtask_Toggled"/>
+                <ui:ToggleSwitch Header="Enable Old Context Menu" Margin="24,7,0,0" VerticalAlignment="Top" FontSize="16" x:Name="oldcont" Toggled="oldcont_Toggled"/>
+                <ui:ToggleSwitch Header="Remove Context Menu Delay" Margin="24,7,0,0" VerticalAlignment="Top" FontSize="16" x:Name="contdel" Toggled="contdel_Toggled"/>
                 <ui:ToggleSwitch x:Name="smallwindows" Header="Small Window Buttons" Margin="24,7,0,0" VerticalAlignment="Top" FontSize="16" Toggled="smallwindows_Toggled"/>
                 <ui:ToggleSwitch x:Name="blur" Header="Disable Blur on The Lock Screen" Margin="24,7,0,0" VerticalAlignment="Top" FontSize="16" Toggled="blur_Toggled"/>
                 <ui:ToggleSwitch x:Name="transparency"  Header="Disable Transparency" Margin="24,7,0,0" VerticalAlignment="Top" FontSize="16" Toggled="transparency_Toggled"/>
                 <ui:ToggleSwitch x:Name="darktheme" Header="Enable Dark theme" Margin="24,7,0,0" VerticalAlignment="Top" FontSize="16" Toggled="darktheme_Toggled"/>
 
-                <StackPanel Orientation="Horizontal" Margin="24,10,0,0">
-                    <ui:ToggleSwitch x:Name="verbose" Header="Verbose" VerticalAlignment="Top" FontSize="16" Toggled="verbose_Toggled"/>
-                    <controls:Button Content="?" Width="18" Height="18" Margin="8,-29,0,0" FontSize="14" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
-                        <controls:Button.ToolTip>
-                            <ToolTip MaxWidth="500" x:Name="sys_tooltip_verbose"/>
-                        </controls:Button.ToolTip>
-                    </controls:Button>
+                <StackPanel Margin="24,10,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Header, ElementName=verbose}" FontSize="16" VerticalAlignment="Center"/>
+                        <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
+                            <controls:Button.ToolTip>
+                                <ToolTip MaxWidth="500" x:Name="sys_tooltip_verbose"/>
+                            </controls:Button.ToolTip>
+                        </controls:Button>
+                    </StackPanel>
+                    <ui:ToggleSwitch x:Name="verbose" FontSize="16" Header="Verbose" Toggled="verbose_Toggled">
+                        <ui:ToggleSwitch.HeaderTemplate>
+                            <DataTemplate />
+                        </ui:ToggleSwitch.HeaderTemplate>
+                    </ui:ToggleSwitch>
                 </StackPanel>
-                
+
                 <ui:ToggleSwitch x:Name="disablelogo" Header="Disable Windows Logo in Bootloader" Margin="24,7,0,0" VerticalAlignment="Top" FontSize="16" Toggled="disablelogo_Toggled"/>
-                <ui:ToggleSwitch x:Name="disableanim" Header="Disable Animation in Bootloader" Margin="24,7,0,0" VerticalAlignment="Top" FontSize="16" Toggled="disableanim_Toggled"/>
-                <Rectangle HorizontalAlignment="Left" Height="17" Margin="3,0,0,0" VerticalAlignment="Top" Width="67"/>
+                <ui:ToggleSwitch x:Name="disableanim" Header="Disable Animation in Bootloader" Margin="24,7,0,15" VerticalAlignment="Top" FontSize="16" Toggled="disableanim_Toggled"/>
             </StackPanel>
 
         </ScrollViewer>
