@@ -4,13 +4,36 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:controls="clr-namespace:MicaWPF.Controls;assembly=MicaWPF"
-      xmlns:ui="http://schemas.modernwpf.com/2019"
+      xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+      xmlns:oldui="http://schemas.modernwpf.com/2019"
       mc:Ignorable="d"
       d:DesignHeight="702" d:DesignWidth="704"
       Loaded="Page_Loaded"
       Unloaded="Page_Unloaded">
-    <Grid>
 
+    <Page.Resources>
+        <ContextMenu x:Key="ItemContextMenu" Opened="ContextMenu_Opened" Closed="ContextMenu_Closed">
+            <MenuItem Header="Завершить процесс" Click="KillProcess_Click">
+                <MenuItem.Icon>
+                    <ui:SymbolIcon Symbol="Cancel"/>
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem x:Name="AddToExclMenu" Header="Добавить в исключения" Click="AddToExclusions_Click">
+                <MenuItem.Icon>
+                    <ui:SymbolIcon Symbol="UnPin"/>
+                </MenuItem.Icon>
+            </MenuItem>
+
+            <MenuItem Header="Расположение файла" Click="OpenLocation_Click">
+                <MenuItem.Icon>
+                    <ui:SymbolIcon Symbol="Folder"/>
+                </MenuItem.Icon>
+            </MenuItem>
+        </ContextMenu>
+    </Page.Resources>
+
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -18,12 +41,31 @@
 
         <StackPanel Orientation="Horizontal">
             <TextBlock x:Name="label" Margin="24,11,0,20" FontSize="32" FontFamily="Segoe UI Semibold" Text="ProcessMGR"/>
-            <controls:Button x:Name="buttontooltip" Width="20" Height="20" Margin="10,0,0,0" VerticalAlignment="Center" Content="?" Click="InfoBtn_Click">
 
+            <controls:Button x:Name="buttontooltip" Width="28" Height="28" Margin="10,-5,0,0" VerticalAlignment="Center" Click="InfoBtn_Click">
+                <ui:SymbolIcon Symbol="Help"  FontSize="12"/>
                 <controls:Button.ToolTip>
                     <ToolTip MaxWidth="350" x:Name="mgr_tooltip"/>
                 </controls:Button.ToolTip>
+            </controls:Button>
 
+            <controls:Button x:Name="restartBtn" Width="28" Height="28" Margin="5,-5,0,0" VerticalAlignment="Center" Click="restartBtn_Click">
+                <ui:SymbolIcon Symbol="Refresh"  FontSize="12"/>
+            </controls:Button>
+
+            <controls:Button x:Name="PauseBtn" Width="28" Height="28" Margin="5,-5,0,0" VerticalAlignment="Center" Click="PauseBtn_Click">
+                <ui:SymbolIcon x:Name="PauseIcon" Symbol="Pause" FontSize="12"/>
+            </controls:Button>
+
+            <controls:Button x:Name="SettingsBtn" Width="28" Height="28" Margin="5,-5,0,0" VerticalAlignment="Center" Click="SettingsBtn_Click">
+                <ui:SymbolIcon Symbol="Setting" FontSize="12"/>
+                <controls:Button.ToolTip>
+                    <ToolTip MaxWidth="350" x:Name="mgr1_tooltip"/>
+                </controls:Button.ToolTip>
+            </controls:Button>
+
+            <controls:Button x:Name="MakuYan" Width="28" Height="28" Margin="5,-5,0,0" VerticalAlignment="Center" Click="MakuYan_Click">
+                <ui:SymbolIcon Symbol="Permissions"  FontSize="12"/>
             </controls:Button>
         </StackPanel>
 
@@ -37,69 +79,30 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <ListView x:Name="ProcessListView" Margin="24,0,24,27" KeyDown="ProcessListView_KeyDown" BorderThickness="1" BorderBrush="#30000000">
-                    <ListView.Resources>
-                        <ContextMenu x:Key="ItemContextMenu">
-
-                            <MenuItem Header="Завершить процесс" Click="KillProcess_Click">
-                                <MenuItem.Icon>
-                                    <ui:SymbolIcon Symbol="Cancel"/>
-                                </MenuItem.Icon>
-                            </MenuItem>
-                            <MenuItem Header="Расположение файла" Click="OpenLocation_Click">
-                                <MenuItem.Icon>
-                                    <ui:SymbolIcon Symbol="Folder"/>
-                                </MenuItem.Icon>
-                            </MenuItem>
-
-                        </ContextMenu>
-                    </ListView.Resources>
-
+                <ListView x:Name="ProcessListView" Margin="4,-15,24,10" KeyDown="ProcessListView_KeyDown">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" Margin="10,0,0,0"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem" BasedOn="{StaticResource {x:Type ListViewItem}}">
-                            <Setter Property="FontSize" Value="16"/>
-                            <Setter Property="Padding" Value="8"/>
+                            <Setter Property="FontSize" Value="20"/>
+                            <Setter Property="Padding" Value="4"/>
                             <Setter Property="MinHeight" Value="36"/>
                             <Setter Property="VerticalContentAlignment" Value="Center"/>
                             <Setter Property="ContextMenu" Value="{StaticResource ItemContextMenu}"/>
                         </Style>
                     </ListView.ItemContainerStyle>
-
-                    <ListView.View>
-                        <GridView>
-
-                            <GridViewColumn Header="ID" Width="80">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Id}" />
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-
-                            <GridViewColumn Header="Имя процесса" Width="250">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Name}" />
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-
-                            <GridViewColumn Header="ОЗУ" Width="150">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding MemoryUsage}"
-                                                   FontWeight="Bold"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-
-                        </GridView>
-                    </ListView.View>
                 </ListView>
 
-                <StackPanel x:Name="ControlPanel" Grid.Row="1" Orientation="Horizontal" Margin="24,0,24,24">
+                <StackPanel x:Name="ControlPanel" Grid.Row="1" Orientation="Horizontal" Margin="20,0,24,24">
 
-                    <ComboBox x:Name="MemoryLimitCombo" SelectedIndex="2" Width="130" FontSize="14" Margin="0,0,15,0" SelectionChanged="FilterChanged">
+                    <ComboBox x:Name="MemoryLimitCombo" SelectedIndex="3" Width="Auto" FontSize="14" Margin="0,0,10,0" 
+                              SelectionChanged="FilterChanged"
+                              DropDownOpened="MemoryLimitCombo_DropDownOpened"
+                              DropDownClosed="MemoryLimitCombo_DropDownClosed">
+                        <ComboBoxItem Content="Отображать все" Tag="262144"/>
                         <ComboBoxItem Content="от 50 МБ" Tag="52428800"/>
                         <ComboBoxItem Content="от 100 МБ" Tag="104857600"/>
                         <ComboBoxItem Content="от 300 МБ" Tag="314572800"/>
@@ -107,16 +110,16 @@
                         <ComboBoxItem Content="от 1 ГБ" Tag="1073741824"/>
                         <ComboBoxItem Content="от 2 ГБ" Tag="2147483648"/>
                     </ComboBox>
-                    <Button x:Name="KillBtn" Content="Завершить процесс" Click="KillProcess_Click" Margin="0,0,15,0" Height="29"/>
+
+                    <Button x:Name="KillBtn" Content="Завершить процесс" Click="KillProcess_Click" Margin="0,0,15,0" Height="30"/>
                     <CheckBox x:Name="OnlyNotRespondingCheck" Content="Отображать только зависшие процессы" VerticalAlignment="Center" Checked="FilterChanged" Unchecked="FilterChanged"/>
                 </StackPanel>
             </Grid>
-            <ScrollViewer x:Name="HelpContent" Visibility="Collapsed" Margin="0" MaxWidth="705" HorizontalScrollBarVisibility="Disabled">
 
+            <ScrollViewer x:Name="HelpContent" Visibility="Collapsed" Margin="0" MaxWidth="730" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
                 <ScrollViewer.RenderTransform>
                     <TranslateTransform x:Name="HelpTransform" Y="600"/>
                 </ScrollViewer.RenderTransform>
-
                 <TextBlock x:Name="HelpText" FontSize="18" LineHeight="22" Margin="0,0,0,28" TextWrapping="Wrap"/>
             </ScrollViewer>
         </Grid>
