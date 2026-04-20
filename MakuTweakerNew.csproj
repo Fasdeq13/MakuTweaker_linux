@@ -29,16 +29,12 @@
     <None Remove="assets/images/hand_heart_donate_icon.png" />
     <None Remove="assets/images/makut.png" />
     <None Remove="assets/images/MakuTweakerAbout.png" />
-    <None Remove="HWID.cmd" />
-    <None Remove="Office.cmd" />
     <None Remove="assets/images/Telegram_2019_Logo.svg.png" />
     <None Remove="assets/images/You-Tube-16.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="loc\*.json" />
-    <EmbeddedResource Include="HWID.cmd" />
-    <EmbeddedResource Include="Office.cmd" />
     <Content Include="assets/icons/MakuTweaker.ico" />
   </ItemGroup>
 
