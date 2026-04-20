@@ -1,0 +1,53 @@
+﻿<controls:MicaWindow x:Class="MakuTweakerNew.MakuYan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:controls="clr-namespace:MicaWPF.Controls;assembly=MicaWPF"
+        xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+        mc:Ignorable="d"
+        ui:ThemeManager.RequestedTheme="Default"
+        Title="Блокировка приложений"
+        Height="400" Width="650"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False"
+        ResizeMode="NoResize"
+        UseLayoutRounding="True"
+        FocusVisualStyle="{x:Null}"
+        Focusable="False"
+        Topmost="False"
+        Icon="/assets/images/makut.png">
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="InfoText"
+           Text="MakuTweaker позволяет блокировать запуск указанных процессов и приложений. Перечислите их через запятую, и программа автоматически применит ограничения. Чтобы разблокировать процесс, удалите его из списка и сохраните изменения."
+           TextWrapping="Wrap" FontSize="18" Margin="0,0,0,10" FontWeight="SemiBold"/>
+
+        <TextBox x:Name="ProcBlockTxt" Grid.Row="1" TextWrapping="Wrap" 
+         AcceptsReturn="True" VerticalContentAlignment="Top" Padding="5"
+         ui:ControlHelper.PlaceholderText="yandex.exe, yandex_music.exe, max.exe, max-service.exe"/>
+
+        <Grid Grid.Row="2" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="0">
+                <Button x:Name="banyandex" Content="Заблокировать Яндекс" Padding="15,5" Margin="0,0,9,0" Click="BlockYandex_Click"/>
+                <Button x:Name="howitworks" Content="Как это работает?" Padding="15,5" Click="HowItWorks_Click"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="1">
+                <Button x:Name="ClearBtn" Content="Очистить" Padding="15,5" Margin="0,0,9,0" Click="Clear_Click"/>
+                <Button x:Name="SaveBtn" Content="Применить блокировку" Padding="15,5" Click="Save_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</controls:MicaWindow>
