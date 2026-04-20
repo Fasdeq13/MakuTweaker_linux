@@ -11,59 +11,107 @@
       Title="Explorer">
 
     <Grid>
-        <Image Source="assets/images/MakuTweakerAbout.png" HorizontalAlignment="Center" VerticalAlignment="Top" Width="498" Height="100" Margin="0,166,0,0"/>
-        <TextBlock x:Name="credL" HorizontalAlignment="Left" Margin="30,285,0,0" TextWrapping="Wrap" Text="credL" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold"/>
-        <TextBlock x:Name="credN" Margin="380,285,0,0" TextWrapping="Wrap" Text="credN" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Width="296"/>
+        <Image Source="assets/images/MakuTweakerAbout.png" HorizontalAlignment="Center" VerticalAlignment="Top" Width="498" Height="100" Margin="0,220,0,0"/>
+        <TextBlock x:Name="credL" HorizontalAlignment="Left" Margin="30,328,0,0" TextWrapping="Wrap" Text="credL" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold"/>
+        <TextBlock x:Name="credN" Margin="380,328,0,0" TextWrapping="Wrap" Text="credN" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Width="325"/>
 
-        <TextBlock x:Name="credLang" HorizontalAlignment="Left" Margin="30,380,0,0" TextWrapping="Wrap" Text="credLang" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold" Visibility="Hidden"/>
-        <TextBlock x:Name="credLangtext" Margin="380,380,0,0" TextWrapping="Wrap" Text="credLangtext" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Width="296" Visibility="Hidden"/>
+        <TextBlock x:Name="credLang" HorizontalAlignment="Left" Margin="30,453,0,0" TextWrapping="Wrap" Text="credLang" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold" Visibility="Hidden"/>
+        <TextBlock x:Name="credLangtext" Margin="380,453,0,0" TextWrapping="Wrap" Text="credLangtext" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Width="296" Visibility="Hidden"/>
 
         <controls:Button x:Name="web" Content="Official Website" Margin="30,504,452,0" Height="38" Click="Button_Click" VerticalAlignment="Top"/>
-        <Image HorizontalAlignment="Left" Height="74" Margin="639,495,0,0" VerticalAlignment="Top" Source="/assets/images/hand_heart_donate_icon.png" Width="75" MouseLeftButtonUp="Image_MouseLeftButtonUp" Cursor="Hand"/>
-        <Image HorizontalAlignment="Left" Height="74" Margin="549,495,0,0" VerticalAlignment="Top" Source="/assets/images/Telegram_2019_Logo.svg.png" Width="75" MouseLeftButtonUp="Image_MouseLeftButtonUp_2" Cursor="Hand"/>
-        <Image HorizontalAlignment="Left" Height="74" Margin="459,495,0,0" VerticalAlignment="Top" Source="/assets/images/You-Tube-16.png" Width="75" MouseLeftButtonUp="Image_MouseLeftButtonUp_3" Cursor="Hand"/>
+        <Image HorizontalAlignment="Left" Height="74" Margin="560,506,0,0" VerticalAlignment="Top" Source="/assets/images/hand_heart_donate_icon.png" Width="75" MouseLeftButtonUp="Image_MouseLeftButtonUp" Cursor="Hand"/>
+        <Image HorizontalAlignment="Left" Height="74" Margin="470,506,0,0" VerticalAlignment="Top" Source="/assets/images/Telegram_2019_Logo.svg.png" Width="75" MouseLeftButtonUp="Image_MouseLeftButtonUp_2" Cursor="Hand"/>
+        <Image HorizontalAlignment="Left" Height="74" Margin="380,506,0,0" VerticalAlignment="Top" Source="/assets/images/You-Tube-16.png" Width="75" MouseLeftButtonUp="Image_MouseLeftButtonUp_3" Cursor="Hand"/>
+
         <TextBlock x:Name="label" HorizontalAlignment="Left" Margin="24,11,0,0" TextWrapping="Wrap" Text="Settings" VerticalAlignment="Top" FontSize="32" FontFamily="Segoe UI Semibold"/>
+
         <TextBlock x:Name="langL" HorizontalAlignment="Left" Margin="30,70,0,0" TextWrapping="Wrap" Text="Program Language" VerticalAlignment="Top" FontSize="16"/>
-        <ComboBox x:Name="lang" HorizontalAlignment="Left" Padding="10,0,0,0" Margin="30,100,0,0" FontSize="14"  Width="177" VerticalAlignment="Top" MinWidth="177" MaxWidth="177" SelectionChanged="lang_SelectionChanged">
-            <ComboBoxItem Content="English [EN]" Tag="en"/>
-            <ComboBoxItem Content="Русский [RU]" Tag="ru"/>
-            <ComboBoxItem Content="Українська [UA]" Tag="uk"/>
-            <ComboBoxItem Content="Беларуская [BE]" Tag="be"/>
-            <ComboBoxItem Content="Қазақша [KK]" Tag="kk"/>
-            <ComboBoxItem Content="Čeština [CS]" Tag="cs"/>
-            <ComboBoxItem Content="Deutsch [DE]" Tag="de"/>
-            <ComboBoxItem Content="Français [FR]" Tag="fr"/>
-            <ComboBoxItem Content="Español [ES]" Tag="es"/>
-            <ComboBoxItem Content="Italiano [IT]" Tag="it"/>
-            <ComboBoxItem Content="Português [PT]" Tag="pt"/>
-            <ComboBoxItem Content="Suomi [FI]" Tag="fi"/>
-            <ComboBoxItem Content="Eesti [ET]" Tag="et"/>
-            <ComboBoxItem Content="Latviešu [LV]" Tag="lv"/>
-            <ComboBoxItem Content="Polski [PL]" Tag="pl"/>
-            <ComboBoxItem Content="Azərbaycan [AZ]" Tag="az"/>
-            <ComboBoxItem Content="Türkçe [TR]" Tag="tr"/>
-            <ComboBoxItem Content="简体中文 [ZH-CN]" Tag="zh"/>
-            <ComboBoxItem Content="繁體中文 [ZH-TW]" Tag="tw"/>
-            <ComboBoxItem Content="日本語 [JA]" Tag="ja"/>
-            <ComboBoxItem Content="한국어 [KO]" Tag="ko"/>
-            <ComboBoxItem Content="Tiếng Việt [VI]" Tag="vi"/>
-            <ComboBoxItem Content="ไทย [TH]" Tag="th"/>
-            <ComboBoxItem Content="Bahasa Indonesia [ID]" Tag="id"/>
-            <ComboBoxItem Content="Tagalog [TL]" Tag="tl"/>
-            <ComboBoxItem Content="हिन्दी [HI]" Tag="hi"/>
-        </ComboBox>
+
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,95,0,0">
+            <ComboBox x:Name="lang" Padding="10,0,0,0" FontSize="14" Width="177" MinWidth="177" MaxWidth="177" SelectionChanged="lang_SelectionChanged">
+                <ComboBoxItem Content="English [EN]" Tag="en"/>
+                <ComboBoxItem Content="Русский [RU]" Tag="ru"/>
+                <ComboBoxItem Content="Українська [UA]" Tag="uk"/>
+                <ComboBoxItem Content="Беларуская [BE]" Tag="be"/>
+                <ComboBoxItem Content="Қазақша [KK]" Tag="kk"/>
+                <ComboBoxItem Content="Čeština [CS]" Tag="cs"/>
+                <ComboBoxItem Content="Deutsch [DE]" Tag="de"/>
+                <ComboBoxItem Content="Français [FR]" Tag="fr"/>
+                <ComboBoxItem Content="Español [ES]" Tag="es"/>
+                <ComboBoxItem Content="Italiano [IT]" Tag="it"/>
+                <ComboBoxItem Content="Português [PT]" Tag="pt"/>
+                <ComboBoxItem Content="Suomi [FI]" Tag="fi"/>
+                <ComboBoxItem Content="Eesti [ET]" Tag="et"/>
+                <ComboBoxItem Content="Latviešu [LV]" Tag="lv"/>
+                <ComboBoxItem Content="Polski [PL]" Tag="pl"/>
+                <ComboBoxItem Content="Azərbaycan [AZ]" Tag="az"/>
+                <ComboBoxItem Content="Türkçe [TR]" Tag="tr"/>
+                <ComboBoxItem Content="简体中文 [ZH-CN]" Tag="zh"/>
+                <ComboBoxItem Content="繁體中文 [ZH-TW]" Tag="tw"/>
+                <ComboBoxItem Content="日本語 [JA]" Tag="ja"/>
+                <ComboBoxItem Content="한국어 [KO]" Tag="ko"/>
+                <ComboBoxItem Content="Tiếng Việt [VI]" Tag="vi"/>
+                <ComboBoxItem Content="ไทย [TH]" Tag="th"/>
+                <ComboBoxItem Content="Bahasa Indonesia [ID]" Tag="id"/>
+                <ComboBoxItem Content="Tagalog [TL]" Tag="tl"/>
+                <ComboBoxItem Content="हिन्दी [HI]" Tag="hi"/>
+            </ComboBox>
+            <Button Width="177" Height="32" Opacity="0" Cursor="Hand" Click="OpenLangOverlay_Click"/>
+        </Grid>
+
         <TextBlock x:Name="copyleft" HorizontalAlignment="Left" Margin="30,551,0,0" TextWrapping="Wrap" Text="Mark Adderly / 2023 - 2026" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semilight"/>
-        <TextBlock x:Name="themeL" HorizontalAlignment="Left" Margin="220,70,0,0" TextWrapping="Wrap" Text="Theme" VerticalAlignment="Top" FontSize="16"/>
-        <ComboBox x:Name="theme" HorizontalAlignment="Left" Margin="220,100,0,0" FontSize="14"  Width="177" VerticalAlignment="Top" MinWidth="177" MaxWidth="177" SelectionChanged="theme_SelectionChanged">
+        <TextBlock x:Name="themeL" HorizontalAlignment="Left" Margin="216,70,0,0" TextWrapping="Wrap" Text="Theme" VerticalAlignment="Top" FontSize="16"/>
+        <ComboBox x:Name="theme" HorizontalAlignment="Left" Margin="216,95,0,0" FontSize="14"  Width="177" VerticalAlignment="Top" MinWidth="177" MaxWidth="177" SelectionChanged="theme_SelectionChanged">
             <ComboBoxItem Content=" Light" x:Name="l"/>
             <ComboBoxItem Content=" Dark" x:Name="d"/>
         </ComboBox>
-        <TextBlock x:Name="styleL" HorizontalAlignment="Left" Margin="410,70,0,0" TextWrapping="Wrap" Text="Style" VerticalAlignment="Top" FontSize="16"/>
-        <ComboBox x:Name="style" HorizontalAlignment="Left" Margin="410,100,0,0" FontSize="14"  Width="177" VerticalAlignment="Top" MinWidth="177" MaxWidth="177" SelectionChanged="style_SelectionChanged">
+
+        <StackPanel Orientation="Horizontal" Margin="30,140,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBlock x:Name="configsL" TextWrapping="Wrap" Text="Configs / Presets" VerticalAlignment="Center" FontSize="16"/>
+            <controls:Button Content="?" Width="18" Height="18" Margin="8,2,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
+                <controls:Button.ToolTip>
+                    <ToolTip MaxWidth="500" x:Name="tooltip"/>
+                </controls:Button.ToolTip>
+            </controls:Button>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Margin="30,165,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <StackPanel Orientation="Horizontal">
+                <controls:Button x:Name="savePresetBtn" Content="Save Preset" Height="34" Padding="20,0" Margin="0,0,8,0" Click="SavePreset_Click"/>
+                <controls:Button x:Name="importPresetBtn" Content="Import Preset" Height="34" Padding="20,0" Click="ImportPreset_Click"/>
+            </StackPanel>
+            <ProgressBar x:Name="importProgress" Width="210" Height="8" Margin="0,5,0,0" VerticalAlignment="Center" Visibility="Collapsed" Minimum="0" Maximum="100" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <TextBlock x:Name="styleL" HorizontalAlignment="Left" Margin="402,70,0,0" TextWrapping="Wrap" Text="Style" VerticalAlignment="Top" FontSize="16"/>
+        <ComboBox x:Name="style" HorizontalAlignment="Left" Margin="402,95,0,0" FontSize="14"  Width="177" VerticalAlignment="Top" MinWidth="177" MaxWidth="177" SelectionChanged="style_SelectionChanged">
             <ComboBoxItem Content=" Mica"/>
             <ComboBoxItem Content=" Mica Alt (Default)"/>
             <ComboBoxItem Content=" Acrylic"/>
             <ComboBoxItem Content=" Off" x:Name="off"/>
         </ComboBox>
+
+        <Grid x:Name="LanguageOverlay" Visibility="Collapsed" Background="#33000000" MouseLeftButtonUp="CloseLangOverlay_Click" Panel.ZIndex="99">
+            <Border Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" CornerRadius="8" Margin="28,130,0,0" MaxWidth="650" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="8" BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}" BorderThickness="1" MouseLeftButtonUp="Border_MouseLeftButtonUp">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="15" Direction="270" Opacity="0.3" ShadowDepth="2"/>
+                </Border.Effect>
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="500">
+                    <ItemsControl x:Name="FullLangList">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="3" IsItemsHost="True"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding Content}" Tag="{Binding Tag}" Click="FullLangItem_Click" Style="{StaticResource DefaultButtonStyle}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Margin="2" Padding="10,5"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border>
+        </Grid>
     </Grid>
 </Page>
