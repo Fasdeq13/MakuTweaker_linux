@@ -24,7 +24,6 @@ namespace MakuTweakerNew
             TaskScheduler.UnobservedTaskException += OnUnobservedTaskException;
         }
 
-
         private void OnDispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
             HandleCrash("Unhandled UI Exception", e.Exception, 2);
@@ -48,7 +47,7 @@ namespace MakuTweakerNew
 
             Exception logException = ex.InnerException ?? ex;
 
-            string errorDetails = $"MakuTweaker Mar2026 Crash [{DateTime.Now:yyyy-MM-dd HH:mm:ss}]\n{errorType}\n\n" +
+            string errorDetails = $"MakuTweaker May2026 Crash [{DateTime.Now:yyyy-MM-dd HH:mm:ss}]\n{errorType}\n\n" +
                                   GetExceptionDetails(logException);
 
             try
@@ -56,18 +55,18 @@ namespace MakuTweakerNew
                 Directory.CreateDirectory(logFolder);
                 string logFilePath = Path.Combine(logFolder, $"makutw-crash_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.txt");
 
-                string chatMessage = "If MakuTweaker crashed through no fault of your own, please report this crash in the GitHub Repository: https://github.com/MarkAdderly/MakuTweaker" +
+                string chatMessage = "If MakuTweaker crashed through no fault of your own, please report this crash in the GitHub Repository:\nhttps://github.com/MarkAdderly/MakuTweaker\n"+
                                      "Если MakuTweaker крашнулся не по вашей вине, то, пожалуйста, сообщите об этом на GitHub репозитории:\nhttps://github.com/MarkAdderly/MakuTweaker";
 
                 errorDetails += "\n\n" + chatMessage;
                 File.WriteAllText(logFilePath, errorDetails);
 
-                MessageBox.Show($"Unfortunately, MakuTweaker Has Crashed! :(\n\nError: {logException.Message}\n\nCrash Log Saved To Desktop.",
+                iNKORE.UI.WPF.Modern.Controls.MessageBox.Show($"Unfortunately, MakuTweaker Has Crashed! :(\n\nError: {logException.Message}\n\nCrash Log Saved To Desktop.",
                                 "MakuTweaker Crash", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch
             {
-                MessageBox.Show($"Unfortunately, MakuTweaker Has Crashed! :(\n\nError: {logException.Message}\n\nCrash Log Failed to Save.",
+                iNKORE.UI.WPF.Modern.Controls.MessageBox.Show($"Unfortunately, MakuTweaker Has Crashed! :(\n\nError: {logException.Message}\n\nCrash Log Failed to Save.",
                                 "MakuTweaker Crash", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 

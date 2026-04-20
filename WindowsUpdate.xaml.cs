@@ -68,7 +68,7 @@ namespace MakuTweakerNew
                 }
             }
 
-            LoadLang("ilovemakutweaker");
+            LoadLang(Properties.Settings.Default.lang);
             isLoaded = true;
         }
 
@@ -171,7 +171,6 @@ namespace MakuTweakerNew
                     case true:
                         try
                         {
-                            Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel").SetValue("{20D04FE0-3AEA-1069-A2D8-08002B30309D}", 0);
                             Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate").SetValue("ExcludeWUDriversInQualityUpdate", 1);
                         }
                         catch
@@ -259,6 +258,7 @@ namespace MakuTweakerNew
             var languageCode = Settings.Default.lang ?? "en";
             var wul = MainWindow.Localization.LoadLocalization(languageCode, "wu");
             mw.ChSt(wul["status"]["wu4"]);
+            MarkApplied(block);
         }
 
         private void pause_Click(object sender, RoutedEventArgs e)
@@ -268,7 +268,7 @@ namespace MakuTweakerNew
                 RunCmdCommand("cmd.exe", "/c \"reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\WindowsUpdate\\UX\\Settings /v ActiveHoursStart /t REG_DWORD /d 9 /f && reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\WindowsUpdate\\UX\\Settings /v ActiveHoursEnd /t REG_DWORD /d 2 /f && reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\WindowsUpdate\\UX\\Settings /v PauseFeatureUpdatesStartTime /t REG_SZ /d \"2015-01-01T00:00:00Z\" /f && reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\WindowsUpdate\\UX\\Settings /v PauseQualityUpdatesStartTime /t REG_SZ /d \"2015-01-01T00:00:00Z\" /f && reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\WindowsUpdate\\UX\\Settings /v PauseUpdatesExpiryTime /t REG_SZ /d \"2077-01-01T00:00:00Z\" /f && reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\WindowsUpdate\\UX\\Settings /v PauseFeatureUpdatesEndTime /t REG_SZ /d \"2077-01-01T00:00:00Z\" /f && reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\WindowsUpdate\\UX\\Settings /v PauseQualityUpdatesEndTime /t REG_SZ /d \"2077-01-01T00:00:00Z\" /f && reg add HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\WindowsUpdate\\UX\\Settings /v PauseUpdatesStartTime /t REG_SZ /d \"2015-01-01T00:00:00Z\" /f\"");
                 var languageCode = Settings.Default.lang ?? "en";
                 var wul = MainWindow.Localization.LoadLocalization(languageCode, "wu");
-                pause.IsEnabled = false;
+                MarkApplied(pause);
                 mw.ChSt(wul["status"]["wu5"]);
             }
             catch { }
@@ -295,6 +295,7 @@ namespace MakuTweakerNew
             var basel = MainWindow.Localization.LoadLocalization(languageCode, "base");
             var wu = MainWindow.Localization.LoadLocalization(languageCode, "wu");
             var sr = MainWindow.Localization.LoadLocalization(languageCode, "sr");
+            string applied = basel["def"]["applied"];
 
             wu1.Header = wu["main"]["wu1"];
             wu2.Header = wu["main"]["wu3"];
@@ -302,9 +303,10 @@ namespace MakuTweakerNew
             pausel.Text = wu["main"]["wu5"];
             blockL.Text = wu["main"]["wu2"];
             l7.Text = wu["main"]["wu4"];
-            pause.Content = wu["main"]["wu5b"];
-            block.Content = wu["main"]["wu6b"];
-            wupd.Content = sr["main"]["b4"];
+
+            SetBtn(pause, wu["main"]["wu5b"], applied);
+            SetBtn(block, wu["main"]["wu6b"], applied);
+            SetBtn(wupd, sr["main"]["b4"], applied);
 
             wu1.OffContent = basel["def"]["off"];
             wu2.OffContent = basel["def"]["off"];
@@ -313,6 +315,18 @@ namespace MakuTweakerNew
             wu1.OnContent = basel["def"]["on"];
             wu2.OnContent = basel["def"]["on"];
             wu6.OnContent = basel["def"]["on"];
+        }
+
+        private void MarkApplied(Button btn)
+        {
+            btn.IsEnabled = false;
+            var languageCode = Settings.Default.lang ?? "en";
+            var basel = MainWindow.Localization.LoadLocalization(languageCode, "base");
+            btn.Content = basel["def"]["applied"];
+        }
+        private void SetBtn(Button btn, string normalText, string appliedText)
+        {
+            btn.Content = btn.IsEnabled ? normalText : appliedText;
         }
         private void checkReg()
         {
@@ -344,7 +358,7 @@ namespace MakuTweakerNew
         private void wupd_Click(object sender, RoutedEventArgs e)
         {
             RunCmdCommand("cmd.exe", "/c del /f /s /q %windir%\\SoftwareDistribution\\Download\\*");
-            wupd.IsEnabled = false;
+            MarkApplied(wupd);
         }
     }
 }

@@ -16,17 +16,17 @@
 
         <TextBlock x:Name="sat" TextWrapping="Wrap" Text="Enter The Number of Minutes After Which The System Will Shutdown. Press The *Shutdown* Button to Start The Timer You Set." FontSize="20" FontFamily="Segoe UI Semilight" Margin="0,0,0,12"/>
 
-        <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
             <controls:TextBox x:Name="mins" Width="80" PreviewTextInput="TextBox_PreviewTextInput" MaxLength="6" Watermark="Minutes" TextChanged="mins_TextChanged" GotFocus="mins_GotFocus" Height="31" VerticalAlignment="Center"/>
             <TextBlock x:Name="hours" Text="Minutes / Hours: 0" FontSize="20" FontFamily="Segoe UI Semilight" VerticalAlignment="Center" Margin="15,0,0,0"/>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
             <controls:Button x:Name="shut" Content="Start Shutdown Timer" Height="30" Width="208" Click="shut_Click" Margin="0,0,10,0"/>
             <controls:Button x:Name="cancel" Content="Cancel Shutdown Timer" Height="30" Width="208" Click="cancel_Click"/>
         </StackPanel>
 
-        <WrapPanel Margin="0,0,0,2">
+        <WrapPanel>
             <controls:Button x:Name="tenM" Content="10 Minutes" Height="30" Width="100" Click="tenM_Click" Margin="0,0,8,8"/>
             <controls:Button x:Name="thirtyM" Content="30 Minutes" Height="30" Width="100" Click="threeM_Click" Margin="0,0,8,8"/>
             <controls:Button x:Name="oneH" Content="1 Hour" Height="30" Width="100" Click="oneH_Click" Margin="0,0,8,8"/>
@@ -36,11 +36,11 @@
         </WrapPanel>
 
         <StackPanel HorizontalAlignment="Left" Width="640">
-            <Slider x:Name="time" Maximum="288" LargeChange="12" TickPlacement="BottomRight" TickFrequency="12" ValueChanged="time_ValueChanged" SmallChange="1" Value="24" Margin="0,0,0,0"/>
+            <Slider x:Name="time" Maximum="288" LargeChange="12" TickPlacement="BottomRight" TickFrequency="12" ValueChanged="time_ValueChanged" SmallChange="1" Value="24" Margin="0,0,0,0" AutoToolTipPlacement="None"/>
 
             <Grid Margin="0,-2,0,0">
                 <TextBlock x:Name="os" Text="0s" FontSize="14" FontFamily="Segoe UI" HorizontalAlignment="Left" IsHitTestVisible="False"/>
-                <TextBlock x:Name="oned" Text="1d" FontSize="14" FontFamily="Segoe UI" HorizontalAlignment="Right" IsHitTestVisible="False"/>
+                <TextBlock x:Name="oned" Text="1d" FontSize="14" FontFamily="Segoe UI" HorizontalAlignment="Left" IsHitTestVisible="False" Margin="624,0,0,0"/>
             </Grid>
         </StackPanel>
 
