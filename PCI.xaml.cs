@@ -2,49 +2,33 @@
 using MicaWPF.Core.Enums;
 using MicaWPF.Core.Services;
 using Microsoft.Win32;
-using NvAPIWrapper.GPU;
-using NvAPIWrapper.Native;
-using NvAPIWrapper.Native.GPU;
-using SharpGen.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Management;
 using System.Runtime.InteropServices;
-using System.Runtime.Intrinsics.Arm;
-using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Vortice.DXGI;
-using Vortice.Mathematics;
-using Windows.Devices.Portable;
 
 namespace MakuTweakerNew
 {
     public partial class PCI : Page
     {
         private dynamic _pci;
-        bool isLoaded = false;
-        bool isNotify = true;
-        bool isbycheck = false;
-        bool isCompactMode = false;
         MainWindow mw = (MainWindow)Application.Current.MainWindow;
         private List<GpuInfo> _gpus = new List<GpuInfo>();
         private List<StorageInfo> _storageDevices = new List<StorageInfo>();
         private List<RamStickInfo> _ramSticks = new();
-        private DateTime lastCompactToggle = DateTime.MinValue;
 
         public PCI()
         {
@@ -61,14 +45,7 @@ namespace MakuTweakerNew
             ShowComputerInfo();
             ShowSecurityInfo();
             LoadRamSticks();
-            isLoaded = true;
         }
-
-        [DllImport("user32.dll")]
-        static extern IntPtr GetWindowDC(IntPtr hWnd);
-
-        [DllImport("user32.dll")]
-        static extern int ReleaseDC(IntPtr hWnd, IntPtr hDC);
 
         void FadeOut(UIElement element)
         {
@@ -108,199 +85,6 @@ namespace MakuTweakerNew
                 FadeOut(buttontooltip);
                 e.Handled = true;
             }
-            if (e.Key == Key.F3)
-            {
-                if ((DateTime.Now - lastCompactToggle).TotalSeconds < 1)
-                    return;
-
-                lastCompactToggle = DateTime.Now;
-
-                ToggleCompactMode();
-                e.Handled = true;
-            }
-        }
-
-        private void ToggleCompactMode()
-        {
-            isCompactMode = !isCompactMode;
-            ApplyCompactMode();
-        }
-
-        private void ApplyCompactStorage(dynamic pci)
-        {
-            if (_storageDevices == null || _storageDevices.Count == 0)
-            {
-                ssdcValue.Text = "N/A";
-                return;
-            }
-
-            ulong totalBytes = 0;
-            List<string> parts = new();
-
-            foreach (var drive in _storageDevices)
-            {
-                totalBytes += drive.CapacityBytes;
-
-                string type = string.IsNullOrWhiteSpace(drive.Type) ? "" : drive.Type + " ";
-                parts.Add($"{type}{drive.CapacityFormatted}");
-            }
-
-            double totalTB = totalBytes / (1024.0 * 1024 * 1024 * 1024);
-
-            List<string> lines = new();
-            for (int i = 0; i < parts.Count; i += 2)
-            {
-                lines.Add(string.Join(" + ", parts.Skip(i).Take(2)));
-            }
-
-            string breakdown = string.Join(Environment.NewLine, lines);
-            ssdcValue.Text = $"{totalTB:0.##} TB ({breakdown})";
-        }
-
-        private void ApplyCompactGpu(dynamic pci)
-        {
-            if (_gpus == null || _gpus.Count == 0)
-            {
-                videol.Text = pci["main"]["full_gpu"];
-                videon.Text = "N/A";
-                return;
-            }
-
-            var gpu = _gpus.OrderByDescending(g => g.VRamBytes).First();
-
-            videol.Text = pci["main"]["full_gpu"];
-            videon.Text = $"{gpu.Name} // {gpu.VRamFormatted}";
-        }
-
-        private void ApplyCompactMode()
-        {
-            var pci = MainWindow.Localization.LoadLocalization(
-                Properties.Settings.Default.lang ?? "en", "pci");
-
-            if (isCompactMode)
-            {
-                bmanu.Text = pci["main"]["full_model"];
-                cpul.Text = pci["main"]["full_cpu"];
-                videol.Text = pci["main"]["full_gpu"];
-                raml.Text = pci["main"]["full_ram"];
-                mbnamel.Text = pci["main"]["full_motherboard"];
-                ssdcLabel.Text = pci["main"]["full_usbssd"];
-                rama.Text = $"{rama.Text} // {ddre.Text} // {freq.Text}";
-                cpue.Text = $"{cpue.Text} // {cpucore.Text} // {threads.Text}";
-                pcManufacturer.Text = $"{pcManufacturer.Text} {pcModel.Text}";
-                biosver.Text = $"{biosver.Text} // {biosdate.Text}".Replace(" // N/A", "");
-
-                ApplyCompactGpu(pci);
-                ApplyCompactStorage(pci);
-
-                labelcpu.Visibility = Visibility.Collapsed;
-                labelRAM.Visibility = Visibility.Collapsed;
-                video.Visibility = Visibility.Collapsed;
-                ssdLabel.Visibility = Visibility.Collapsed;
-                ramslabel.Visibility = Visibility.Collapsed;
-                MOTHERBOARD.Visibility = Visibility.Collapsed;
-                btitle.Visibility = Visibility.Collapsed;
-                benchmarkSection.Visibility = Visibility.Collapsed;
-
-                videoComboBox.Visibility = Visibility.Collapsed;
-                ramStickComboBox.Visibility = Visibility.Collapsed;
-                ssdComboBox.Visibility = Visibility.Collapsed;
-                ramStickSection.Visibility = Visibility.Collapsed;
-
-                biosDateRow.Visibility = Visibility.Collapsed;
-
-                ddrl.Visibility = Visibility.Collapsed;
-                ddre.Visibility = Visibility.Collapsed;
-                freql.Visibility = Visibility.Collapsed;
-                freq.Visibility = Visibility.Collapsed;
-
-                cpucorel.Visibility = Visibility.Collapsed;
-                cpucore.Visibility = Visibility.Collapsed;
-                threadsl.Visibility = Visibility.Collapsed;
-                threads.Visibility = Visibility.Collapsed;
-                corespeedl.Visibility = Visibility.Collapsed;
-                corespeed.Visibility = Visibility.Collapsed;
-                l3cashl.Visibility = Visibility.Collapsed;
-                l3cash.Visibility = Visibility.Collapsed;
-
-                vraml.Visibility = Visibility.Collapsed;
-                vram.Visibility = Visibility.Collapsed;
-
-                bmodel.Visibility = Visibility.Collapsed;
-                pcModel.Visibility = Visibility.Collapsed;
-
-                ssdnLabel.Visibility = Visibility.Collapsed;
-                ssdnValue.Visibility = Visibility.Collapsed;
-
-                cpuCoreRow.Visibility = Visibility.Collapsed;
-                cpuThreadRow.Visibility = Visibility.Collapsed;
-                cpuSpeedRow.Visibility = Visibility.Collapsed;
-                cpuCacheRow.Visibility = Visibility.Collapsed;
-                gpuVramRow.Visibility = Visibility.Collapsed;
-                ramTypeRow.Visibility = Visibility.Collapsed;
-                ramFreqRow.Visibility = Visibility.Collapsed;
-                ssdNameRow.Visibility = Visibility.Collapsed;
-
-                FadeOut(buttontooltip);
-            }
-            else
-            {
-                LoadLang();
-                ShowCpuInfo();
-                ShowRamInfo();
-                ShowComputerInfo();
-                LoadGpuList();
-                LoadStorageList();
-                ShowMotherboardInfo();
-
-                labelcpu.Visibility = Visibility.Visible;
-                labelRAM.Visibility = Visibility.Visible;
-                video.Visibility = Visibility.Visible;
-                ssdLabel.Visibility = Visibility.Visible;
-                ramslabel.Visibility = Visibility.Visible;
-                MOTHERBOARD.Visibility = Visibility.Visible;
-                btitle.Visibility = Visibility.Visible;
-                benchmarkSection.Visibility = Visibility.Visible;
-
-                videoComboBox.Visibility = Visibility.Visible;
-                ramStickComboBox.Visibility = Visibility.Visible;
-                ssdComboBox.Visibility = Visibility.Visible;
-                ramStickSection.Visibility = Visibility.Visible;
-
-                biosDateRow.Visibility = Visibility.Visible;
-
-                ddrl.Visibility = Visibility.Visible;
-                ddre.Visibility = Visibility.Visible;
-                freql.Visibility = Visibility.Visible;
-                freq.Visibility = Visibility.Visible;
-
-                cpucorel.Visibility = Visibility.Visible;
-                cpucore.Visibility = Visibility.Visible;
-                threadsl.Visibility = Visibility.Visible;
-                threads.Visibility = Visibility.Visible;
-                corespeedl.Visibility = Visibility.Visible;
-                corespeed.Visibility = Visibility.Visible;
-                l3cashl.Visibility = Visibility.Visible;
-                l3cash.Visibility = Visibility.Visible;
-
-                vraml.Visibility = Visibility.Visible;
-                vram.Visibility = Visibility.Visible;
-
-                bmodel.Visibility = Visibility.Visible;
-                pcModel.Visibility = Visibility.Visible;
-
-                ssdnLabel.Visibility = Visibility.Visible;
-                ssdnValue.Visibility = Visibility.Visible;
-
-                cpuCoreRow.Visibility = Visibility.Visible;
-                cpuThreadRow.Visibility = Visibility.Visible;
-                cpuSpeedRow.Visibility = Visibility.Visible;
-                cpuCacheRow.Visibility = Visibility.Visible;
-                gpuVramRow.Visibility = Visibility.Visible;
-                ramTypeRow.Visibility = Visibility.Visible;
-                ramFreqRow.Visibility = Visibility.Visible;
-                ssdNameRow.Visibility = Visibility.Visible;
-            }
         }
 
         private async Task RunBenchmarkAsync(bool runMultithreadedByDefault)
@@ -308,7 +92,7 @@ namespace MakuTweakerNew
             singleBench.IsEnabled = false;
             multiBench.IsEnabled = false;
             lookresults.IsEnabled = false;
-            mw.Category.IsEnabled = false;
+            mw.NavigationView_Root.IsEnabled = false;
             ssdComboBox.IsEnabled = false;
             videoComboBox.IsEnabled = false;
             ramStickComboBox.IsEnabled = false;
@@ -388,13 +172,13 @@ namespace MakuTweakerNew
             string scoreText = $"{result.score:N0}";
 
             benchmarkResultText.Text = isMultithreaded
-                ? $"{pci["main"]["test1multi"]}\n{pci["main"]["test2"]} {scoreText} {pci["main"]["test3"]}"
-                : $"{pci["main"]["test1"]}\n{pci["main"]["test2"]} {scoreText} {pci["main"]["test3"]}";
+                ? $"{pci["main"]["test1multi"]} {pci["main"]["test2"]} {scoreText} {pci["main"]["test3"]}"
+                : $"{pci["main"]["test1"]} {pci["main"]["test2"]} {scoreText} {pci["main"]["test3"]}";
 
             singleBench.IsEnabled = true;
             multiBench.IsEnabled = true;
             lookresults.IsEnabled = true;
-            mw.Category.IsEnabled = true;
+            mw.NavigationView_Root.IsEnabled = true;
             ssdComboBox.IsEnabled = true;
             videoComboBox.IsEnabled = true;
             ramStickComboBox.IsEnabled = true;
@@ -417,46 +201,44 @@ namespace MakuTweakerNew
 
             label.Text = _pci["main"]["label"];
 
-            labelcpu.Text = _pci["main"]["processorlabel"];
-            cpul.Text = _pci["main"]["processorname"];
-            cpucorel.Text = _pci["main"]["processorcores"];
-            threadsl.Text = _pci["main"]["processorthr"];
-            corespeedl.Text = _pci["main"]["processorfreq"];
-            l3cashl.Text = _pci["main"]["processorcache"];
+            summaryCpuCard.Header = _pci["main"]["processorlabel"];
+            summaryRamCard.Header = _pci["main"]["ramlabel"];
+            summaryGpuCard.Header = _pci["main"]["vlabel"];
+            summaryVramCard.Header = _pci["main"]["allvram"];
+            bmanu.Header = _pci["main"]["devicemanu"];
+            bmodel.Header = _pci["main"]["modeln"];
 
-            labelRAM.Text = _pci["main"]["ramlabel"];
-            raml.Text = _pci["main"]["ramtotal"];
-            ddrl.Text = _pci["main"]["ramddr"];
-            freql.Text = _pci["main"]["ramfreq"];
+            cpuSection.Header = _pci["main"]["processorlabel"];
+            cpul.Header = _pci["main"]["processorname"];
+            cpucorel.Header = _pci["main"]["processorcores"];
+            corespeedl.Header = _pci["main"]["processorfreq"];
+            l3cashl.Header = _pci["main"]["processorcache"];
 
-            MOTHERBOARD.Text = _pci["main"]["mblabel"];
-            mbnamel.Text = _pci["main"]["mbname"];
-            biosverl.Text = _pci["main"]["mbver"];
-            biosdatel.Text = _pci["main"]["mbdate"];
+            motherboardSectionEx.Header = _pci["main"]["mblabel"];
+            mbnamel.Header = _pci["main"]["mbname"];
+            biosverl.Header = _pci["main"]["mbver"];
+            biosdatel.Header = _pci["main"]["mbdate"];
 
-            video.Text = _pci["main"]["vlabel"];
-            videol.Text = _pci["main"]["vname"];
-            vraml.Text = _pci["main"]["vmem"];
+            gpuSectionEx.Header = _pci["main"]["vlabel"];
+            videol.Header = _pci["main"]["vname"];
+            vraml.Header = _pci["main"]["vmem"];
 
-            ssdLabel.Text = _pci["main"]["ssdl"];
-            ssdnLabel.Text = _pci["main"]["sname"];
-            ssdcLabel.Text = _pci["main"]["smem"];
+            storageSection.Header = _pci["main"]["ssdl"];
 
             benchmarkLabel.Text = _pci["main"]["benchtitle"];
             singleBench.Content = _pci["main"]["benchbutton"];
             multiBench.Content = _pci["main"]["benchbutton2"];
-            benchmarkResultText.Text = _pci["main"]["benchtip"] + "\n";
+            benchmarkResultText.Text = _pci["main"]["benchtip"];
             lookresults.Content = _pci["main"]["lookresulbutton"];
+            tpml.Header = _pci["main"]["tpmtitle"];
 
-            btitle.Text = _pci["main"]["branding"];
-            bmanu.Text = _pci["main"]["manu"];
-            bmodel.Text = _pci["main"]["modeln"];
-            tpml.Text = _pci["main"]["tpmtitle"];
+            ramStickSection.Header = _pci["main"]["ramsticktitle"];
+            ramsmanu.Header = _pci["main"]["manu"];
+            capacram.Header = _pci["main"]["capac"];
+            partnuml.Header = _pci["main"]["partnum"];
 
-            ramslabel.Text = _pci["main"]["ramsticktitle"];
-            ramsmanu.Text = _pci["main"]["manu"];
-            capacram.Text = _pci["main"]["capac"];
-            partnuml.Text = _pci["main"]["partnum"];
+            ssdnl.Header = _pci["main"]["sname"];
+            ssdcl.Header = _pci["main"]["capac"];
 
             pci_tooltip.Content = _pci["main"]["tooltip"];
         }
@@ -496,6 +278,7 @@ namespace MakuTweakerNew
 
                 Dispatcher.Invoke(() => {
                     cpue.Text = cpuName;
+                    summaryCpuText.Text = cpuName;
                     cpucore.Text = coreCount.ToString();
                     threads.Text = threadCount.ToString();
                 });
@@ -544,9 +327,8 @@ namespace MakuTweakerNew
             {
                 ulong totalBytes = 0;
                 int memoryTypeCode = 0;
-                int maxSpeed = 0;
 
-                using (var searcher = new ManagementObjectSearcher("SELECT Capacity, MemoryType, SMBIOSMemoryType, Speed FROM Win32_PhysicalMemory"))
+                using (var searcher = new ManagementObjectSearcher("SELECT Capacity, MemoryType, SMBIOSMemoryType FROM Win32_PhysicalMemory"))
                 {
                     using (var results = searcher.Get())
                     {
@@ -563,9 +345,6 @@ namespace MakuTweakerNew
                                 int detectedType = smbios != 0 ? smbios : legacy;
                                 if (memoryTypeCode == 0 && detectedType != 0)
                                     memoryTypeCode = detectedType;
-
-                                if (item["Speed"] != null)
-                                    maxSpeed = Math.Max(maxSpeed, Convert.ToInt32(item["Speed"]));
                             }
                             finally
                             {
@@ -577,11 +356,6 @@ namespace MakuTweakerNew
 
                 if (totalBytes == 0)
                 {
-                    Dispatcher.Invoke(() => {
-                        rama.Text = "N/A";
-                        ddre.Text = "N/A";
-                        freq.Text = "N/A";
-                    });
                     return;
                 }
                 double totalGB = totalBytes / (1024.0 * 1024 * 1024);
@@ -603,35 +377,10 @@ namespace MakuTweakerNew
                     35 => "LPDDR5X",
                     _ => "N/A"
                 };
-
-                if (memoryType == "N/A" && maxSpeed > 0)
-                {
-                    if (maxSpeed >= 7000) memoryType = "LPDDR5X";
-                    else if (maxSpeed >= 5500) memoryType = "LPDDR5";
-                    else if (maxSpeed >= 4200) memoryType = "LPDDR4X";
-                    else if (maxSpeed >= 3200) memoryType = "DDR4";
-                }
-
-                int realSpeed = maxSpeed;
-                if (realSpeed > 0)
-                {
-                    if (memoryType == "DDR4" && realSpeed > 4000) realSpeed /= 2;
-                    else if (memoryType == "DDR3" && realSpeed > 3000) realSpeed /= 2;
-                    else if (memoryType.StartsWith("LPDDR5")) realSpeed = Math.Min(realSpeed, 6400);
-                }
-                Dispatcher.Invoke(() => {
-                    rama.Text = $"{Math.Round(totalGB)} GB";
-                    ddre.Text = memoryType;
-                    freq.Text = realSpeed > 0 ? $"{realSpeed} MHz" : "N/A";
-                });
+                summaryRamText.Text = $"{Math.Round(totalGB)} GB / {memoryType}";
             }
             catch
             {
-                Dispatcher.Invoke(() => {
-                    rama.Text = "N/A";
-                    ddre.Text = "N/A";
-                    freq.Text = "N/A";
-                });
             }
         }
 
@@ -693,8 +442,14 @@ namespace MakuTweakerNew
                 {
                     ssdnValue.Text = "N/A";
                     ssdcValue.Text = "N/A";
+                    ssdComboBoxCard.Visibility = Visibility.Collapsed;
                     return;
                 }
+
+                if (_storageDevices.Count <= 1)
+                    ssdComboBoxCard.Visibility = Visibility.Collapsed;
+                else
+                    ssdComboBoxCard.Visibility = Visibility.Visible;
 
                 for (int i = 0; i < _storageDevices.Count; i++)
                 {
@@ -711,6 +466,7 @@ namespace MakuTweakerNew
             {
                 ssdnValue.Text = "N/A";
                 ssdcValue.Text = "N/A";
+                ssdComboBoxCard.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -744,8 +500,14 @@ namespace MakuTweakerNew
                 {
                     videon.Text = "N/A";
                     vram.Text = "N/A";
+                    videoComboBoxCard.Visibility = Visibility.Collapsed;
                     return;
                 }
+
+                if (_gpus.Count <= 1)
+                    videoComboBoxCard.Visibility = Visibility.Collapsed;
+                else
+                    videoComboBoxCard.Visibility = Visibility.Visible;
 
                 for (int i = 0; i < _gpus.Count; i++)
                 {
@@ -761,12 +523,17 @@ namespace MakuTweakerNew
                     .First().index;
 
                 videoComboBox.SelectedIndex = maxIndex;
+                summaryGpuText.Text = _gpus[maxIndex].Name;
+
+                ulong totalVram = (ulong)_gpus.Sum(g => (long)g.VRamBytes);
+                summaryVramText.Text = GpuInfo.FormatBytes(totalVram);
                 UpdateGpuInfo(maxIndex);
             }
             catch (Exception ex)
             {
                 videon.Text = "N/A";
                 vram.Text = "N/A";
+                videoComboBoxCard.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -799,7 +566,7 @@ namespace MakuTweakerNew
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Default Browser Error.", "MakuTweaker", MessageBoxButton.OK, MessageBoxImage.Error);
+                iNKORE.UI.WPF.Modern.Controls.MessageBox.Show($"Default Browser Error.", "MakuTweaker", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -827,19 +594,19 @@ namespace MakuTweakerNew
                 {
                     pcManufacturer.Text = manufacturer;
                     pcModel.Text = model;
-                    computerSection.Visibility = Visibility.Visible;
-                    labelcpu.Margin = new Thickness(0, 20, 0, 0);
+                    bmanu.Visibility = Visibility.Visible;
+                    bmodel.Visibility = Visibility.Visible;
                 }
                 else
                 {
-                    computerSection.Visibility = Visibility.Collapsed;
-                    labelcpu.Margin = new Thickness(0, 0, 0, 0);
+                    bmanu.Visibility = Visibility.Collapsed;
+                    bmodel.Visibility = Visibility.Collapsed;
                 }
             }
             catch
             {
-                computerSection.Visibility = Visibility.Collapsed;
-                labelcpu.Margin = new Thickness(0, 0, 0, 0);
+                bmanu.Visibility = Visibility.Collapsed;
+                bmodel.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -850,6 +617,8 @@ namespace MakuTweakerNew
 
         private void ShowTpm()
         {
+            bool tpmFoundAndEnabled = false;
+
             try
             {
                 var scope = new ManagementScope(
@@ -862,14 +631,14 @@ namespace MakuTweakerNew
 
                 foreach (var item in searcher.Get())
                 {
-                    bool enabled = Convert.ToBoolean(item["IsEnabled_InitialValue"] ?? false);
-                    ShowTpmStatus(enabled);
+                    tpmFoundAndEnabled = Convert.ToBoolean(item["IsEnabled_InitialValue"] ?? false);
+                    break;
                 }
             }
             catch
             {
-                tpmStatus.Text = "N/A";
             }
+            ShowTpmStatus(tpmFoundAndEnabled);
         }
 
         private void LoadRamSticks()
@@ -897,6 +666,12 @@ namespace MakuTweakerNew
                 Dispatcher.Invoke(() => {
                     _ramSticks = tempSticks;
                     ramStickComboBox.Items.Clear();
+
+                    if (_ramSticks.Count <= 1)
+                        ramStickComboBoxCard.Visibility = Visibility.Collapsed;
+                    else
+                        ramStickComboBoxCard.Visibility = Visibility.Visible;
+
                     int i = 1;
                     foreach (var stick in _ramSticks)
                     {
@@ -909,11 +684,16 @@ namespace MakuTweakerNew
                         ramStickComboBox.SelectedIndex = 0;
                         UpdateRamStickInfo(0);
                     }
+                    else
+                    {
+                        ramStickComboBoxCard.Visibility = Visibility.Collapsed;
+                    }
                 });
             }
             catch
             {
                 Dispatcher.Invoke(() => ramStickManufacturer.Text = "Error");
+                ramStickComboBoxCard.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -959,15 +739,12 @@ namespace MakuTweakerNew
                     sb.AppendLine($"=== {pci["main"]["processorlabel"]} ===");
                     sb.AppendLine($"{pci["main"]["processorname"]} {cpue.Text}");
                     sb.AppendLine($"{pci["main"]["processorcores"]} {cpucore.Text}");
-                    sb.AppendLine($"{pci["main"]["processorthr"]} {threads.Text}");
                     sb.AppendLine($"{pci["main"]["processorfreq"]} {corespeed.Text}");
                     sb.AppendLine($"{pci["main"]["processorcache"]} {l3cash.Text}");
                     sb.AppendLine();
 
                     sb.AppendLine($"=== {pci["main"]["ramlabel"]} ===");
-                    sb.AppendLine($"{pci["main"]["ramtotal"]} {rama.Text}");
-                    sb.AppendLine($"{pci["main"]["ramddr"]} {ddre.Text}");
-                    sb.AppendLine($"{pci["main"]["ramfreq"]} {freq.Text}");
+                    sb.AppendLine($"{pci["main"]["ramtotal"]} {summaryRamText.Text}");
                     sb.AppendLine();
 
                     sb.AppendLine($"=== {pci["main"]["mblabel"]} ===");
@@ -1048,16 +825,12 @@ namespace MakuTweakerNew
 
                     File.WriteAllText(saveFileDialog.FileName, sb.ToString(), Encoding.UTF8);
 
-                    MessageBox.Show(
-                        "System information saved successfully!\nСистемная информация была успешно сохранена!",
-                        "MakuTweaker",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Information);
+                    iNKORE.UI.WPF.Modern.Controls.MessageBox.Show("System information saved successfully!\nСистемная информация была успешно сохранена!", "MakuTweaker", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                iNKORE.UI.WPF.Modern.Controls.MessageBox.Show($"{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -1089,9 +862,7 @@ namespace MakuTweakerNew
         public string Name { get; set; } = string.Empty;
         public ulong VRamBytes { get; set; }
         public string VRamFormatted => FormatBytes(VRamBytes);
-        public string LHMName { get; set; } = string.Empty;
-
-        private static string FormatBytes(ulong bytes)
+        public static string FormatBytes(ulong bytes)
         {
             string[] sizes = { "B", "KB", "MB", "GB", "TB" };
             double len = bytes;
@@ -1148,7 +919,7 @@ namespace MakuTweakerNew
 
                         i++;
                     }
-                    catch (SharpGen.Runtime.SharpGenException)
+                    catch
                     {
                         break;
                     }
@@ -1184,11 +955,6 @@ namespace MakuTweakerNew
         public string Name { get; set; } = string.Empty;
         public ulong CapacityBytes { get; set; }
         public string CapacityFormatted => FormatBytes(CapacityBytes);
-        public string Type { get; set; } = "";
-
-        public string DevicePath { get; set; } = string.Empty;
-        public ulong TotalBytesWritten { get; set; }
-        public string TotalBytesWrittenFormatted => FormatBytes(TotalBytesWritten);
 
         private static string FormatBytes(ulong bytes)
         {
@@ -1224,101 +990,33 @@ namespace MakuTweakerNew
         public static List<StorageInfo> GetAllStorageDevices()
         {
             var devices = new List<StorageInfo>();
-            var diskWrites = new Dictionary<string, ulong>();
             try
             {
-                var scope = new ManagementScope(@"\\.\root\microsoft\windows\storage");
-                scope.Connect();
+                using var searcher = new ManagementObjectSearcher(
+                    "SELECT Caption, Size FROM Win32_DiskDrive");
 
-                using (var searcher = new ManagementObjectSearcher(
-                    scope,
-                    new ObjectQuery("SELECT DeviceId, TotalBytesWritten FROM MSFT_PhysicalDisk")))
-                {
-                    foreach (var obj in searcher.Get())
-                    {
-                        string deviceId = obj["DeviceId"]?.ToString() ?? string.Empty;
-                        ulong bytesWritten = 0;
-
-                        if (obj["TotalBytesWritten"] != null)
-                        {
-                            bytesWritten = Convert.ToUInt64(obj["TotalBytesWritten"]);
-                        }
-
-                        if (!string.IsNullOrEmpty(deviceId))
-                        {
-                            diskWrites[deviceId] = bytesWritten;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-
-            try
-            {
-                using var searcher = new ManagementObjectSearcher("SELECT Caption, Size, DeviceID FROM Win32_DiskDrive");
                 foreach (var obj in searcher.Get())
                 {
                     string name = obj["Caption"]?.ToString() ?? "Unknown Device";
-
-                    string type = "";
-                    string lower = name.ToLower();
-                    if (lower.Contains("nvme") || lower.Contains("pcie"))
-                        type = "NVMe";
-
-                    else if (lower.Contains("ssd") ||
-                             lower.Contains("sata ssd") ||
-                             lower.Contains("solid state"))
-                        type = "SSD";
-
-                    else if (lower.Contains("sd card") ||
-                             lower.Contains("sdxc") ||
-                             lower.Contains("sdhc") ||
-                             lower.Contains("sd "))
-                        type = "SD";
-
-                    else if (lower.Contains("usb") ||
-                             lower.Contains("flash") ||
-                             lower.Contains("thumb"))
-                        type = "USB";
-
-                    else if (lower.Contains("hdd") ||
-                             lower.Contains("hard drive") ||
-                             lower.Contains("harddisk"))
-                        type = "HDD";
-
                     ulong size = obj["Size"] != null ? Convert.ToUInt64(obj["Size"]) : 0;
-                    string deviceID = obj["DeviceID"]?.ToString() ?? "";
 
-                    if (size == 0 || name.Contains("Virtual", StringComparison.OrdinalIgnoreCase) || name.Contains("iSCSI", StringComparison.OrdinalIgnoreCase))
+                    if (size == 0 ||
+                        name.Contains("Virtual", StringComparison.OrdinalIgnoreCase) ||
+                        name.Contains("iSCSI", StringComparison.OrdinalIgnoreCase))
                     {
                         continue;
                     }
 
-                    string diskIndex = System.Text.RegularExpressions.Regex.Match(deviceID, @"\d+$").Value;
-
-                    ulong totalWrites = 0;
-
-                    if (!string.IsNullOrEmpty(diskIndex) && diskWrites.ContainsKey(diskIndex))
-                    {
-                        totalWrites = diskWrites[diskIndex];
-                    }
-
-                    string pathForCpp = deviceID.Replace("PHYSICALDRIVE", "PhysicalDrive", StringComparison.OrdinalIgnoreCase);
-
                     devices.Add(new StorageInfo
                     {
                         Name = name,
-                        CapacityBytes = size,
-                        DevicePath = pathForCpp,
-                        TotalBytesWritten = totalWrites,
-                        Type = type
+                        CapacityBytes = size
                     });
                 }
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex);
             }
             return devices;
         }
