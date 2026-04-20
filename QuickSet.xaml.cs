@@ -62,11 +62,13 @@ namespace MakuTweakerNew
 
         private void CheckIfTweaksFinished()
         {
+            var visibleToggles = GetAllToggles(ToggleContainer).Where(t => IsToggleEffectivelyVisible(t)).ToList();
+
+            int visibleCount = visibleToggles.Count;
             bool anyVisible = false;
 
             foreach (var toggle in GetAllToggles(ToggleContainer))
             {
-                // Используем наш новый метод проверки
                 if (IsToggleEffectivelyVisible(toggle))
                 {
                     anyVisible = true;
@@ -88,6 +90,15 @@ namespace MakuTweakerNew
                 info.Text = quick["main"]["info"];
                 start.Visibility = Visibility.Visible;
                 uncheck.Visibility = Visibility.Visible;
+
+                if (visibleCount < 6)
+                {
+                    uncheck.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    uncheck.Visibility = Visibility.Visible;
+                }
             }
         }
 
@@ -406,7 +417,7 @@ namespace MakuTweakerNew
             var expl = MainWindow.Localization.LoadLocalization(languageCode, "expl");
             var wu = MainWindow.Localization.LoadLocalization(languageCode, "wu");
             var sr = MainWindow.Localization.LoadLocalization(languageCode, "sr");
-            var cm = MainWindow.Localization.LoadLocalization(languageCode, "cm");
+            var adv = MainWindow.Localization.LoadLocalization(languageCode, "adv");
             var per = MainWindow.Localization.LoadLocalization(languageCode, "per");
             var compon = MainWindow.Localization.LoadLocalization(languageCode, "compon");
 
@@ -423,8 +434,8 @@ namespace MakuTweakerNew
             quick_expfix.Header = expl["main"]["fixlabel"];
 
             quick_winupd.Header = wu["main"]["wu5"];
-            quick_contdelay.Header = cm["main"]["t2"];
-            quick_oldcont.Header = cm["main"]["t1"];
+            quick_contdelay.Header = per["main"]["delcont"];
+            quick_oldcont.Header = per["main"]["oldcont"];
             quick_verbose.Header = per["main"]["verbose"];
             quick_endtask.Header = per["main"]["etask"];
             quick_directplay.Header = compon["main"]["directplay"];
@@ -437,7 +448,7 @@ namespace MakuTweakerNew
             quick_uac.Header = sr["main"]["uac"];
             quick_smartscreen.Header = sr["main"]["smartscreen"];
             quick_hybern.Header = sr["main"]["hybern"];
-            quick_vbs.Header = sr["main"]["vbs"];
+            quick_vbs.Header = adv["main"]["vbs"];
             quick_telemetry.Header = sr["main"]["telemetry"];
 
             label.Text = quick["main"]["label"];
