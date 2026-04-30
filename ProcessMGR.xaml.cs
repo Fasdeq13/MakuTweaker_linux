@@ -78,7 +78,7 @@ namespace MakuTweakerNew
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ProcessListView.ItemsSource = _items;
-
+            this.Focus();
             _timer = new DispatcherTimer();
             _timer.Interval = TimeSpan.FromSeconds(0.1);
             _timer.Tick += Timer_Tick;
@@ -109,7 +109,7 @@ namespace MakuTweakerNew
                 string[] hardcodedExclusions = { "dwm", "msedgewebview2", "startmenuexperiencehost", "taskmgr", "explorer", "system", "idle", "dllhost", "smss", "csrss", "wininit", "services", "lsass", "winlogon", "svchost", "fontdrvhost", "sihost", "shellexperiencehost", "ctfmon", "runtimebroker", "searchindexer", "msbuild", "crossdeviceservice", "bioenrollmenthost", "acergaicameraw", "vmtoolsd",
                 "searchapp", "wpfsurface", "searchhost", "phoneexperiencehost", "textinputhost", "nvidia overlay", "vscodium", "lockapp", "shellhost", "systemsettings", "crossdeviceresume", "applicationframehost", "searchui", "gamebar", "xboxgamebarwidgets", "xboxpcappft", "icloudservices", "nvdisplay.container", "widgets", "xboxgamebarspotify", "backgroundtaskhost", "perfwatson2",
                 "onedrive", "onedrive.sync.service", "igcctray", "igcc", "microsoft.cmdpal.ui", "wwahost", "onedrive.setup", "rtkuwp", "makutweaker", "msedge", "nvcontainer", "snippingtool", "softlandingtask", "unsecapp", "gameinputredistservice", "accuserps", "useroobebroker", "smartscreen", "nvsphelper64", "acerhardwareservice", "rtkauduservice64", "acersyshardwareservice", "openrgb", "widgetservice",
-                "applemobiledeviceprocess", "aqauserps", "windowspackagemanagerserver", "dataexchangehost", "inputpersonalization", "bootcamp", "settingsynchost", "igfxtray", "igfxhk", "securityhealthsystray","filecoauth", "storedesktopextension", "vm3dservice", "rundll32", "searchprotocolhost", "backgroundtransferhost"};
+                "applemobiledeviceprocess", "aqauserps", "windowspackagemanagerserver", "dataexchangehost", "inputpersonalization", "bootcamp", "settingsynchost", "igfxtray", "igfxhk", "securityhealthsystray","filecoauth", "storedesktopextension", "vm3dservice", "rundll32", "searchprotocolhost", "backgroundtransferhost", "xgamehelper", "comppkgsrv", "onedrivestandaloneupdater", "gamebarftserver", "appactions", "systemsettingsbroker"};
                 string savedExclusions = Properties.Settings.Default.ProcessExclusions;
                 
                 var userExclusions = !string.IsNullOrWhiteSpace(savedExclusions)
@@ -227,16 +227,24 @@ namespace MakuTweakerNew
             {
                 KillProcess_Click(sender, e);
             }
+
+            if (e.Key == Key.F5)
+            {
+                _items.Clear();
+                RefreshProcessList();
+            }
         }
 
         private void LoadLang()
         {
             var languageCode = Properties.Settings.Default.lang ?? "en";
             var pmgr = MainWindow.Localization.LoadLocalization(languageCode, "pmgr");
+            var myan = MainWindow.Localization.LoadLocalization(languageCode, "myan");
             var tooltips = MainWindow.Localization.LoadLocalization(languageCode, "tooltips");
 
             mgr_tooltip.Content = tooltips["main"]["MakuTweakerProcessMGR1"];
             mgr1_tooltip.Content = pmgr["main"]["excltitle"];
+            mgr2_tooltip.Content = myan["main"]["excltitle"];
             label.Text = pmgr["main"]["label"];
             if (KillBtn != null) KillBtn.Content = pmgr["main"]["endprocess"];
             if (OnlyNotRespondingCheck != null) OnlyNotRespondingCheck.Content = pmgr["main"]["onlyfrozen"];
@@ -501,6 +509,15 @@ namespace MakuTweakerNew
             mkyan.Owner = Application.Current.MainWindow;
             mkyan.ShowDialog();
             RefreshProcessList();
+        }
+
+        private void Page_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F5)
+            {
+                _items.Clear();
+                RefreshProcessList();
+            }
         }
     }
 }
