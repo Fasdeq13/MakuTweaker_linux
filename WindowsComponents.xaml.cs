@@ -164,7 +164,6 @@ namespace MakuTweakerNew
             process.StartInfo.Arguments = "/c \"" + tempBatFilePath + "\"";
             process.StartInfo.UseShellExecute = true;
             process.StartInfo.CreateNoWindow = false;
-            mw.ChSt(sr["status"]["sr8"]);
             try
             {
                 process.Start();

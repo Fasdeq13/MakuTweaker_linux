@@ -78,7 +78,6 @@ namespace MakuTweakerNew
             var per = MainWindow.Localization.LoadLocalization(languageCode, "per");
             string folderName = newname.Text;
             RunCmdCommand("reg.exe", "add HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\NamingTemplates /v RenameNameTemplate /t REG_SZ /d \"" + folderName + "\" /f");
-            mw.ChSt(per["status"]["apN"]);
         }
 
         private void stN_Click(object sender, RoutedEventArgs e)
@@ -87,7 +86,6 @@ namespace MakuTweakerNew
             var per = MainWindow.Localization.LoadLocalization(languageCode, "per");
             newname.Text = string.Empty;
             RunCmdCommand("reg.exe", "delete HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\NamingTemplates /v RenameNameTemplate /f");
-            mw.ChSt(per["status"]["stN"]);
         }
 
         private void apC_Click(object sender, RoutedEventArgs e)
@@ -149,9 +147,7 @@ namespace MakuTweakerNew
             }
             else
             {
-
             }
-            mw.ChSt(per["status"]["apC"]);
             mw.RebootNotify(1);
         }
 
@@ -159,15 +155,15 @@ namespace MakuTweakerNew
         {
             var languageCode = Properties.Settings.Default.lang ?? "en";
             var per = MainWindow.Localization.LoadLocalization(languageCode, "per");
-            var basel = MainWindow.Localization.LoadLocalization(languageCode, "base");
+            var main = MainWindow.Localization.LoadLocalization(languageCode, "base");
             var tooltips = MainWindow.Localization.LoadLocalization(languageCode, "tooltips");
 
             label.Text = per["main"]["label"];
             defaultnamelabel.Text = per["main"]["defaultnamelabel"];
             colorlabel.Text = per["main"]["colorlabel"];
             newname.Watermark = per["main"]["newname"];
-            apN.Content = basel["def"]["apply"];
-            apC.Content = basel["def"]["apply"];
+            apN.Content = main["def"]["apply"];
+            apC.Content = main["def"]["apply"];
             stN.Content = per["main"]["b2"];
 
             c1.Content = per["main"]["c1"];
@@ -189,31 +185,29 @@ namespace MakuTweakerNew
             disableanim.Header = per["main"]["disableanim"];
             oldcont.Header = per["main"]["oldcont"];
             contdel.Header = per["main"]["delcont"];
-
-            smallwindows.OffContent = basel["def"]["off"];
-            blur.OffContent = basel["def"]["off"];
-            transparency.OffContent = basel["def"]["off"];
-            darktheme.OffContent = basel["def"]["off"];
-            disablelogo.OffContent = basel["def"]["off"];
-            disableanim.OffContent = basel["def"]["off"];
-            verbose.OffContent = basel["def"]["off"];
-            endtask.OffContent = basel["def"]["off"];
-            oldcont.OffContent = basel["def"]["off"];
-            contdel.OffContent = basel["def"]["off"];
-
-            smallwindows.OnContent = basel["def"]["on"];
-            blur.OnContent = basel["def"]["on"];
-            transparency.OnContent = basel["def"]["on"];
-            darktheme.OnContent = basel["def"]["on"];
-            disablelogo.OnContent = basel["def"]["on"];
-            disableanim.OnContent = basel["def"]["on"];
-            verbose.OnContent = basel["def"]["on"];
-            endtask.OnContent = basel["def"]["on"];
-            oldcont.OnContent = basel["def"]["on"];
-            contdel.OnContent = basel["def"]["on"];
-
             sys_tooltip_verbose.Content = tooltips["main"]["advanced"];
+
+            foreach (var toggle in AllToggles)
+            {
+                toggle.OnContent = main["def"]["on"];
+                toggle.OffContent = main["def"]["off"];
+            }
         }
+
+        private List<ModernWpf.Controls.ToggleSwitch> AllToggles => new()
+        {
+            smallwindows,
+            blur,
+            transparency,
+            darktheme,
+            disablelogo,
+            disableanim,
+            verbose,
+            endtask,
+            oldcont,
+            contdel
+        };
+
         private void checkReg()
         {
             this.newname.Text = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\NamingTemplates")?.GetValue("RenameNameTemplate")?.ToString();

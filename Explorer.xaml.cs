@@ -49,7 +49,6 @@ namespace MakuTweakerNew
             {
                 Registry.LocalMachine.DeleteSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders\{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}");
                 Registry.LocalMachine.DeleteSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders\{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}");
-                mw.ChSt(expl["status"]["e8"]);
                 FadeOut(fixlabel, 300);
                 FadeOut(fix, 300);
                 fixlabel.IsEnabled = false;
@@ -57,7 +56,6 @@ namespace MakuTweakerNew
             }
             catch
             {
-                mw.ChSt(expl["status"]["e8"]);
                 FadeOut(fixlabel, 300);
                 FadeOut(fix, 300);
                 fixlabel.IsEnabled = false;
@@ -115,23 +113,23 @@ namespace MakuTweakerNew
             hide.Content = expl["main"]["choose"];
             showall.Content = expl["main"]["showall"];
 
-
-            nonremovable.OnContent = main["def"]["on"];
-            hidden.OnContent = main["def"]["on"];
-            ext.OnContent = main["def"]["on"];
-            pchome.OnContent = main["def"]["on"];
-            gallery.OnContent = main["def"]["on"];
-            showpc.OnContent = main["def"]["on"];
-            shortcut.OnContent = main["def"]["on"];
-
-            nonremovable.OffContent = main["def"]["off"];
-            hidden.OffContent = main["def"]["off"];
-            ext.OffContent = main["def"]["off"];
-            pchome.OffContent = main["def"]["off"];
-            gallery.OffContent = main["def"]["off"];
-            showpc.OffContent = main["def"]["off"];
-            shortcut.OffContent = main["def"]["off"];
+            foreach (var toggle in AllToggles)
+            {
+                toggle.OnContent = main["def"]["on"];
+                toggle.OffContent = main["def"]["off"];
+            }
         }
+
+        private List<ModernWpf.Controls.ToggleSwitch> AllToggles => new()
+        {
+            nonremovable,
+            hidden,
+            ext,
+            pchome,
+            gallery,
+            showpc,
+            shortcut
+        };
         private void checkReg()
         {
             nonremovable.IsOn =

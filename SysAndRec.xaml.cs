@@ -16,13 +16,13 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using Windows.UI.Composition.Desktop;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using static System.Runtime.InteropServices.Marshalling.IIUnknownCacheStrategy;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MakuTweakerNew
 {
@@ -170,10 +170,10 @@ namespace MakuTweakerNew
         {
             var languageCode = Properties.Settings.Default.lang ?? "en";
             var sr = MainWindow.Localization.LoadLocalization(languageCode, "sr");
-            var basel = MainWindow.Localization.LoadLocalization(languageCode, "base");
+            var main = MainWindow.Localization.LoadLocalization(languageCode, "base");
             var compon = MainWindow.Localization.LoadLocalization(languageCode, "compon");
             var tooltips = MainWindow.Localization.LoadLocalization(languageCode, "tooltips");
-            string applied = basel["def"]["applied"];
+            string applied = main["def"]["applied"];
 
             label.Text = sr["main"]["label"];
             sfclabel.Text = sr["main"]["sfclabel"];
@@ -197,28 +197,6 @@ namespace MakuTweakerNew
             bing.Header = sr["main"]["bing"];
             telemetry.Header = sr["main"]["telemetry"];
 
-            bitlocker.OffContent = basel["def"]["off"];
-            chkdsk.OffContent = basel["def"]["off"];
-            coreisol.OffContent = basel["def"]["off"];
-            hybern.OffContent = basel["def"]["off"];
-            sleeptimeout.OffContent = basel["def"]["off"];
-            smartscreen.OffContent = basel["def"]["off"];
-            uac.OffContent = basel["def"]["off"];
-            sticky.OffContent = basel["def"]["off"];
-            bing.OffContent = basel["def"]["off"];
-            telemetry.OffContent = basel["def"]["off"];
-
-            bitlocker.OnContent = basel["def"]["on"];
-            chkdsk.OnContent = basel["def"]["on"];
-            coreisol.OnContent = basel["def"]["on"];
-            hybern.OnContent = basel["def"]["on"];
-            sleeptimeout.OnContent = basel["def"]["on"];
-            smartscreen.OnContent = basel["def"]["on"];
-            uac.OnContent = basel["def"]["on"];
-            sticky.OnContent = basel["def"]["on"];
-            bing.OnContent = basel["def"]["on"];
-            telemetry.OnContent = basel["def"]["on"];
-
             sys_tooltip_sfc.Content = tooltips["main"]["sfc"];
             sys_tooltip_dism.Content = tooltips["main"]["dism"];
             sys_tooltip_sticky.Content = tooltips["main"]["sticky"];
@@ -229,7 +207,27 @@ namespace MakuTweakerNew
             sys_tooltip_chkdsk.Content = tooltips["main"]["chkdsk"];
             sys_tooltip_bitlocker.Content = tooltips["main"]["bitlocker"];
             sys_tooltip_bing.Content = tooltips["main"]["bing"];
+
+            foreach (var toggle in AllToggles)
+            {
+                toggle.OnContent = main["def"]["on"];
+                toggle.OffContent = main["def"]["off"];
+            }
         }
+
+        private List<ModernWpf.Controls.ToggleSwitch> AllToggles => new()
+        {
+            bitlocker,
+            chkdsk,
+            coreisol,
+            hybern,
+            sleeptimeout,
+            smartscreen,
+            uac,
+            sticky,
+            bing,
+            telemetry
+        };
         private void checkReg()
         {
             bitlocker.IsOn = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\BitLocker")?.GetValue("PreventDeviceEncryption")?.Equals(1) ?? false;
@@ -255,7 +253,7 @@ namespace MakuTweakerNew
         {
             var languageCode = Properties.Settings.Default.lang ?? "en";
             var sr = MainWindow.Localization.LoadLocalization(languageCode, "sr");
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            Microsoft.Win32.SaveFileDialog saveFileDialog1 = new Microsoft.Win32.SaveFileDialog();
             saveFileDialog1.Filter = "HTML (*.html)|*.html";
             saveFileDialog1.Title = "Microsoft Battery Report";
             saveFileDialog1.FileName = "battery-report.html";
@@ -263,7 +261,6 @@ namespace MakuTweakerNew
             {
                 string reportPath = saveFileDialog1.FileName;
                 Process.Start("cmd.exe", $"/c powercfg /batteryreport /output \"{reportPath}\"");
-                mw.ChSt(sr["status"]["o1b"]);
                 MarkApplied(report);
             }
         }
