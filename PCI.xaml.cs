@@ -263,17 +263,45 @@ namespace MakuTweakerNew
                 string cpuName = "Unknown";
                 int coreCount = 0;
                 int threadCount = 0;
-
-                using (var searcher = new ManagementObjectSearcher("select Name, NumberOfCores, NumberOfLogicalProcessors from Win32_Processor"))
+                using (var searcher = new ManagementObjectSearcher("SELECT Name, NumberOfCores, ThreadCount FROM Win32_Processor"))
                 using (var results = searcher.Get())
                 {
                     foreach (var item in results)
                     {
                         cpuName = item["Name"]?.ToString()?.Trim() ?? cpuName;
                         coreCount += Convert.ToInt32(item["NumberOfCores"] ?? 0);
-                        threadCount += Convert.ToInt32(item["NumberOfLogicalProcessors"] ?? 0);
+
+                        if (item["ThreadCount"] != null)
+                        {
+                            threadCount += Convert.ToInt32(item["ThreadCount"]);
+                        }
                         item.Dispose();
                     }
+                }
+
+                if (threadCount == 0 || threadCount == coreCount)
+                {
+                    using (var searcherCS = new ManagementObjectSearcher("SELECT NumberOfLogicalProcessors FROM Win32_ComputerSystem"))
+                    using (var resultsCS = searcherCS.Get())
+                    {
+                        foreach (var item in resultsCS)
+                        {
+                            if (item["NumberOfLogicalProcessors"] != null)
+                            {
+                                int csThreads = Convert.ToInt32(item["NumberOfLogicalProcessors"]);
+                                if (csThreads > threadCount)
+                                {
+                                    threadCount = csThreads;
+                                }
+                            }
+                            item.Dispose();
+                        }
+                    }
+                }
+
+                if (threadCount == 0)
+                {
+                    threadCount = Environment.ProcessorCount;
                 }
 
                 Dispatcher.Invoke(() => {
@@ -327,8 +355,10 @@ namespace MakuTweakerNew
             {
                 ulong totalBytes = 0;
                 int memoryTypeCode = 0;
+                int averageSpeed = 0;
+                int stickCount = 0;
 
-                using (var searcher = new ManagementObjectSearcher("SELECT Capacity, MemoryType, SMBIOSMemoryType FROM Win32_PhysicalMemory"))
+                using (var searcher = new ManagementObjectSearcher("SELECT Capacity, MemoryType, SMBIOSMemoryType, Speed FROM Win32_PhysicalMemory"))
                 {
                     using (var results = searcher.Get())
                     {
@@ -342,7 +372,13 @@ namespace MakuTweakerNew
                                 int smbios = item["SMBIOSMemoryType"] != null ? Convert.ToInt32(item["SMBIOSMemoryType"]) : 0;
                                 int legacy = item["MemoryType"] != null ? Convert.ToInt32(item["MemoryType"]) : 0;
 
-                                int detectedType = smbios != 0 ? smbios : legacy;
+                                if (item["Speed"] != null)
+                                {
+                                    averageSpeed += Convert.ToInt32(item["Speed"]);
+                                    stickCount++;
+                                }
+
+                                int detectedType = (smbios > 2) ? smbios : (legacy > 2 ? legacy : 0);
                                 if (memoryTypeCode == 0 && detectedType != 0)
                                     memoryTypeCode = detectedType;
                             }
@@ -358,25 +394,43 @@ namespace MakuTweakerNew
                 {
                     return;
                 }
+
                 double totalGB = totalBytes / (1024.0 * 1024 * 1024);
-                string memoryType = memoryTypeCode switch
+                string memoryType = "N/A";
+
+                if (memoryTypeCode > 0)
                 {
-                    20 => "DDR",
-                    21 => "DDR2",
-                    22 => "DDR2 FB-DIMM",
-                    24 => "DDR3",
-                    26 => "DDR4",
-                    31 => "DDR5",
-                    27 => "LPDDR",
-                    28 => "LPDDR2",
-                    29 => "LPDDR3",
-                    30 => "LPDDR4",
-                    32 => "LPDDR5",
-                    33 => "LPDDR5X",
-                    34 => "LPDDR5",
-                    35 => "LPDDR5X",
-                    _ => "N/A"
-                };
+                    memoryType = memoryTypeCode switch
+                    {
+                        20 => "DDR",
+                        21 => "DDR2",
+                        22 => "DDR2 FB-DIMM",
+                        24 => "DDR3",
+                        26 => "DDR4",
+                        27 => "LPDDR",
+                        28 => "LPDDR2",
+                        29 => "LPDDR3",
+                        30 => "LPDDR4",
+                        32 => "HBM",
+                        33 => "HBM2",
+                        34 => "DDR5",
+                        35 => "LPDDR5",
+                        36 => "HBM3",
+                        _ => "N/A"
+                    };
+                }
+
+                if (memoryType == "N/A" && stickCount > 0)
+                {
+                    int speed = averageSpeed / stickCount;
+
+                    if (speed >= 4800) memoryType = "DDR5";
+                    else if (speed >= 2133) memoryType = "DDR4";
+                    else if (speed >= 800) memoryType = "DDR3";
+                    else if (speed >= 400) memoryType = "DDR2";
+                    else if (speed > 0) memoryType = "DDR";
+                }
+
                 summaryRamText.Text = $"{Math.Round(totalGB)} GB / {memoryType}";
             }
             catch
@@ -729,9 +783,7 @@ namespace MakuTweakerNew
                     sb.AppendLine("MakuTweaker // MarkAdderly");
                     sb.AppendLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                     sb.AppendLine();
-                    sb.AppendLine();
 
-                    sb.AppendLine($"=== {pci["main"]["branding"]} ===");
                     sb.AppendLine($"{pci["main"]["manu"]} {pcManufacturer.Text}");
                     sb.AppendLine($"{pci["main"]["modeln"]} {pcModel.Text}");
                     sb.AppendLine();
@@ -751,9 +803,7 @@ namespace MakuTweakerNew
                     sb.AppendLine($"{pci["main"]["mbname"]} {mbname.Text}");
                     sb.AppendLine($"{pci["main"]["mbver"]} {biosver.Text}");
                     sb.AppendLine($"{pci["main"]["mbdate"]} {biosdate.Text}");
-                    sb.AppendLine($"=== {pci["main"]["tpmtitle"]} ===");
-                    sb.AppendLine($"{tpmStatus.Text}");
-                    sb.AppendLine();
+                    sb.AppendLine($"{pci["main"]["tpmtitle"]} {tpmStatus.Text}");
                     sb.AppendLine();
                     sb.AppendLine();
 
@@ -898,13 +948,29 @@ namespace MakuTweakerNew
                             var desc = adapter.Description1;
                             string name = desc.Description?.Trim() ?? "";
 
-                            if (name.Contains("Microsoft Basic Render Driver", StringComparison.OrdinalIgnoreCase))
+                            if (name.Contains("Microsoft Basic Render Driver", StringComparison.OrdinalIgnoreCase) ||
+                                name.Contains("spacedesk", StringComparison.OrdinalIgnoreCase) ||
+                                name.Contains("Parsec", StringComparison.OrdinalIgnoreCase) ||
+                                name.Contains("Virtual Desktop", StringComparison.OrdinalIgnoreCase) ||
+                                name.Contains("Apollo", StringComparison.OrdinalIgnoreCase))
                             {
                                 i++;
                                 continue;
                             }
 
                             if (string.IsNullOrWhiteSpace(name) || name.Equals("Null", StringComparison.OrdinalIgnoreCase))
+                            {
+                                i++;
+                                continue;
+                            }
+
+                            if ((desc.Flags & Vortice.DXGI.AdapterFlags.Software) != 0)
+                            {
+                                i++;
+                                continue;
+                            }
+
+                            if (gpus.Any(g => g.Name == name && g.VRamBytes == desc.DedicatedVideoMemory))
                             {
                                 i++;
                                 continue;
@@ -932,6 +998,7 @@ namespace MakuTweakerNew
 
             return gpus.Count > 0 ? gpus : FallbackToWmi();
         }
+
         private static List<GpuInfo> FallbackToWmi()
         {
             var gpus = new List<GpuInfo>();
@@ -942,7 +1009,18 @@ namespace MakuTweakerNew
                 {
                     string name = obj["Name"]?.ToString() ?? "Unknown GPU";
                     ulong vram = obj["AdapterRAM"] != null ? Convert.ToUInt64(obj["AdapterRAM"]) : 0;
-                    gpus.Add(new GpuInfo { Name = name, VRamBytes = vram });
+
+                    if (name.Contains("spacedesk", StringComparison.OrdinalIgnoreCase) ||
+                        name.Contains("Parsec", StringComparison.OrdinalIgnoreCase) ||
+                        name.Contains("Virtual Desktop", StringComparison.OrdinalIgnoreCase))
+                    {
+                        continue;
+                    }
+
+                    if (!gpus.Any(g => g.Name == name && g.VRamBytes == vram))
+                    {
+                        gpus.Add(new GpuInfo { Name = name, VRamBytes = vram });
+                    }
                 }
             }
             catch { }
