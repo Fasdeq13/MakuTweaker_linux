@@ -12,8 +12,20 @@
 
     <Grid>
         <TextBlock x:Name="label" HorizontalAlignment="Left" Margin="24,11,0,0" TextWrapping="Wrap" Text="Windows Activation" VerticalAlignment="Top" FontSize="32" FontFamily="Segoe UI Semibold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="25,69,0,0" TextWrapping="Wrap" x:Name="hwid" Text="В GitHub-версии по очевидным причинам исходный код страницы активации Windows недоступен." VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold" Width="585"/>
-        <ui:ProgressBar x:Name="p" Visibility="Visible" Margin="26,571,0,0" VerticalAlignment="Top" Width="665" HorizontalAlignment="Left" Height="12" Maximum="20" Opacity="0" IsIndeterminate="True"/>
-        <TextBlock x:Name="t" HorizontalAlignment="Left" Margin="26,550,0,0" TextWrapping="Wrap" Text="Activating Windows... This may take a while on weak PCs." VerticalAlignment="Top" FontSize="12" FontFamily="Segoe UI" Opacity="0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="25,69,0,0" TextWrapping="Wrap" x:Name="hwid"
+VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold" Width="585">
+
+    В GitHub-версии по очевидным причинам исходный код страницы активации Windows недоступен.
+    <LineBreak/><LineBreak/>
+
+    In the GitHub version, for obvious reasons, the source code of the Windows activation page is not available.
+    <LineBreak/><LineBreak/>
+
+    In der GitHub-Version ist aus offensichtlichen Gründen der Quellcode der Windows-Aktivierungsseite nicht verfügbar.
+    <LineBreak/><LineBreak/>
+
+    En la versión de GitHub, por razones obvias, el código fuente de la página de activación de Windows no está disponible.
+
+        </TextBlock>
     </Grid>
 </Page>
