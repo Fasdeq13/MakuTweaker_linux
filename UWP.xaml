@@ -5,54 +5,192 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MakuTweakerNew"
       xmlns:controls="clr-namespace:MicaWPF.Controls;assembly=MicaWPF"
-      xmlns:ui="http://schemas.modernwpf.com/2019"
+      xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="704.04"
       Title="Remove UWP Apps">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="61*"/>
-            <RowDefinition Height="611*"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TextBlock x:Name="label" HorizontalAlignment="Left" Margin="24,11,0,0" TextWrapping="Wrap" Text="Remove UWP Apps" VerticalAlignment="Top" FontSize="32" FontFamily="Segoe UI Semibold"/>
-        <TextBlock x:Name="info1" HorizontalAlignment="Left" Margin="24,59,0,0" TextWrapping="Wrap" Text="Select The UWP Apps You Want to Remove" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold" Grid.RowSpan="2"/>
-        <TextBlock x:Name="info2"  HorizontalAlignment="Left" Margin="24,39,0,0" TextWrapping="Wrap" Text="Please note: This apps will not be removed for all users." VerticalAlignment="Top" FontSize="18" FontFamily="Segoe UI" Grid.Row="1"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="24,82,479,0" OnContent="Windows Mixed Reality" OffContent="Windows Mixed Reality" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="u1" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="252,114,0,0" OnContent="Solitaire Collection" OffContent="Solitaire Collection" VerticalAlignment="Top" x:Name="u2" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="24,370,479,0" OnContent="Messaging" OffContent="Messaging" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="u3" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="24,114,479,0" OnContent="Cortana" OffContent="Cortana" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="u4" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="24,242,479,0" OnContent="Technical Support" OffContent="Technical Support" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="u5" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="24,178,0,0" OnContent="Dev Home" OffContent="Dev Home" x:Name="u7" Grid.Row="1" VerticalAlignment="Top" Width="201" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="24,210,479,0" OnContent="3D Builder, Paint 3D" OffContent="3D Builder, Paint 3D" HorizontalAlignment="Stretch" x:Name="u8" Grid.Row="1" VerticalAlignment="Top" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="24,306,479,0" OnContent="Maps" OffContent="Maps" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="u10" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="24,402,479,0" OnContent="Power Automate" OffContent="Power Automate" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="u11" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="252,146,0,0" OnContent="Clipchamp" OffContent="Clipchamp" VerticalAlignment="Top" x:Name="u12" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="252,82,0,0" OnContent="People, Mail, Calendar" OffContent="People, Mail, Calendar" VerticalAlignment="Top" x:Name="u13" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="24,338,479,0" OnContent="OneNote" OffContent="OneNote" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="u14" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="252,370,251,0" OnContent="Your Phone" OffContent="Your Phone" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="u9" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="252,434,251,0" OnContent="Media Player" OffContent="Media Player" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="u15" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="252,465,251,0" OnContent="Movies and TV" OffContent="Movies and TV" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="u16" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="252,402,251,0" OnContent="Camera" OffContent="Camera" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="u17" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="252,210,251,0" OnContent="News" OffContent="News" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="u18" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="252,242,251,0" OnContent="Weather" OffContent="Weather" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="u19" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="252,178,251,0" OnContent="Sticky Notes" OffContent="Sticky Notes" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="u20" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="24,274,0,0" OnContent="Feedback Hub" OffContent="Feedback Hub" VerticalAlignment="Top" x:Name="u6" Grid.Row="1" Width="201" Opacity="0" IsTabStop="False"/>
-        <ui:ProgressBar x:Name="p" Visibility="Collapsed" Margin="0,514,0,0" Grid.Row="1" VerticalAlignment="Top" Width="705" HorizontalAlignment="Center" Height="12" Maximum="27"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="24,465,479,0" OnContent="Get Started / Tips" OffContent="Get Started / Tips" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="u21" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="252,274,251,0" OnContent="Sound Recorder" OffContent="Sound Recorder" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="u22" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="24,434,479,0" OnContent="People" OffContent="People" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="u25" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="24,146,0,0" OnContent="Skype" OffContent="Skype" VerticalAlignment="Top" x:Name="u26" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <TextBlock x:Name="t" Visibility="Collapsed" HorizontalAlignment="Left" Margin="40,494,0,0" TextWrapping="Wrap" Text="Checking installed UWP apps..." VerticalAlignment="Top" FontSize="12" FontFamily="Segoe UI" Grid.Row="1"/>
-        <controls:Button x:Name="b"  Content="Start Removing UWP" HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1" Width="200" Height="34" Margin="550,503,0,0" Grid.Row="1" Opacity="0" Click="b_Click" IsEnabled="False" IsTabStop="False" />
-        <ui:ToggleSwitch IsEnabled="False" Margin="480,82,27,0" OnContent="Microsoft Store" OffContent="Microsoft Store" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="u23" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="480,114,19,0" OnContent="Xbox" OffContent="Xbox" VerticalAlignment="Top" HorizontalAlignment="Stretch" x:Name="u24" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ComboBox x:Name="view" HorizontalAlignment="Left" Margin="550,467,0,0" FontSize="14"  Width="200" VerticalAlignment="Top" MinWidth="200" MaxWidth="200" Grid.Row="1" Opacity="0" SelectionChanged="view_SelectionChanged" IsTabStop="False">
-            <ComboBoxItem x:Name="mode1" Content=" Only Bloatware" IsSelected="True"/>
-            <ComboBoxItem x:Name="mode2" Content=" Show Popular Apps"/>
-            <ComboBoxItem x:Name="mode3" Content=" Show Necessary Apps"/>
-        </ComboBox>
-        <ui:ToggleSwitch IsEnabled="False" Margin="252,306,0,0" OnContent="Alarms &amp; Clock" OffContent="Alarms &amp; Clock" VerticalAlignment="Top" x:Name="u27" Grid.Row="1" Opacity="0" IsTabStop="False"/>
-        <ui:ToggleSwitch IsEnabled="False" Margin="252,338,0,0" OnContent="Outlook" OffContent="Outlook" VerticalAlignment="Top" x:Name="u28" Grid.Row="1" Opacity="0" IsTabStop="False" Width="189"/>
+
+        <ScrollViewer x:Name="MainScrollViewer" Grid.Row="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Opacity="0">
+            <StackPanel MaxWidth="850" Margin="24,11,24,0" HorizontalAlignment="Stretch">
+                <StackPanel.Resources>
+                    <Style TargetType="ui:SettingsExpander">
+                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    </Style>
+                    <Style TargetType="ui:SettingsCard">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </StackPanel.Resources>
+
+                <TextBlock x:Name="label" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Remove UWP Apps" VerticalAlignment="Top" FontSize="32" FontFamily="Segoe UI Semibold"/>
+                <TextBlock x:Name="info1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Select The UWP Apps You Want to Remove" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold"/>
+                <ui:InfoBar x:Name="info2" IsOpen="True" Message="Please note: This apps will not be removed for all users." VerticalAlignment="Top" FontSize="18" FontFamily="Segoe UI" Margin="0,5,0,5"  IsClosable="False"/>
+
+                <ui:SettingsExpander x:Name="e1" Header="Bloatware" Visibility="Collapsed" VerticalAlignment="Top" HorizontalAlignment="Stretch" IsExpanded="True" IsTabStop="False" >
+                    <ui:SettingsExpander.HeaderIcon>
+                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Delete}" />
+                    </ui:SettingsExpander.HeaderIcon>
+                    <CheckBox x:Name="selectAllE1" Content="Select All" IsThreeState="True" PreviewMouseLeftButtonDown="SelectAll_PreviewMouseLeftButtonDown" />
+                    <ui:SettingsExpander.Items>
+                        <ui:SettingsCard x:Name="u31" Header="Microsoft 365 Copilot" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u31t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u29" Header="Microsoft Teams" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u29t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u30" Header="Microsoft To Do" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u30t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u1" Header="Windows Mixed Reality" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u1t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u2" Header="Solitaire Collection" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u2t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u3" Header="Messaging" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u3t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u4" Header="Cortana" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u4t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u5" Header="Technical Support" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u5t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u6" Header="Feedback Hub" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u6t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u7" Header="Dev Home" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u7t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u8" Header="3D Builder, Paint 3D" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u8t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u10" Header="Maps" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u10t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u11" Header="Power Automate" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u11t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u12" Header="Clipchamp" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u12t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u13" Header="People, Mail, Calendar" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u13t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u14" Header="OneNote" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u14t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u18" Header="News" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u18t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u19" Header="Weather" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u19t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u20" Header="Sticky Notes" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u20t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u21" Header="Get Started / Tips" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u21t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u22" Header="Sound Recorder" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u22t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u25" Header="People" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u25t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u26" Header="Skype" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u26t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u27" Header="Alarms &amp; Clock" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u27t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u28" Header="Outlook" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u28t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                    </ui:SettingsExpander.Items>
+                </ui:SettingsExpander>
+
+                <ui:SettingsExpander x:Name="e2" Header="Popular" Margin="0,5,0,0" Visibility="Collapsed" VerticalAlignment="Top" HorizontalAlignment="Stretch" IsExpanded="False" IsTabStop="False">
+                    <ui:SettingsExpander.HeaderIcon>
+                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.FavoriteStar}" />
+                    </ui:SettingsExpander.HeaderIcon>
+                    <CheckBox x:Name="selectAllE2" Content="Select All" IsThreeState="True" PreviewMouseLeftButtonDown="SelectAll_PreviewMouseLeftButtonDown" />
+                    <ui:SettingsExpander.Items>
+                        <ui:SettingsCard x:Name="u9" Header="Your Phone" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u9t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u15" Header="Media Player" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u15t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u16" Header="Movies and TV" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u16t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u17" Header="Camera" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u17t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                    </ui:SettingsExpander.Items>
+                </ui:SettingsExpander>
+
+                <ui:SettingsExpander x:Name="e3" Header="Necessary" Margin="0,5,0,0" Visibility="Collapsed" VerticalAlignment="Top" HorizontalAlignment="Stretch" IsExpanded="False" IsTabStop="False">
+                    <ui:SettingsExpander.HeaderIcon>
+                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Admin}" />
+                    </ui:SettingsExpander.HeaderIcon>
+                    <CheckBox x:Name="selectAllE3" Content="Select All" IsThreeState="True" PreviewMouseLeftButtonDown="SelectAll_PreviewMouseLeftButtonDown" />
+                    <ui:SettingsExpander.Items>
+                        <ui:SettingsCard x:Name="u23" Header="Microsoft Store" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u23t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                        <ui:SettingsCard x:Name="u24" Header="Xbox" IsEnabled="False">
+                            <ui:ToggleSwitch IsEnabled="False" Toggled="AppToggle_Toggled" x:Name="u24t" IsTabStop="False"/>
+                        </ui:SettingsCard>
+                    </ui:SettingsExpander.Items>
+                </ui:SettingsExpander>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Border x:Name="BottomPanel" Grid.Row="1" BorderThickness="0,0,0,0" Padding="24,10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <controls:Button x:Name="b" Content="Start Removing UWP" Visibility="Collapsed" Padding="20,5" Height="34" Opacity="0" Click="b_Click" IsEnabled="False" IsTabStop="False"/>
+            </StackPanel>
+        </Border>
+
+        <StackPanel x:Name="loadingPanel" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center"
+                    Opacity="1"
+                    Visibility="Visible">
+            <ui:ProgressRing x:Name="ring" 
+                          IsActive="True"
+                          Width="60" Height="60"
+                          HorizontalAlignment="Center"/>
+            <TextBlock x:Name="t" 
+                       HorizontalAlignment="Center"
+                       Margin="0,12,0,0"
+                       FontSize="14"
+                       Opacity="1"/>
+        </StackPanel>
+
+        <Grid x:Name="SuccessOverlay" Grid.RowSpan="2" Visibility="Collapsed" Background="Transparent" Opacity="0">
+            <Viewbox Width="150" Height="150" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Canvas Width="100" Height="100">
+                    <Path x:Name="SuccessIcon"
+      Data="M 10,50 L 40,80 L 90,20"
+      StrokeThickness="10"
+      StrokeStartLineCap="Round"
+      StrokeEndLineCap="Round"
+      StrokeLineJoin="Round"
+      RenderTransformOrigin="0.5,0.5">
+                        <Path.RenderTransform>
+                            <ScaleTransform x:Name="SuccessIconTransform" ScaleX="0.5" ScaleY="0.5"/>
+                        </Path.RenderTransform>
+                    </Path>
+                </Canvas>
+            </Viewbox>
+        </Grid>
     </Grid>
 </Page>

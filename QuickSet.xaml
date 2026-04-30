@@ -5,200 +5,290 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MakuTweakerNew"
       xmlns:controls="clr-namespace:MicaWPF.Controls;assembly=MicaWPF"
-      xmlns:ui="http://schemas.modernwpf.com/2019"
+      xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
       mc:Ignorable="d" d:DesignWidth="704.04" d:DesignHeight="1830"
       Title="Quick Windows Setup">
 
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <StackPanel x:Name="ToggleContainer" Margin="24,11,24,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ScrollViewer x:Name="MainScrollViewer" Grid.Row="0" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="ToggleContainer" Margin="24,11,24,0" HorizontalAlignment="Stretch">
+                <StackPanel.Resources>
+                    <Style TargetType="ui:SettingsExpander">
+                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    </Style>
+                    <Style TargetType="ui:SettingsCard">
+                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Right"/>
+                    </Style>
+                </StackPanel.Resources>
+
                 <TextBlock x:Name="label" Text="Quick Windows Setup" FontSize="32" FontFamily="Segoe UI Semibold"/>
-                <TextBlock x:Name="info" Text="Use Checkboxes To Select The Settings To Be Applied." FontSize="24" FontFamily="Segoe UI Semilight" TextWrapping="Wrap" Margin="0,0,0,7"/>
+                <ui:InfoBar x:Name="info" IsOpen="True" Message="Use Checkboxes To Select The Settings To Be Applied." FontSize="32" Margin="0,5,0,5" IsClosable="False"/>
 
-                <ui:ToggleSwitch Header="Show Hidden Files and Folders" FontSize="16" IsOn="True" Margin="0,5" x:Name="quick_hidden"/>
-                <ui:ToggleSwitch Header="Show File Extensions" FontSize="16" IsOn="True" Margin="0,5" x:Name="quick_ext"/>
-                <ui:ToggleSwitch Header="Open 'This PC' Page In Explorer Instead Of 'Home'" FontSize="16" IsOn="True" Margin="0,5" x:Name="quick_pchome"/>
-                <ui:ToggleSwitch Header="Show 'This PC' On Desktop" FontSize="16" IsOn="True" Margin="0,5" x:Name="quick_showpc"/>
-                <ui:ToggleSwitch Header="Remove The '-Shortcut' Ending From New Shortcuts" FontSize="16" IsOn="True" Margin="0,5" x:Name="quick_desktopend"/>
-                <ui:ToggleSwitch Header="Fix Disk Duplication In Explorer" FontSize="16" IsOn="True" Margin="0,5" x:Name="quick_expfix"/>
-                <ui:ToggleSwitch Header="Pause Windows Update Service" FontSize="16" IsOn="True" Margin="0,5" x:Name="quick_winupd"/>
-                <ui:ToggleSwitch Header="Remove Context Menu Delay" FontSize="16" IsOn="True" Margin="0,5" x:Name="quick_contdelay"/>
-                <ui:ToggleSwitch Header="Hide The Task View And Widgets Button" FontSize="16" IsOn="True" Margin="0,5" x:Name="quick_hidewidget"/>
+                <ui:SettingsExpander x:Name="expander" Header="Функции для быстрой настройки" IsExpanded="True" FontSize="16" HorizontalAlignment="Stretch">
+                    <ui:SettingsExpander.HeaderIcon>
+                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Repair}" />
+                    </ui:SettingsExpander.HeaderIcon>
 
-                <StackPanel Margin="0,5">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Header, ElementName=quick_sticky}" FontSize="16" VerticalAlignment="Center"/>
-                        <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
-                            <controls:Button.ToolTip>
-                                <ToolTip MaxWidth="500" x:Name="sys_tooltip_sticky"/>
-                            </controls:Button.ToolTip>
-                        </controls:Button>
-                    </StackPanel>
-                    <ui:ToggleSwitch x:Name="quick_sticky" FontSize="16" Header="Disable Sticky Keys" IsOn="True">
-                        <ui:ToggleSwitch.HeaderTemplate>
-                            <DataTemplate />
-                        </ui:ToggleSwitch.HeaderTemplate>
-                    </ui:ToggleSwitch>
-                </StackPanel>
+                    <CheckBox x:Name="selectAll" Content="Select All" Click="selectAll_Click"/>
+                    <ui:SettingsExpander.Items>
 
-                <ui:ToggleSwitch Header="Disable Online Search In Start Via Bing" FontSize="16" IsOn="True" Margin="0,5" x:Name="quick_bingoff"/>
-                <ui:ToggleSwitch Header="Remove Ads In Start Menu And Taskbar Search" FontSize="16" IsOn="True" Margin="0,5" x:Name="quick_removeads"/>
+                        <ui:SettingsCard x:Name="quick_hidden" Header="Show Hidden Files and Folders" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:ToggleSwitch x:Name="quick_hidden_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
 
-                <StackPanel Margin="0,5">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Header, ElementName=quick_chkdsk}" FontSize="16" VerticalAlignment="Center"/>
-                        <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
-                            <controls:Button.ToolTip>
-                                <ToolTip MaxWidth="500" x:Name="sys_tooltip_chkdsk"/>
-                            </controls:Button.ToolTip>
-                        </controls:Button>
-                    </StackPanel>
-                    <ui:ToggleSwitch x:Name="quick_chkdsk" FontSize="16" Header="Set Chkdsk Timeout to 1 Minute" IsOn="True">
-                        <ui:ToggleSwitch.HeaderTemplate>
-                            <DataTemplate />
-                        </ui:ToggleSwitch.HeaderTemplate>
-                    </ui:ToggleSwitch>
-                </StackPanel>
+                        <ui:SettingsCard x:Name="quick_ext" Header="Show File Extensions" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:ToggleSwitch x:Name="quick_ext_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
 
-                <StackPanel Margin="0,5">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Header, ElementName=quick_bitlockeroff}" FontSize="16" VerticalAlignment="Center"/>
-                        <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
-                            <controls:Button.ToolTip>
-                                <ToolTip MaxWidth="500" x:Name="sys_tooltip_bitlocker"/>
-                            </controls:Button.ToolTip>
-                        </controls:Button>
-                    </StackPanel>
-                    <ui:ToggleSwitch x:Name="quick_bitlockeroff" FontSize="16" Header="Disable Automatic BitLocker Encryption" IsOn="True">
-                        <ui:ToggleSwitch.HeaderTemplate>
-                            <DataTemplate />
-                        </ui:ToggleSwitch.HeaderTemplate>
-                    </ui:ToggleSwitch>
-                </StackPanel>
+                        <ui:SettingsCard x:Name="quick_pchome" Header="Open 'This PC' Page In Explorer Instead Of 'Home'" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:ToggleSwitch x:Name="quick_pchome_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
 
-                <ui:ToggleSwitch Header="Enable Clipboard" FontSize="16" IsOn="True" Margin="0,5" x:Name="quick_clipboard"/>
+                        <ui:SettingsCard x:Name="quick_showpc" Header="Show 'This PC' On Desktop" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:ToggleSwitch x:Name="quick_showpc_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
 
-                <StackPanel Margin="0,5">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Header, ElementName=quick_directplay}" FontSize="16" VerticalAlignment="Center"/>
-                        <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
-                            <controls:Button.ToolTip>
-                                <ToolTip MaxWidth="500" x:Name="sys_tooltip_directplay"/>
-                            </controls:Button.ToolTip>
-                        </controls:Button>
-                    </StackPanel>
-                    <ui:ToggleSwitch x:Name="quick_directplay" FontSize="16" Header="Install DirectPlay" IsOn="True">
-                        <ui:ToggleSwitch.HeaderTemplate>
-                            <DataTemplate />
-                        </ui:ToggleSwitch.HeaderTemplate>
-                    </ui:ToggleSwitch>
-                </StackPanel>
+                        <ui:SettingsCard x:Name="quick_desktopend" Header="Remove The '-Shortcut' Ending From New Shortcuts" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:ToggleSwitch x:Name="quick_desktopend_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
 
-                <ui:ToggleSwitch Header="Enable Old Context Menu" FontSize="16" IsOn="False" Margin="0,5" x:Name="quick_oldcont"/>
-                <ui:ToggleSwitch Header="Hide Gallery" FontSize="16" IsOn="False" Margin="0,5" x:Name="quick_gallery"/>
+                        <ui:SettingsCard x:Name="quick_expfix" Header="Fix Disk Duplication In Explorer" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:ToggleSwitch x:Name="quick_expfix_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
 
-                <StackPanel Margin="0,5">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Header, ElementName=quick_coreisol}" FontSize="16" VerticalAlignment="Center"/>
-                        <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
-                            <controls:Button.ToolTip>
-                                <ToolTip MaxWidth="500" x:Name="sys_tooltip_coreisol"/>
-                            </controls:Button.ToolTip>
-                        </controls:Button>
-                    </StackPanel>
-                    <ui:ToggleSwitch x:Name="quick_coreisol" FontSize="16" Header="Disable CoreIsol" IsOn="False">
-                        <ui:ToggleSwitch.HeaderTemplate>
-                            <DataTemplate />
-                        </ui:ToggleSwitch.HeaderTemplate>
-                    </ui:ToggleSwitch>
-                </StackPanel>
+                        <ui:SettingsCard x:Name="quick_winupd" Header="Pause Windows Update Service" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:ToggleSwitch x:Name="quick_winupd_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
 
-                <StackPanel Margin="0,5">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Header, ElementName=quick_uac}" FontSize="16" VerticalAlignment="Center"/>
-                        <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
-                            <controls:Button.ToolTip>
-                                <ToolTip MaxWidth="500" x:Name="sys_tooltip_uac"/>
-                            </controls:Button.ToolTip>
-                        </controls:Button>
-                    </StackPanel>
-                    <ui:ToggleSwitch x:Name="quick_uac" FontSize="16" Header="Disable UAC" IsOn="False">
-                        <ui:ToggleSwitch.HeaderTemplate>
-                            <DataTemplate />
-                        </ui:ToggleSwitch.HeaderTemplate>
-                    </ui:ToggleSwitch>
-                </StackPanel>
+                        <ui:SettingsCard x:Name="quick_contdelay" Header="Remove Context Menu Delay" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:ToggleSwitch x:Name="quick_contdelay_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
 
-                <StackPanel Margin="0,5">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Header, ElementName=quick_smartscreen}" FontSize="16" VerticalAlignment="Center"/>
-                        <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
-                            <controls:Button.ToolTip>
-                                <ToolTip MaxWidth="500" x:Name="sys_tooltip_smartscreen"/>
-                            </controls:Button.ToolTip>
-                        </controls:Button>
-                    </StackPanel>
-                    <ui:ToggleSwitch x:Name="quick_smartscreen" FontSize="16" Header="Disable Smart Screen" IsOn="False">
-                        <ui:ToggleSwitch.HeaderTemplate>
-                            <DataTemplate />
-                        </ui:ToggleSwitch.HeaderTemplate>
-                    </ui:ToggleSwitch>
-                </StackPanel>
+                        <ui:SettingsCard x:Name="quick_hidewidget" Header="Hide The Task View And Widgets Button" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:ToggleSwitch x:Name="quick_hidewidget_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
 
-                <StackPanel Margin="0,5">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Header, ElementName=quick_hybern}" FontSize="16" VerticalAlignment="Center"/>
-                        <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
-                            <controls:Button.ToolTip>
-                                <ToolTip MaxWidth="500" x:Name="sys_tooltip_hyber"/>
-                            </controls:Button.ToolTip>
-                        </controls:Button>
-                    </StackPanel>
-                    <ui:ToggleSwitch x:Name="quick_hybern" FontSize="16" Header="Disable Hybernation" IsOn="False">
-                        <ui:ToggleSwitch.HeaderTemplate>
-                            <DataTemplate />
-                        </ui:ToggleSwitch.HeaderTemplate>
-                    </ui:ToggleSwitch>
-                </StackPanel>
+                        <ui:SettingsCard x:Name="quick_sticky" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:SettingsCard.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="quick_sticky_txt" Text="Disable Sticky Keys" VerticalAlignment="Center"/>
+                                    <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
+                                        <controls:Button.ToolTip>
+                                            <ToolTip MaxWidth="500" x:Name="sys_tooltip_sticky"/>
+                                        </controls:Button.ToolTip>
+                                    </controls:Button>
+                                </StackPanel>
+                            </ui:SettingsCard.Header>
+                            <ui:ToggleSwitch x:Name="quick_sticky_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
 
-                <StackPanel Margin="0,5">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Header, ElementName=quick_vbs}" FontSize="16" VerticalAlignment="Center"/>
-                        <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
-                            <controls:Button.ToolTip>
-                                <ToolTip MaxWidth="500" x:Name="sys_tooltip_vbs"/>
-                            </controls:Button.ToolTip>
-                        </controls:Button>
-                    </StackPanel>
-                    <ui:ToggleSwitch x:Name="quick_vbs" FontSize="16" Header="Disable VBS" IsOn="False">
-                        <ui:ToggleSwitch.HeaderTemplate>
-                            <DataTemplate />
-                        </ui:ToggleSwitch.HeaderTemplate>
-                    </ui:ToggleSwitch>
-                </StackPanel>
+                        <ui:SettingsCard x:Name="quick_bingoff" Header="Disable Online Search In Start Via Bing" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:ToggleSwitch x:Name="quick_bingoff_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
 
-                <ui:ToggleSwitch Header="Disable All Telemetry" FontSize="16" IsOn="False" Margin="0,5" x:Name="quick_telemetry"/>
-                <ui:ToggleSwitch Header="Add End Task" FontSize="16" IsOn="False" Margin="0,5" x:Name="quick_endtask"/>
+                        <ui:SettingsCard x:Name="quick_removeads" Header="Remove Ads In Start Menu And Taskbar Search" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:ToggleSwitch x:Name="quick_removeads_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
 
-                <StackPanel Margin="0,5">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Header, ElementName=quick_verbose}" FontSize="16" VerticalAlignment="Center"/>
-                        <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
-                            <controls:Button.ToolTip>
-                                <ToolTip MaxWidth="500" x:Name="sys_tooltip_verbose"/>
-                            </controls:Button.ToolTip>
-                        </controls:Button>
-                    </StackPanel>
-                    <ui:ToggleSwitch x:Name="quick_verbose" FontSize="16" Header="Enable Verbose" IsOn="False">
-                        <ui:ToggleSwitch.HeaderTemplate>
-                            <DataTemplate />
-                        </ui:ToggleSwitch.HeaderTemplate>
-                    </ui:ToggleSwitch>
-                </StackPanel>
+                        <ui:SettingsCard x:Name="quick_chkdsk" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:SettingsCard.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="quick_chkdsk_txt" Text="Set Chkdsk Timeout to 1 Minute" VerticalAlignment="Center"/>
+                                    <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
+                                        <controls:Button.ToolTip>
+                                            <ToolTip MaxWidth="500" x:Name="sys_tooltip_chkdsk"/>
+                                        </controls:Button.ToolTip>
+                                    </controls:Button>
+                                </StackPanel>
+                            </ui:SettingsCard.Header>
+                            <ui:ToggleSwitch x:Name="quick_chkdsk_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
+
+                        <ui:SettingsCard x:Name="quick_bitlockeroff" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:SettingsCard.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="quick_bitlockeroff_txt" Text="Disable Automatic BitLocker Encryption" VerticalAlignment="Center"/>
+                                    <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
+                                        <controls:Button.ToolTip>
+                                            <ToolTip MaxWidth="500" x:Name="sys_tooltip_bitlocker"/>
+                                        </controls:Button.ToolTip>
+                                    </controls:Button>
+                                </StackPanel>
+                            </ui:SettingsCard.Header>
+                            <ui:ToggleSwitch x:Name="quick_bitlockeroff_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
+
+                        <ui:SettingsCard x:Name="quick_clipboard" Header="Enable Clipboard" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:ToggleSwitch x:Name="quick_clipboard_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
+
+                        <ui:SettingsCard x:Name="quick_directplay" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:SettingsCard.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="quick_directplay_txt" Text="Install DirectPlay" VerticalAlignment="Center"/>
+                                    <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
+                                        <controls:Button.ToolTip>
+                                            <ToolTip MaxWidth="500" x:Name="sys_tooltip_directplay"/>
+                                        </controls:Button.ToolTip>
+                                    </controls:Button>
+                                </StackPanel>
+                            </ui:SettingsCard.Header>
+                            <ui:ToggleSwitch x:Name="quick_directplay_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
+
+                        <ui:SettingsCard x:Name="quick_oldcont" Header="Enable Old Context Menu" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:ToggleSwitch x:Name="quick_oldcont_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
+
+                        <ui:SettingsCard x:Name="quick_gallery" Header="Hide Gallery" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:ToggleSwitch x:Name="quick_gallery_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
+
+                        <ui:SettingsCard x:Name="quick_endtask" Header="Add End Task" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:ToggleSwitch x:Name="quick_endtask_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
+
+                    </ui:SettingsExpander.Items>
+                </ui:SettingsExpander>
+
+                <ui:SettingsExpander x:Name="expander2" Header="Продвинутые настройки" IsExpanded="False" FontSize="16" HorizontalAlignment="Stretch" Margin="0,5,0,0">
+                    <ui:SettingsExpander.HeaderIcon>
+                        <ui:FontIcon Icon="{x:Static ui:SegoeFluentIcons.Settings}" />
+                    </ui:SettingsExpander.HeaderIcon>
+
+                    <CheckBox x:Name="selectAll2" Content="Select All" Click="selectAll_Click"/>
+                    <ui:SettingsExpander.Items>
+
+                        <ui:SettingsCard x:Name="quick_coreisol" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:SettingsCard.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="quick_coreisol_txt" Text="Disable CoreIsol" VerticalAlignment="Center"/>
+                                    <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
+                                        <controls:Button.ToolTip>
+                                            <ToolTip MaxWidth="500" x:Name="sys_tooltip_coreisol"/>
+                                        </controls:Button.ToolTip>
+                                    </controls:Button>
+                                </StackPanel>
+                            </ui:SettingsCard.Header>
+                            <ui:ToggleSwitch x:Name="quick_coreisol_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
+
+                        <ui:SettingsCard x:Name="quick_uac" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:SettingsCard.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="quick_uac_txt" Text="Disable UAC" VerticalAlignment="Center"/>
+                                    <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
+                                        <controls:Button.ToolTip>
+                                            <ToolTip MaxWidth="500" x:Name="sys_tooltip_uac"/>
+                                        </controls:Button.ToolTip>
+                                    </controls:Button>
+                                </StackPanel>
+                            </ui:SettingsCard.Header>
+                            <ui:ToggleSwitch x:Name="quick_uac_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
+
+                        <ui:SettingsCard x:Name="quick_smartscreen" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:SettingsCard.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="quick_smartscreen_txt" Text="Disable Smart Screen" VerticalAlignment="Center"/>
+                                    <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
+                                        <controls:Button.ToolTip>
+                                            <ToolTip MaxWidth="500" x:Name="sys_tooltip_smartscreen"/>
+                                        </controls:Button.ToolTip>
+                                    </controls:Button>
+                                </StackPanel>
+                            </ui:SettingsCard.Header>
+                            <ui:ToggleSwitch x:Name="quick_smartscreen_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
+
+                        <ui:SettingsCard x:Name="quick_hybern" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:SettingsCard.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="quick_hybern_txt" Text="Disable Hybernation" VerticalAlignment="Center"/>
+                                    <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
+                                        <controls:Button.ToolTip>
+                                            <ToolTip MaxWidth="500" x:Name="sys_tooltip_hyber"/>
+                                        </controls:Button.ToolTip>
+                                    </controls:Button>
+                                </StackPanel>
+                            </ui:SettingsCard.Header>
+                            <ui:ToggleSwitch x:Name="quick_hybern_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
+
+                        <ui:SettingsCard x:Name="quick_vbs" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:SettingsCard.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="quick_vbs_txt" Text="Disable VBS" VerticalAlignment="Center"/>
+                                    <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
+                                        <controls:Button.ToolTip>
+                                            <ToolTip MaxWidth="500" x:Name="sys_tooltip_vbs"/>
+                                        </controls:Button.ToolTip>
+                                    </controls:Button>
+                                </StackPanel>
+                            </ui:SettingsCard.Header>
+                            <ui:ToggleSwitch x:Name="quick_vbs_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
+
+                        <ui:SettingsCard x:Name="quick_verbose" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:SettingsCard.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="quick_verbose_txt" Text="Enable Verbose" VerticalAlignment="Center"/>
+                                    <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
+                                        <controls:Button.ToolTip>
+                                            <ToolTip MaxWidth="500" x:Name="sys_tooltip_verbose"/>
+                                        </controls:Button.ToolTip>
+                                    </controls:Button>
+                                </StackPanel>
+                            </ui:SettingsCard.Header>
+                            <ui:ToggleSwitch x:Name="quick_verbose_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
+
+                        <ui:SettingsCard x:Name="quick_telemetry" Header="Disable All Telemetry" FontSize="16" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right">
+                            <ui:ToggleSwitch x:Name="quick_telemetry_t" FontSize="16" IsOn="False"/>
+                        </ui:SettingsCard>
+
+                    </ui:SettingsExpander.Items>
+                </ui:SettingsExpander>
 
             </StackPanel>
         </ScrollViewer>
-        <controls:Button x:Name="uncheck" Content="Uncheck All" HorizontalAlignment="Right" VerticalAlignment="Bottom" Panel.ZIndex="1" Width="200" Height="33" Margin="0,0,23,54" Click="uncheck_Click"/>
-        <controls:Button x:Name="start" Content="Start Quick Setup" HorizontalAlignment="Right" VerticalAlignment="Bottom" Panel.ZIndex="1" Width="200" Height="33" Margin="0,0,23,15" Click="start_Click"/>
+
+        <Border x:Name="BottomPanel" Grid.Row="1" BorderThickness="0,0,0,0" Padding="24,10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+
+                <controls:Button x:Name="makuos" Content="Apply MakuOS Settings" Padding="20,5" Margin="0,0,8,0" Height="34" Click="makuos_Click" ToolTipService.InitialShowDelay="100">
+                    <controls:Button.ToolTip>
+                        <ToolTip MaxWidth="500" x:Name="makuos_tooltip"/>
+                    </controls:Button.ToolTip>
+                </controls:Button>
+
+                <controls:Button x:Name="start" Content="Start Quick Setup" Padding="20,5" Height="34" Click="start_Click"/>
+            </StackPanel>
+        </Border>
+
+        <Grid x:Name="SuccessOverlay" Grid.RowSpan="2" Visibility="Collapsed" Background="Transparent" Opacity="0">
+            <Viewbox Width="150" Height="150" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Canvas Width="100" Height="100">
+                    <Canvas.Resources>
+                        <LinearGradientBrush x:Key="CheckGradient" StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Offset="0"/>
+                            <GradientStop Color="{Binding Source={x:Static SystemParameters.WindowGlassColor}}" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Canvas.Resources>
+                    <Path x:Name="SuccessIcon" Data="M 10,50 L 40,80 L 90,20" StrokeThickness="10" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" RenderTransformOrigin="0.5,0.5">
+                        <Path.RenderTransform>
+                            <ScaleTransform x:Name="SuccessIconTransform" ScaleX="0.5" ScaleY="0.5"/>
+                        </Path.RenderTransform>
+                    </Path>
+                </Canvas>
+            </Viewbox>
+        </Grid>
+
     </Grid>
 </Page>
