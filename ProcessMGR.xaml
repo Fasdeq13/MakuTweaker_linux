@@ -5,11 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:controls="clr-namespace:MicaWPF.Controls;assembly=MicaWPF"
       xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-      xmlns:oldui="http://schemas.modernwpf.com/2019"
-      mc:Ignorable="d"
-      d:DesignHeight="702" d:DesignWidth="704"
+      mc:Ignorable="d" d:DesignHeight="702" d:DesignWidth="704"
       Loaded="Page_Loaded"
-      Unloaded="Page_Unloaded">
+      Unloaded="Page_Unloaded"
+      Focusable="True">
 
     <Page.Resources>
         <ContextMenu x:Key="ItemContextMenu" Opened="ContextMenu_Opened" Closed="ContextMenu_Closed">
@@ -65,7 +64,10 @@
             </controls:Button>
 
             <controls:Button x:Name="MakuYan" Width="28" Height="28" Margin="5,-5,0,0" VerticalAlignment="Center" Click="MakuYan_Click">
-                <ui:SymbolIcon Symbol="Permissions"  FontSize="12"/>
+                <ui:FontIcon Glyph="&#xE72E;" FontFamily="Segoe MDL2 Assets" FontSize="12"/>
+                <controls:Button.ToolTip>
+                    <ToolTip MaxWidth="350" x:Name="mgr2_tooltip"/>
+                </controls:Button.ToolTip>
             </controls:Button>
         </StackPanel>
 

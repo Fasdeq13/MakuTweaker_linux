@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MakuTweakerNew"
       xmlns:controls="clr-namespace:MicaWPF.Controls;assembly=MicaWPF"
-      xmlns:ui="http://schemas.modernwpf.com/2019"
+      xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
       mc:Ignorable="d" 
       d:DesignHeight="702" d:DesignWidth="704.04"
       Title="Desktop">

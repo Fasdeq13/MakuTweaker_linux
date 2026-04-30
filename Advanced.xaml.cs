@@ -23,8 +23,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using Windows.UI.Composition.Desktop;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using static System.Runtime.InteropServices.Marshalling.IIUnknownCacheStrategy;
 
 namespace MakuTweakerNew
 {
@@ -70,36 +68,21 @@ namespace MakuTweakerNew
         {
             var languageCode = Properties.Settings.Default.lang ?? "en";
             var adv = MainWindow.Localization.LoadLocalization(languageCode, "adv");
-            var basel = MainWindow.Localization.LoadLocalization(languageCode, "base");
+            var main = MainWindow.Localization.LoadLocalization(languageCode, "base");
             var compon = MainWindow.Localization.LoadLocalization(languageCode, "compon");
             var tooltips = MainWindow.Localization.LoadLocalization(languageCode, "tooltips");
 
-            label.Text = basel["catname"]["adv"];
+            label.Text = main["catname"]["adv"];
 
             edgelabel.Text = adv["main"]["deledge_title"];
             edgeBtn.Content = adv["main"]["deledge_btn"];
 
             disindex.Header = adv["main"]["index_title"];
-
             oldbootloader.Header = adv["main"]["oldbootloader"];
             advancedboot.Header = adv["main"]["advancedboot"];
             swap.Header = adv["main"]["swap"];
             vbs.Header = adv["main"]["vbs"];
             ttl.Header = adv["main"]["ttl"];
-
-            oldbootloader.OffContent = basel["def"]["off"];
-            advancedboot.OffContent = basel["def"]["off"];
-            swap.OffContent = basel["def"]["off"];
-            vbs.OffContent = basel["def"]["off"];
-            ttl.OffContent = basel["def"]["off"];
-            disindex.OffContent = basel["def"]["off"];
-
-            oldbootloader.OnContent = basel["def"]["on"];
-            advancedboot.OnContent = basel["def"]["on"];
-            swap.OnContent = basel["def"]["on"];
-            vbs.OnContent = basel["def"]["on"];
-            ttl.OnContent = basel["def"]["on"];
-            disindex.OnContent = basel["def"]["on"];
 
             sys_tooltip_vbs.Content = tooltips["main"]["coreisol"];
             sys_tooltip_swap.Content = tooltips["main"]["swap"];
@@ -108,7 +91,23 @@ namespace MakuTweakerNew
             sys_tooltip_ttl.Content = tooltips["main"]["ttl"];
             edge_tooltip.Content = adv["main"]["deledge_tooltip"];
             index_tooltip.Content = adv["main"]["index_tooltip"];
+
+            foreach (var toggle in AllToggles)
+            {
+                toggle.OnContent = main["def"]["on"];
+                toggle.OffContent = main["def"]["off"];
+            }
         }
+
+        private List<ModernWpf.Controls.ToggleSwitch> AllToggles => new()
+        {
+            oldbootloader,
+            advancedboot,
+            swap,
+            vbs,
+            ttl,
+            disindex
+        };
         private void checkReg()
         {
             vbs.IsOn = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\DeviceGuard")?.GetValue("EnableVirtualizationBasedSecurity")?.Equals(0) ?? false;

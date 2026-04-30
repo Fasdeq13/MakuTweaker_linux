@@ -5,14 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MakuTweakerNew"
       xmlns:controls="clr-namespace:MicaWPF.Controls;assembly=MicaWPF"
-      xmlns:ui="http://schemas.modernwpf.com/2019"
+       xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
       mc:Ignorable="d" 
       d:DesignHeight="672" d:DesignWidth="704.04"
       Title="Performance">
 
     <StackPanel Margin="24,11,24,0">
         <TextBlock x:Name="label" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Performance" FontSize="32" FontFamily="Segoe UI Semibold" Margin="0,0,0,10"/>
-        <TextBlock x:Name="infolabel" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TEXT" FontSize="20" FontFamily="Segoe UI Semilight" Margin="0,0,0,15"/>
+        <TextBlock x:Name="infolabel" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TEXT" FontSize="20" FontFamily="Segoe UI Semilight" Margin="0,0,70,15"/>
 
         <WrapPanel Margin="0,0,0,0">
             <controls:Button x:Name="apply" Content="Apply_Percent" Height="30" Width="208" Click="apply_Click" Margin="0,0,8,4"/>
