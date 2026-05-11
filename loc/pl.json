@@ -313,7 +313,11 @@
             "main": {
                 "label": "Zarządzanie procesami",
                 "endprocess": "Zakończ proces",
-                "onlyfrozen": "Pokaż tylko zawieszone procesy",
+                "onlyfrozen": "Tylko zawieszone",
+                "compact": "Widok kompaktowy",
+                "group": "Grupuj procesy",
+                "process": "Proces",
+                "memuse": "Użycie pamięci",
                 "location": "Lokalizacja pliku",
                 "excl": "Dodaj do wyjątków",
                 "exclinfo": "Wprowadź nazwy procesów oddzielone przecinkami:",

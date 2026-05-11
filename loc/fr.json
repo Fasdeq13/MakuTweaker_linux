@@ -313,7 +313,11 @@
             "main": {
                 "label": "Gestion des processus",
                 "endprocess": "Terminer le processus",
-                "onlyfrozen": "Afficher uniquement les processus gelés",
+                "onlyfrozen": "Uniquement figés",
+                "compact": "Vue compacte",
+                "group": "Grouper les processus",
+                "process": "Processus",
+                "memuse": "Utilisation mémoire",
                 "location": "Emplacement du fichier",
                 "excl": "Ajouter aux exclusions",
                 "exclinfo": "Entrez les noms des processus séparés par des virgules :",

@@ -313,7 +313,11 @@
             "main": {
                 "label": "İşlem Yönetimi",
                 "endprocess": "Görevi sonlandır",
-                "onlyfrozen": "Sadece yanıt vermeyen işlemleri göster",
+                "onlyfrozen": "Yalnızca donanlar",
+                "compact": "Sıkışık görünüm",
+                "group": "Süreçleri grupla",
+                "process": "Süreç",
+                "memuse": "Bellek kullanımı",
                 "location": "Dosya konumu",
                 "excl": "İstisnalara ekle",
                 "exclinfo": "İşlem adlarını virgülle ayırarak girin:",

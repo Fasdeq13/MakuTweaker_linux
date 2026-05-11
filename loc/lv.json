@@ -313,7 +313,11 @@
             "main": {
                 "label": "Procesu pārvaldība",
                 "endprocess": "Beigt procesu",
-                "onlyfrozen": "Rādīt tikai uzkārušos procesus",
+                "onlyfrozen": "Tikai sastingušie",
+                "compact": "Kompaktais skats",
+                "group": "Grupēt procesus",
+                "process": "Process",
+                "memuse": "Atmiņas lietojums",
                 "location": "Faila atrašanās vieta",
                 "excl": "Pievienot izņēmumiem",
                 "exclinfo": "Ievadiet procesu nosaukumus, atdalītus ar komatiem:",

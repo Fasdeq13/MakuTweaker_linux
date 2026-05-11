@@ -313,7 +313,11 @@
             "main": {
                 "label": "Gestión de procesos",
                 "endprocess": "Finalizar proceso",
-                "onlyfrozen": "Mostrar solo procesos bloqueados",
+                "onlyfrozen": "Solo congelados",
+                "compact": "Vista compacta",
+                "group": "Agrupar procesos",
+                "process": "Proceso",
+                "memuse": "Uso de memoria",
                 "location": "Ubicación del archivo",
                 "excl": "Agregar a exclusiones",
                 "exclinfo": "Ingrese nombres de procesos separados por comas:",

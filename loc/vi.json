@@ -313,7 +313,11 @@
             "main": {
                 "label": "Quản lý tiến trình",
                 "endprocess": "Kết thúc tiến trình",
-                "onlyfrozen": "Chỉ hiển thị các tiến trình bị treo",
+                "onlyfrozen": "Chỉ các mục bị treo",
+                "compact": "Chế độ xem thu gọn",
+                "group": "Nhóm các quy trình",
+                "process": "Quy trình",
+                "memuse": "Sử dụng bộ nhớ",
                 "location": "Vị trí tệp",
                 "excl": "Thêm vào ngoại lệ",
                 "exclinfo": "Nhập tên tiến trình, phân tách bằng dấu phẩy:",

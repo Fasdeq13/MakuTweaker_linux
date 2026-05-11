@@ -88,7 +88,7 @@
                 "wu6b": "Block",
                 "wu6u": "Unlock",
                 "status": "Clearing Windows Update Cache... This may take some time.",
-                "statusdis": "Changing Windows Update Ctate... This may take some time."
+                "statusdis": "Changing Windows Update State... This may take some time."
             }
         },
         "uwp": {
@@ -313,7 +313,11 @@
             "main": {
                 "label": "Process Management",
                 "endprocess": "End Process",
-                "onlyfrozen": "Show only frozen processes",
+                "onlyfrozen": "Only Frozen",
+                "compact": "Compact View",
+                "group": "Group Processes",
+                "process": "Process",
+                "memuse": "Memory Usage",
                 "location": "File location",
                 "excl": "Add to exclusions",
                 "exclinfo": "Enter process names separated by commas:",

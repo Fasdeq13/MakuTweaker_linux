@@ -313,7 +313,11 @@
             "main": {
                 "label": "进程管理",
                 "endprocess": "结束进程",
-                "onlyfrozen": "仅显示无响应进程",
+                "onlyfrozen": "仅显示卡死项",
+                "compact": "紧凑视图",
+                "group": "分组进程",
+                "process": "进程",
+                "memuse": "内存占用",
                 "location": "文件位置",
                 "excl": "添加到排除项",
                 "exclinfo": "输入用逗号分隔的进程名称：",

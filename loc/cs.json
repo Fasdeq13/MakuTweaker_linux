@@ -313,7 +313,11 @@
             "main": {
                 "label": "Správa procesů",
                 "endprocess": "Ukončit proces",
-                "onlyfrozen": "Zobrazit pouze zamrzlé procesy",
+                "onlyfrozen": "Pouze zamrzlé",
+                "compact": "Kompaktní zobrazení",
+                "group": "Seskupit procesy",
+                "process": "Proces",
+                "memuse": "Využití paměti",
                 "location": "Umístění souboru",
                 "excl": "Přidat do výjimek",
                 "exclinfo": "Zadejte názvy procesů oddělené čárkou:",

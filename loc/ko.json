@@ -313,7 +313,11 @@
             "main": {
                 "label": "프로세스 관리",
                 "endprocess": "프로세스 끝내기",
-                "onlyfrozen": "응답 없는 프로세스만 표시",
+                "onlyfrozen": "응답 없는 항목만",
+                "compact": "간단히 보기",
+                "group": "프로세스 그룹화",
+                "process": "프로세스",
+                "memuse": "메모리 사용량",
                 "location": "파일 위치",
                 "excl": "예외에 추가",
                 "exclinfo": "프로세스 이름을 쉼표로 구분하여 입력하세요:",

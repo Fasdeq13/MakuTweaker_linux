@@ -313,7 +313,11 @@
             "main": {
                 "label": "處理程序管理",
                 "endprocess": "結束處理程序",
-                "onlyfrozen": "僅顯示無回應的處理程序",
+                "onlyfrozen": "僅顯示當機項",
+                "compact": "緊湊檢視",
+                "group": "群組進程",
+                "process": "進程",
+                "memuse": "記憶體佔용",
                 "location": "檔案位置",
                 "excl": "新增到例外",
                 "exclinfo": "輸入以逗號分隔的程序名稱：",

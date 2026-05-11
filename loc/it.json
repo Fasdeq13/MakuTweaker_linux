@@ -313,7 +313,11 @@
             "main": {
                 "label": "Gestione processi",
                 "endprocess": "Termina processo",
-                "onlyfrozen": "Mostra solo processi bloccati",
+                "onlyfrozen": "Solo bloccati",
+                "compact": "Vista compatta",
+                "group": "Raggruppa processi",
+                "process": "Processo",
+                "memuse": "Utilizzo memoria",
                 "location": "Percorso file",
                 "excl": "Aggiungi alle esclusioni",
                 "exclinfo": "Inserisci i nomi dei processi separati da virgole:",

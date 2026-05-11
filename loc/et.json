@@ -313,7 +313,11 @@
             "main": {
                 "label": "Protsessi juhtimine",
                 "endprocess": "Lõpeta protsess",
-                "onlyfrozen": "Kuva ainult hangunud protsessid",
+                "onlyfrozen": "Ainult külmunud",
+                "compact": "Kompaktne vaade",
+                "group": "Grupeeri protsessid",
+                "process": "Protsess",
+                "memuse": "Mälukasutus",
                 "location": "Faili asukoht",
                 "excl": "Lisa eranditesse",
                 "exclinfo": "Sisestage protsesside nimed komadega eraldatult:",

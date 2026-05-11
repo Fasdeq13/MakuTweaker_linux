@@ -230,23 +230,30 @@ namespace MakuTweakerNew
         };
         private void checkReg()
         {
-            bitlocker.IsOn = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\BitLocker")?.GetValue("PreventDeviceEncryption")?.Equals(1) ?? false;
-            chkdsk.IsOn = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Session Manager")?.GetValue("AutoChkTimeout")?.Equals(60) ?? false;
-            coreisol.IsOn = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios")?.GetValue("HypervisorEnforcedCodeIntegrity")?.Equals(0) ?? false;
-            hybern.IsOn = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Power")?.GetValue("HibernateEnabled")?.Equals(0) ?? false;
-            telemetry.IsOn = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection")?.GetValue("AllowTelemetry")?.Equals(0) ?? false;
-            smartscreen.IsOn = (Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", true)?.GetValue("EnableSmartScreen")?.Equals(0) ?? false) ||
-          (Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer", true)?.GetValue("SmartScreenEnabled")?.Equals("Off") ?? false);
-            uac.IsOn = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", true)?.GetValue("EnableLUA")?.Equals(0) ?? false;
-            sticky.IsOn = (Registry.CurrentUser.OpenSubKey(@"Control Panel\Accessibility\StickyKeys", true)?.GetValue("Flags")?.Equals("506") ?? false)
-                      || (Registry.CurrentUser.OpenSubKey(@"Control Panel\Accessibility\ToggleKeys", true)?.GetValue("Flags")?.Equals("58") ?? false)
-                      || (Registry.CurrentUser.OpenSubKey(@"Control Panel\Accessibility\Keyboard Response", true)?.GetValue("Flags")?.Equals("122") ?? false);
+            try
+            {
+                bitlocker.IsOn = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\BitLocker")?.GetValue("PreventDeviceEncryption")?.Equals(1) ?? false;
+                chkdsk.IsOn = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Session Manager")?.GetValue("AutoChkTimeout")?.Equals(60) ?? false;
+                coreisol.IsOn = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios")?.GetValue("HypervisorEnforcedCodeIntegrity")?.Equals(0) ?? false;
+                hybern.IsOn = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Power")?.GetValue("HibernateEnabled")?.Equals(0) ?? false;
+                telemetry.IsOn = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection")?.GetValue("AllowTelemetry")?.Equals(0) ?? false;
+                smartscreen.IsOn = (Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System")?.GetValue("EnableSmartScreen")?.Equals(0) ?? false) ||
+              (Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer")?.GetValue("SmartScreenEnabled")?.Equals("Off") ?? false);
+                uac.IsOn = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System")?.GetValue("EnableLUA")?.Equals(0) ?? false;
 
-            bing.IsOn = Registry.CurrentUser.OpenSubKey(@"Software\Policies\Microsoft\Windows\Explorer", true)?.GetValue("DisableSearchBoxSuggestions")?.Equals(1) ?? false;
+                sticky.IsOn = (Registry.CurrentUser.OpenSubKey(@"Control Panel\Accessibility\StickyKeys")?.GetValue("Flags")?.Equals("506") ?? false)
+                          || (Registry.CurrentUser.OpenSubKey(@"Control Panel\Accessibility\ToggleKeys")?.GetValue("Flags")?.Equals("58") ?? false)
+                          || (Registry.CurrentUser.OpenSubKey(@"Control Panel\Accessibility\Keyboard Response")?.GetValue("Flags")?.Equals("122") ?? false);
 
-            string powerVideo = GetCmdOutput("powercfg", "/q SCHEME_CURRENT SUB_VIDEO VIDEOIDLE");
-            string powerSleep = GetCmdOutput("powercfg", "/q SCHEME_CURRENT SUB_SLEEP STANDBYIDLE");
-            sleeptimeout.IsOn = IsPowerSettingZero(powerVideo) && IsPowerSettingZero(powerSleep);
+                bing.IsOn = Registry.CurrentUser.OpenSubKey(@"Software\Policies\Microsoft\Windows\Explorer")?.GetValue("DisableSearchBoxSuggestions")?.Equals(1) ?? false;
+
+                string powerVideo = GetCmdOutput("powercfg", "/q SCHEME_CURRENT SUB_VIDEO VIDEOIDLE");
+                string powerSleep = GetCmdOutput("powercfg", "/q SCHEME_CURRENT SUB_SLEEP STANDBYIDLE");
+                sleeptimeout.IsOn = IsPowerSettingZero(powerVideo) && IsPowerSettingZero(powerSleep);
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         private void report_Click(object sender, RoutedEventArgs e)

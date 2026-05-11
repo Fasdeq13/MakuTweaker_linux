@@ -313,7 +313,11 @@
             "main": {
                 "label": "Gerenciamento de processos",
                 "endprocess": "Finalizar processo",
-                "onlyfrozen": "Mostrar apenas processos travados",
+                "onlyfrozen": "Apenas travados",
+                "compact": "Vista compacta",
+                "group": "Agrupar processos",
+                "process": "Processo",
+                "memuse": "Uso de memória",
                 "location": "Localização do arquivo",
                 "excl": "Adicionar às exclusões",
                 "exclinfo": "Insira nomes de processos separados por vírgulas:",
@@ -332,7 +336,7 @@
         "myan": {
             "main": {
                 "info": "O MakuTweaker permite bloquear a execução de processos e aplicações especificados. Liste-os separados por vírgulas e o programa aplicará automaticamente as restrições. Para desbloquear um processo, remova-o da lista e salve as alterações.",
-                "excltitle": "Bloqueio de aplicativos",
+                "excltitle": "Bloq. de apps",
                 "applyban": "Aplicar bloqueio",
                 "howitworks": "Como funciona?",
                 "banyandex": "Bloquear Yandex",

@@ -313,7 +313,11 @@
             "main": {
                 "label": "Proseslərin idarə edilməsi",
                 "endprocess": "Prosesi bitir",
-                "onlyfrozen": "Yalnız donmuş prosesləri göstər",
+                "onlyfrozen": "Yalnız donmuşlar",
+                "compact": "Yığcam görünüş",
+                "group": "Prosesləri qruplaşdır",
+                "process": "Proses",
+                "memuse": "Yaddaş istifadəsi",
                 "location": "Faylın yerləşdiyi yer",
                 "excl": "İstisnalara əlavə et",
                 "exclinfo": "Proses adlarını vergüllə daxil edin:",

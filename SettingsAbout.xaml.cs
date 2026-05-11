@@ -23,18 +23,10 @@ namespace MakuTweakerNew
         private MainWindow mw = (MainWindow)System.Windows.Application.Current.MainWindow;
         bool isLoaded = false;
 
-        private readonly Dictionary<string, (string Label, string Name)> _translators = new()
-        {
-            ["cs"] = ("Přispěl k lokalizaci:", "qCLairvoyant"),
-            ["de"] = ("Beitrag zur Lokalisierung:", "Scorazio"),
-            ["pl"] = ("Wkład w lokalizację:", "dfa_jk"),
-            ["et"] = ("Panustas lokaliseerimisse:", "KirTeanEesti")
-        };
-
         public SettingsAbout()
         {
             InitializeComponent();
-            credN.Text = "5.5\nMark Adderly\nNikitori\nMaksimCeleron, Massgrave";
+            credN.Text = "5.6\nMark Adderly\nNikitori\nMaksimCeleron, Bruh_SomeBody, Massgrave";
             if (string.IsNullOrEmpty(Settings.Default.lang))
             {
                 string systemLang = CultureInfo.CurrentUICulture.Name.ToLower();
@@ -113,7 +105,6 @@ namespace MakuTweakerNew
             };
 
             relang();
-            UpdateLocalizationCredits();
             isLoaded = true;
         }
 
@@ -167,7 +158,6 @@ namespace MakuTweakerNew
 
             mw.LoadLang(Settings.Default.lang);
             relang();
-            UpdateLocalizationCredits();
         }
 
         private void style_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -205,24 +195,6 @@ namespace MakuTweakerNew
             savePresetBtn.Content = ab["main"]["cfg_save"];
             importPresetBtn.Content = ab["main"]["cfg_import"];
             tooltip.Content = ab["main"]["cfg_info"];
-        }
-
-        private void UpdateLocalizationCredits()
-        {
-            string currentLang = Settings.Default.lang ?? "en";
-
-            if (_translators.TryGetValue(currentLang, out var credits))
-            {
-                credLang.Visibility = Visibility.Visible;
-                credLangtext.Visibility = Visibility.Visible;
-                credLang.Text = credits.Label;
-                credLangtext.Text = credits.Name;
-            }
-            else
-            {
-                credLang.Visibility = Visibility.Collapsed;
-                credLangtext.Visibility = Visibility.Collapsed;
-            }
         }
 
         //CONFIG

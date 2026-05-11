@@ -142,5 +142,41 @@ namespace MakuTweakerNew.Properties {
                 this["disableUpdateNotify"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int LastProcessFilterIndex {
+            get {
+                return ((int)(this["LastProcessFilterIndex"]));
+            }
+            set {
+                this["LastProcessFilterIndex"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool group {
+            get {
+                return ((bool)(this["group"]));
+            }
+            set {
+                this["group"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool compact {
+            get {
+                return ((bool)(this["compact"]));
+            }
+            set {
+                this["compact"] = value;
+            }
+        }
     }
 }

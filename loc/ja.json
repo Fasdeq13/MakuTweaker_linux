@@ -313,7 +313,11 @@
             "main": {
                 "label": "プロセス管理",
                 "endprocess": "プロセスを終了",
-                "onlyfrozen": "応答なしのプロセスのみ表示",
+                "onlyfrozen": "フリーズした項目のみ",
+                "compact": "コンパクト表示",
+                "group": "プロセスをグループ化",
+                "process": "プロセス",
+                "memuse": "メモリ使用量",
                 "location": "ファイルの場所",
                 "excl": "除外に追加",
                 "exclinfo": "プロセス名をカンマで区切って入力してください:",

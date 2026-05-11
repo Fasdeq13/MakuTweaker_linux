@@ -313,7 +313,11 @@
             "main": {
                 "label": "Prozessverwaltung",
                 "endprocess": "Prozess beenden",
-                "onlyfrozen": "Nur nicht reagierende Prozesse anzeigen",
+                "onlyfrozen": "Nur eingefrorene",
+                "compact": "Kompakte Ansicht",
+                "group": "Prozesse gruppieren",
+                "process": "Prozess",
+                "memuse": "Speicherauslastung",
                 "location": "Dateispeicherort",
                 "excl": "Zu Ausnahmen hinzufügen",
                 "exclinfo": "Geben Sie Prozessnamen durch Kommas getrennt ein:",

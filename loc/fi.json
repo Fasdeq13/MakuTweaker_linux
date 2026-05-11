@@ -313,7 +313,11 @@
             "main": {
                 "label": "Prosessien hallinta",
                 "endprocess": "Lopeta prosessi",
-                "onlyfrozen": "Näytä vain jumiutuneet prosessit",
+                "onlyfrozen": "Vain jäätyneet",
+                "compact": "Tiivistetty näkymä",
+                "group": "Ryhmittele prosessit",
+                "process": "Prosessi",
+                "memuse": "Muistin käyttö",
                 "location": "Tiedoston sijainti",
                 "excl": "Lisää poikkeuksiin",
                 "exclinfo": "Anna prosessien nimet pilkuilla erotettuna:",

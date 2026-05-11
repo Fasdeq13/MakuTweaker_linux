@@ -313,7 +313,11 @@
             "main": {
                 "label": "Manajemen proses",
                 "endprocess": "Akhiri proses",
-                "onlyfrozen": "Tampilkan hanya proses yang macet",
+                "onlyfrozen": "Hanya yang macet",
+                "compact": "Tampilan ringkas",
+                "group": "Grupkan proses",
+                "process": "Proses",
+                "memuse": "Penggunaan memori",
                 "location": "Lokasi file",
                 "excl": "Tambahkan ke pengecualian",
                 "exclinfo": "Masukkan nama proses dipisahkan dengan koma:",

@@ -12,7 +12,7 @@
     <Grid>
         <Image Source="assets/images/MakuTweakerAbout.png" HorizontalAlignment="Center" VerticalAlignment="Top" Width="498" Height="100" Margin="0,220,0,0"/>
         <TextBlock x:Name="credL" HorizontalAlignment="Left" Margin="30,328,0,0" TextWrapping="Wrap" Text="credL" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold"/>
-        <TextBlock x:Name="credN" Margin="380,328,0,0" TextWrapping="Wrap" Text="credN" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Width="325"/>
+        <TextBlock x:Name="credN" Margin="380,328,0,0" TextWrapping="Wrap" Text="credN" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left"/>
 
         <TextBlock x:Name="credLang" HorizontalAlignment="Left" Margin="30,453,0,0" TextWrapping="Wrap" Text="credLang" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold" Visibility="Hidden"/>
         <TextBlock x:Name="credLangtext" Margin="380,453,0,0" TextWrapping="Wrap" Text="credLangtext" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Width="296" Visibility="Hidden"/>

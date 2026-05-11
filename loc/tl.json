@@ -313,7 +313,11 @@
             "main": {
                 "label": "Pamamahala ng Proseso",
                 "endprocess": "Tapusin ang proseso",
-                "onlyfrozen": "Ipakita lamang ang mga frozen na proseso",
+                "onlyfrozen": "Mga naka-freeze lang",
+                "compact": "Compact na view",
+                "group": "I-grupo ang mga proseso",
+                "process": "Proseso",
+                "memuse": "Paggamit ng memory",
                 "location": "Lokasyon ng file",
                 "excl": "Idagdag sa mga exception",
                 "exclinfo": "Ilagay ang mga pangalan ng proseso na pinaghihiwalay ng kuwit:",
