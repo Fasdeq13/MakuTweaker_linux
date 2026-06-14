@@ -8,9 +8,9 @@
         mc:Ignorable="d"
         ui:ThemeManager.RequestedTheme="Default"
         Title="Исключения процессов"
-        Height="400" Width="650"
-        WindowStartupLocation="CenterOwner"
+        Height="430" Width="650" WindowStartupLocation="CenterOwner"
         ShowInTaskbar="False"
+        SystemBackdropType="Tabbed" 
         ResizeMode="NoResize"
         UseLayoutRounding="True"
         FocusVisualStyle="{x:Null}"
@@ -27,25 +27,25 @@
 
         <TextBlock x:Name="InfoText"
            Text="Введите имена процессов через запятую:" 
-           FontSize="18" Margin="0,0,0,10" FontWeight="SemiBold"/>
+           FontSize="18" Margin="0,0,0,10" FontWeight="SemiBold"
+           TextWrapping="Wrap"/>
 
         <TextBox x:Name="ExclusionsTxt" Grid.Row="1" TextWrapping="Wrap" 
          AcceptsReturn="True" VerticalContentAlignment="Top" Padding="5"
          ui:ControlHelper.PlaceholderText="discord, spotify, cs2, chrome..."/>
 
         <Grid Grid.Row="2" Margin="0,10,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-
-            <StackPanel Orientation="Horizontal" Grid.Column="0">
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                <TextBlock x:Name="ProcessNameStyleLabel" Text="Формат имен процессов:" FontSize="18" Margin="0,0,0,5"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                    <RadioButton x:Name="RadioNameFriendly" Content="Дружелюбный (Microsoft Edge)" Margin="0,0,15,0"/>
+                    <RadioButton x:Name="RadioNameSystem" Content="Системный (msedge.exe)" Margin="0,0,15,0"/>
+                    <RadioButton x:Name="RadioNameBoth" Content="Оба варианта" />
+                </StackPanel>
+                <CheckBox x:Name="OnlyMbCheck" FontSize="13" Margin="0,0,0,0"/>
+                <CheckBox x:Name="ReplaceTaskmgrCheck" FontSize="13" Margin="0,0,0,0"/>
             </StackPanel>
-
-            <StackPanel Orientation="Horizontal" Grid.Column="1">
-                <Button x:Name="ClearBtn" Content="Очистить" Padding="15,5" Margin="0,0,9,0" Click="Clear_Click"/>
-                <Button x:Name="SaveBtn" Content="Сохранить" Padding="15,5" Click="Save_Click"/>
-            </StackPanel>
+            <Button x:Name="SaveBtn" Content="Сохранить" Padding="20,4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Save_Click"/>
         </Grid>
     </Grid>
 </controls:MicaWindow>

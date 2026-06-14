@@ -201,6 +201,7 @@ namespace MakuTweakerNew
         "Microsoft.Copilot",
         "Microsoft.MicrosoftOfficeHub"
     };
+            int installedCount = 0;
 
             var installedApps = await GetInstalledUWPAppsAsync();
             foreach (var appId in appIds)
@@ -230,6 +231,7 @@ namespace MakuTweakerNew
                 {
                     mappedSettingsCard.Visibility = isInstalled ? Visibility.Visible : Visibility.Collapsed;
                     mappedSettingsCard.IsEnabled = isInstalled;
+                    if (isInstalled) installedCount++;
                 }
 
                 if (ToggleMap.TryGetValue(appId, out var mappedToggle))
@@ -248,12 +250,19 @@ namespace MakuTweakerNew
             UpdateCategoryVisibility();
 
             b.IsEnabled = AllToggles.Any(t => t.IsOn);
-
             _isChecking = false;
-            bool anyInstalled = appIds.Any(id =>
-                SettingsCardMap.TryGetValue(id, out var card) && card.Visibility == Visibility.Visible);
 
-            if (!anyInstalled)
+            bool shouldHide = installedCount < 5;
+            if (mw != null)
+            {
+                mw.c5.Visibility = shouldHide ? Visibility.Collapsed : Visibility.Visible;
+            }
+
+            Properties.Settings.Default.UwpHidden = shouldHide;
+            Properties.Settings.Default.UwpChecked = true;
+            Properties.Settings.Default.Save();
+
+            if (installedCount == 0)
             {
                 if (_progressShown)
                 {
@@ -417,7 +426,6 @@ namespace MakuTweakerNew
             ["Microsoft.Copilot"] = u31t,
             ["Microsoft.MicrosoftOfficeHub"] = u31t
         };
-
         private async Task<HashSet<string>> GetInstalledUWPAppsAsync()
         {
             return await Task.Run(() =>
@@ -589,6 +597,11 @@ namespace MakuTweakerNew
 
             if (toRemove.Count > 0)
             {
+                var togglesToRemove = appPackages
+                    .Where(x => x.toggle.IsOn && x.toggle.Visibility == Visibility.Visible)
+                    .Select(x => x.toggle)
+                    .Distinct();
+
                 var script = string.Join("\n", toRemove.Select(pkg =>
                     $"Get-AppxPackage -Name '{pkg}' | Remove-AppxPackage"));
 

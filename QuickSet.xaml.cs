@@ -22,6 +22,7 @@ namespace MakuTweakerNew
 {
     public partial class QuickSet : System.Windows.Controls.Page
     {
+        public int VisibleTweaksCount { get; private set; }
         public QuickSet()
         {
             InitializeComponent();
@@ -94,21 +95,25 @@ namespace MakuTweakerNew
                 }
             }
 
-            bool anyVisible = false;
-
+            int visibleCount = 0;
             foreach (var toggle in GetAllToggles())
             {
                 if (IsToggleEffectivelyVisible(toggle))
                 {
-                    anyVisible = true;
-                    break;
+                    visibleCount++;
                 }
             }
 
+            VisibleTweaksCount = visibleCount;
+
             var languageCode = Properties.Settings.Default.lang ?? "en";
             var quick = MainWindow.Localization.LoadLocalization(languageCode, "quick");
+            if (Application.Current.MainWindow is MainWindow mainWindow)
+            {
+                mainWindow.c6.Visibility = (visibleCount < 5) ? Visibility.Collapsed : Visibility.Visible;
+            }
 
-            if (!anyVisible)
+            if (visibleCount == 0)
             {
                 info.Message = quick["main"]["infodone"];
                 start.Visibility = Visibility.Collapsed;
@@ -118,11 +123,6 @@ namespace MakuTweakerNew
 
                 if (showCheckmark && SuccessOverlay.Visibility != Visibility.Visible)
                     ShowSuccessCheckmark(true);
-
-                if (Application.Current.MainWindow is MainWindow mainWindow)
-                {
-                    mainWindow.c6.Visibility = Visibility.Collapsed;
-                }
             }
             else
             {
@@ -383,14 +383,11 @@ namespace MakuTweakerNew
                     }
                     if (quick_hidewidget_t.IsOn == true && quick_hidewidget.IsVisible)
                     {
-                        try
-                        {
-                            Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced").SetValue("ShowTaskViewButton", 0);
-                            Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced").SetValue("TaskbarDa", 0);
-                            Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced").SetValue("TaskbarMn", 0);
-                            HideAppliedToggle((FrameworkElement)quick_hidewidget);
-                        }
-                        catch { }
+                        try { Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced").SetValue("ShowTaskViewButton", 0); } catch { }
+                        try { Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced").SetValue("TaskbarDa", 0); } catch { }
+                        try { Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced").SetValue("TaskbarMn", 0); } catch { }
+
+                        HideAppliedToggle((FrameworkElement)quick_hidewidget);
                     }
                     if (quick_removeads_t.IsOn == true && quick_removeads.IsVisible)
                     {
@@ -657,6 +654,7 @@ namespace MakuTweakerNew
             if (IsToggleEffectivelyVisible(quick_sticky_t)) quick_sticky_t.IsOn = true;
             if (IsToggleEffectivelyVisible(quick_contdelay_t)) quick_contdelay_t.IsOn = true;
             if (IsToggleEffectivelyVisible(quick_telemetry_t)) quick_telemetry_t.IsOn = true;
+            if (IsToggleEffectivelyVisible(quick_hidewidget_t)) quick_hidewidget_t.IsOn = true;
         }
     }
 }

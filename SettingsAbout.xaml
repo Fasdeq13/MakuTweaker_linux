@@ -10,17 +10,17 @@
       Title="Explorer">
 
     <Grid>
-        <Image Source="assets/images/MakuTweakerAbout.png" HorizontalAlignment="Center" VerticalAlignment="Top" Width="498" Height="100" Margin="0,220,0,0"/>
-        <TextBlock x:Name="credL" HorizontalAlignment="Left" Margin="30,328,0,0" TextWrapping="Wrap" Text="credL" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold"/>
-        <TextBlock x:Name="credN" Margin="380,328,0,0" TextWrapping="Wrap" Text="credN" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left"/>
+        <Image Source="assets/images/MakuTweakerAbout.png" HorizontalAlignment="Center" VerticalAlignment="Top" Width="498" Height="100" Margin="0,260,0,0"/>
+        <TextBlock x:Name="credL" HorizontalAlignment="Left" Margin="30,358,0,0" TextWrapping="Wrap" Text="credL" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold"/>
+        <TextBlock x:Name="credN" Margin="380,358,0,0" TextWrapping="Wrap" Text="credN" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left"/>
 
         <TextBlock x:Name="credLang" HorizontalAlignment="Left" Margin="30,453,0,0" TextWrapping="Wrap" Text="credLang" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold" Visibility="Hidden"/>
         <TextBlock x:Name="credLangtext" Margin="380,453,0,0" TextWrapping="Wrap" Text="credLangtext" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Semibold" HorizontalAlignment="Left" Width="296" Visibility="Hidden"/>
 
         <controls:Button x:Name="web" Content="Official Website" Margin="30,504,452,0" Height="38" Click="Button_Click" VerticalAlignment="Top"/>
-        <Image HorizontalAlignment="Left" Height="74" Margin="560,506,0,0" VerticalAlignment="Top" Source="/assets/images/hand_heart_donate_icon.png" Width="75" MouseLeftButtonUp="Image_MouseLeftButtonUp" Cursor="Hand"/>
-        <Image HorizontalAlignment="Left" Height="74" Margin="470,506,0,0" VerticalAlignment="Top" Source="/assets/images/Telegram_2019_Logo.svg.png" Width="75" MouseLeftButtonUp="Image_MouseLeftButtonUp_2" Cursor="Hand"/>
-        <Image HorizontalAlignment="Left" Height="74" Margin="380,506,0,0" VerticalAlignment="Top" Source="/assets/images/You-Tube-16.png" Width="75" MouseLeftButtonUp="Image_MouseLeftButtonUp_3" Cursor="Hand"/>
+        <Image HorizontalAlignment="Left" Height="64" Margin="670,506,0,0" VerticalAlignment="Top" Source="/assets/images/hand_heart_donate_icon.png" Width="75" MouseLeftButtonUp="Image_MouseLeftButtonUp" Cursor="Hand"/>
+        <Image HorizontalAlignment="Left" Height="64" Margin="600,506,0,0" VerticalAlignment="Top" Source="/assets/images/Telegram_2019_Logo.svg.png" Width="75" MouseLeftButtonUp="Image_MouseLeftButtonUp_2" Cursor="Hand"/>
+        <Image HorizontalAlignment="Left" Height="64" Margin="530,506,0,0" VerticalAlignment="Top" Source="/assets/images/You-Tube-16.png" Width="75" MouseLeftButtonUp="Image_MouseLeftButtonUp_3" Cursor="Hand"/>
 
         <TextBlock x:Name="label" HorizontalAlignment="Left" Margin="24,11,0,0" TextWrapping="Wrap" Text="Settings" VerticalAlignment="Top" FontSize="32" FontFamily="Segoe UI Semibold"/>
 
@@ -75,11 +75,29 @@
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Margin="30,165,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
-            <StackPanel Orientation="Horizontal">
-                <controls:Button x:Name="savePresetBtn" Content="Save Preset" Height="34" Padding="20,0" Margin="0,0,8,0" Click="SavePreset_Click"/>
-                <controls:Button x:Name="importPresetBtn" Content="Import Preset" Height="34" Padding="20,0" Click="ImportPreset_Click"/>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <controls:Button x:Name="savePresetBtn" Content="Save Preset" Height="34" Padding="20,0" Margin="0,0,8,0" Click="SavePreset_Click"/>
+                    <controls:Button x:Name="importPresetBtn" Content="Import Preset" Height="34" Padding="20,0" Click="ImportPreset_Click"/>
+                </StackPanel>
+                <ProgressBar x:Name="importProgress" Width="210" Height="8" Margin="0,5,0,0" VerticalAlignment="Center" Visibility="Collapsed" Minimum="0" Maximum="100" HorizontalAlignment="Left"/>
             </StackPanel>
-            <ProgressBar x:Name="importProgress" Width="210" Height="8" Margin="0,5,0,0" VerticalAlignment="Center" Visibility="Collapsed" Minimum="0" Maximum="100" HorizontalAlignment="Left"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                <CheckBox x:Name="WinRAliasCheck" Content="Добавить запуск программы в Win+R" FontSize="16" VerticalAlignment="Center" Height="34" Click="WinRAliasCheck_Click"/>
+                <controls:Button Content="?" Width="18" Height="18" Margin="8,0,25,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
+                    <controls:Button.ToolTip>
+                        <ToolTip MaxWidth="500" x:Name="tooltipalias"/>
+                    </controls:Button.ToolTip>
+                </controls:Button>
+
+                <CheckBox x:Name="disableAnalytics" Content="Отключить сбор аналитики" FontSize="16" VerticalAlignment="Center" Height="34" Click="DisableAnalytics_Click"/>
+                <controls:Button Content="?" Width="18" Height="18" Margin="8,0,0,0" FontSize="12" Padding="0" VerticalAlignment="Center" ToolTipService.InitialShowDelay="100">
+                    <controls:Button.ToolTip>
+                        <ToolTip MaxWidth="500" x:Name="teltooltip"/>
+                    </controls:Button.ToolTip>
+                </controls:Button>
+            </StackPanel>
         </StackPanel>
 
         <TextBlock x:Name="styleL" HorizontalAlignment="Left" Margin="402,70,0,0" TextWrapping="Wrap" Text="Style" VerticalAlignment="Top" FontSize="16"/>
@@ -105,7 +123,7 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding Content}" Tag="{Binding Tag}" Click="FullLangItem_Click" Style="{StaticResource DefaultButtonStyle}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Margin="2" Padding="10,5"/>
+                                <Button Content="{Binding Content}" Tag="{Binding Tag}" Click="FullLangItem_Click" Style="{StaticResource DefaultButtonStyle}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Margin="2" Padding="11,7"/>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

@@ -1,21 +1,28 @@
 ﻿using Hardcodet.Wpf.TaskbarNotification;
+using iNKORE.UI.WPF.Modern;
 using iNKORE.UI.WPF.Modern.Controls;
+using iNKORE.UI.WPF.Modern.Media.Animation;
 using MakuTweakerNew.Properties;
 using MicaWPF.Controls;
 using MicaWPF.Core.Enums;
 using MicaWPF.Core.Helpers;
 using MicaWPF.Core.Services;
 using Microsoft.Win32;
-using iNKORE.UI.WPF.Modern;
-using iNKORE.UI.WPF.Modern.Media.Animation;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Linq;
+using System.Management;
 using System.Net.Http;
 using System.Reflection;
+using System.Runtime;
+using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -41,6 +48,8 @@ namespace MakuTweakerNew
     {
 		private NavigationTransitionInfo _transitionInfo = null;
         private DispatcherTimer ExpRestart;
+        public static bool HasAutoStartedExclusive = false;
+
         public static class Localization
         {
             public static Dictionary<string, Dictionary<string, string>> LoadLocalization(string language, string category)
@@ -147,6 +156,26 @@ namespace MakuTweakerNew
                         }
                     }
                 }
+
+                try
+                {
+                    if (categoriesRoot["myan"] != null && categoriesRoot["myan"]["main"] != null && categoriesRoot["myan"]["main"]["excltitle"] != null)
+                    {
+                        string displayCategoryName = catNames.ContainsKey("procmgr")
+                            ? catNames["procmgr"]
+                            : "ProcessMGR";
+
+                        tweaks.Add(new TweakSuggestion
+                        {
+                            Id = "makuyan_appblock",
+                            DisplayName = categoriesRoot["myan"]["main"]["excltitle"].ToString(),
+                            CategoryKey = displayCategoryName,
+                            InternalCategoryTag = "makuyan_window"
+                        });
+                    }
+                }
+                catch { }
+
                 return tweaks;
             }
         }
@@ -188,8 +217,23 @@ namespace MakuTweakerNew
 
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
+            sender.IsSuggestionListOpen = false;
+            Keyboard.ClearFocus();
             if (args.SelectedItem is TweakSuggestion selected)
             {
+                if (selected.InternalCategoryTag == "makuyan_window")
+                {
+                    if (this.Topmost)
+                    {
+                        this.Topmost = false;
+                    }
+                    MakuYan mkyan = new MakuYan();
+                    mkyan.Owner = this;
+                    mkyan.ShowDialog();
+                    sender.Text = string.Empty;
+                    return;
+                }
+
                 string xamlTag = selected.InternalCategoryTag switch
                 {
                     "expl" => "exp",
@@ -216,13 +260,17 @@ namespace MakuTweakerNew
                 {
                     NavigationView_Root.SelectedItem = targetItem;
                 }
+                sender.Text = string.Empty;
             }
         }
 
         public MainWindow()
         {
             InitializeComponent();
-            if(checkWinVer() < 14393)
+
+            string[] args = Environment.GetCommandLineArgs();
+            bool launchedViaTaskmgr = args.Length > 1 && args.Any(arg => arg.IndexOf("taskmgr.exe", StringComparison.OrdinalIgnoreCase) >= 0);
+            if (checkWinVer() < 14393)
             {
                 System.Windows.Forms.DialogResult old = System.Windows.Forms.MessageBox.Show("Your version of Windows is not supported. To use MakuTweaker, update your system to Windows 10 1607 or higher. Do you want to download MakuTweaker Legacy Windows Edition?\n\nВаша версия Windows неподдерживается. Для использования MakuTweaker, обновитесь до Windows 10 1607 или выше. Вы хотите скачать MakuTweaker для старых Windows?", "MakuTweaker", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Error);
                 if(old == System.Windows.Forms.DialogResult.Yes)
@@ -230,6 +278,43 @@ namespace MakuTweakerNew
                     Process.Start(new ProcessStartInfo("https://adderly.top/mt") { UseShellExecute = true });
                 }
                 Application.Current.Shutdown();
+            }
+
+            if (Properties.Settings.Default.AutoStartExclusive || launchedViaTaskmgr)
+            {
+                if (launchedViaTaskmgr)
+                {
+                    Properties.Settings.Default.AutoStartExclusive = true;
+                }
+
+                this.MinWidth = 580;
+                this.MinHeight = 380;
+                this.MaxWidth = double.PositiveInfinity;
+                this.MaxHeight = double.PositiveInfinity;
+                this.ResizeMode = ResizeMode.CanResize;
+
+                var chrome = System.Windows.Shell.WindowChrome.GetWindowChrome(this);
+                if (chrome != null) chrome.ResizeBorderThickness = new Thickness(6);
+
+                if (Properties.Settings.Default.ExclusiveWindowLeft != -10000)
+                {
+                    this.WindowStartupLocation = WindowStartupLocation.Manual;
+                    this.Width = Properties.Settings.Default.ExclusiveWindowWidth >= 580 ? Properties.Settings.Default.ExclusiveWindowWidth : 1062;
+                    this.Height = Properties.Settings.Default.ExclusiveWindowHeight >= 380 ? Properties.Settings.Default.ExclusiveWindowHeight : 675;
+                    this.Left = Properties.Settings.Default.ExclusiveWindowLeft;
+                    this.Top = Properties.Settings.Default.ExclusiveWindowTop;
+                }
+                else
+                {
+                    this.Width = 1062;
+                    this.Height = 675;
+                    this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                }
+
+                NavigationView_Root.OpenPaneLength = 0;
+                NavigationView_Root.IsPaneVisible = false;
+                SearchBox.Opacity = 0;
+                SearchBox.Visibility = Visibility.Collapsed;
             }
 
             ExpTimer();
@@ -350,6 +435,13 @@ namespace MakuTweakerNew
         private void MicaWindow_Loaded(object sender, RoutedEventArgs e)
         {
             string[] args = Environment.GetCommandLineArgs();
+            bool launchedViaTaskmgr = false;
+            if (args.Length > 1 && args.Any(arg => arg.IndexOf("taskmgr.exe", StringComparison.OrdinalIgnoreCase) >= 0))
+            {
+                launchedViaTaskmgr = true;
+                Properties.Settings.Default.AutoStartExclusive = true;
+            }
+
             if (args.Length > 1 && args[1].EndsWith(".mktw", StringComparison.OrdinalIgnoreCase))
             {
                 string presetPath = args[1];
@@ -369,14 +461,63 @@ namespace MakuTweakerNew
             }
 
             string lastTag = Properties.Settings.Default.lastPageTag;
+            if (args.Length > 1)
+            {
+                string param = args[1].ToLower().TrimStart('/', '-');
+
+                switch (param)
+                {
+                    case "u":
+                        lastTag = "wu";
+                        break;
+                    case "p":
+                        lastTag = "perf";
+                        break;
+                    case "s":
+                        lastTag = "sat";
+                        break;
+                    case "mgr":
+                        lastTag = "pmgr";
+                        break;
+                    case "pc":
+                        lastTag = "pci";
+                        break;
+                }
+            }
+
+
+            if (Properties.Settings.Default.AutoStartExclusive || launchedViaTaskmgr)
+            {
+                lastTag = "pmgr";
+                NavigationView_Root.OpenPaneLength = 0;
+                NavigationView_Root.IsPaneVisible = false;
+                SearchBox.Opacity = 0;
+                SearchBox.Visibility = Visibility.Collapsed;
+            }
+
+            if (IsWindowsActivated())
+            {
+                c9.Visibility = Visibility.Collapsed;
+                if (lastTag == "act")
+                {
+                    lastTag = "exp";
+                }
+            }
+
             var checkQs = new QuickSet();
-            if (checkQs.expander.Visibility == Visibility.Collapsed && checkQs.expander2.Visibility == Visibility.Collapsed)
+            if (checkQs.VisibleTweaksCount < 5)
             {
                 c6.Visibility = Visibility.Collapsed;
                 if (lastTag == "quick")
                 {
                     lastTag = "exp";
                 }
+            }
+
+            if (Properties.Settings.Default.UwpHidden)
+            {
+                c5.Visibility = Visibility.Collapsed;
+                if (lastTag == "uwp") lastTag = "exp";
             }
 
             if (!string.IsNullOrEmpty(lastTag))
@@ -401,6 +542,59 @@ namespace MakuTweakerNew
 
             Enum.TryParse(Settings.Default.style, out BackdropType bd);
             MicaWPFServiceUtility.ThemeService.EnableBackdrop(this, bd);
+            this.SizeChanged += MainWindow_SizeChanged;
+            UpdateMainWindowResponsiveUI(this.ActualWidth);
+        }
+
+        private bool IsWindowsActivated()
+        {
+            try
+            {
+                ManagementScope scope = new ManagementScope(@"\\" + Environment.MachineName + @"\root\cimv2");
+                scope.Connect();
+                SelectQuery searchQuery = new SelectQuery("SELECT LicenseStatus FROM SoftwareLicensingProduct WHERE ApplicationID = '55c92734-d682-4d71-983e-d6ec3f16059f' AND PartialProductKey IS NOT NULL");
+
+                using (ManagementObjectSearcher searcher = new ManagementObjectSearcher(scope, searchQuery))
+                {
+                    foreach (ManagementObject obj in searcher.Get())
+                    {
+                        if (Convert.ToInt32(obj["LicenseStatus"]) == 1)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+            }
+            return false;
+        }
+        private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            UpdateMainWindowResponsiveUI(e.NewSize.Width);
+        }
+
+        private void UpdateMainWindowResponsiveUI(double width)
+        {
+            if (width < 900)
+            {
+                if (rexplorer != null) rexplorer.Visibility = Visibility.Collapsed;
+                if (rexplorerSeparator != null) rexplorerSeparator.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                if (rexplorer != null) rexplorer.Visibility = Visibility.Visible;
+                if (rexplorerSeparator != null) rexplorerSeparator.Visibility = Visibility.Visible;
+            }
+            if (width < 740)
+            {
+                if (settingsText != null) settingsText.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                if (settingsText != null) settingsText.Visibility = Visibility.Visible;
+            }
         }
 
         public void LoadLang(string lang)
@@ -482,11 +676,17 @@ namespace MakuTweakerNew
 
         private void settingsButton_Click(object sender, RoutedEventArgs e)
         {
+            if (MainFrame.Content is ProcessMGR pmgr)
+            {
+                pmgr.ToggleExclusiveMode();
+                return;
+            }
+
             NavigationView_Root.SelectedItem = null;
             MainFrame.Navigate(typeof(SettingsAbout), null, _transitionInfo);
         }
 
-        private void MainFrame_Navigated(object sender, NavigationEventArgs e)
+        private void MainFrame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
             if (NavigationView_Root.SelectedItem == null)
             {
@@ -496,7 +696,17 @@ namespace MakuTweakerNew
             {
                 settingsButton.IsEnabled = true;
             }
+
+            if (e.Content is ProcessMGR pmgr)
+            {
+                UpdateSettingsButtonForExclusive(true, pmgr.IsExclusiveMode);
+            }
+            else
+            {
+                UpdateSettingsButtonForExclusive(false, false);
+            }
         }
+
         public void expk()
         {
             Process proc = new Process();
@@ -641,6 +851,79 @@ namespace MakuTweakerNew
                 }
             }
             return 19045;
+        }
+        public void UpdateSettingsButtonForExclusive(bool isProcessMgrActive, bool isExclusive)
+        {
+            var languageCode = Properties.Settings.Default.lang ?? "en";
+
+            if (isProcessMgrActive)
+            {
+                var pmgrLoc = Localization.LoadLocalization(languageCode, "pmgr");
+
+                if (isExclusive)
+                {
+                    settingsText.Text = pmgrLoc.ContainsKey("main") && pmgrLoc["main"].ContainsKey("getback")
+                        ? pmgrLoc["main"]["getback"]
+                        : "Back";
+
+                    settingsIcon.Symbol = iNKORE.UI.WPF.Modern.Controls.Symbol.Back;
+                }
+                else
+                {
+                    settingsText.Text = pmgrLoc.ContainsKey("main") && pmgrLoc["main"].ContainsKey("getfullscr")
+                        ? pmgrLoc["main"]["getfullscr"]
+                        : "Full Screen";
+                    settingsIcon.Symbol = iNKORE.UI.WPF.Modern.Controls.Symbol.Forward;
+                }
+            }
+            else
+            {
+                var basel = Localization.LoadLocalization(languageCode, "base");
+                settingsText.Text = basel["lowtabs"]["set"];
+                settingsIcon.Symbol = iNKORE.UI.WPF.Modern.Controls.Symbol.Setting;
+            }
+        }
+
+        public void AnimateExclusiveModeTransition(bool isExclusive, bool animate = true)
+        {
+            if (!animate)
+            {
+                NavigationView_Root.BeginAnimation(iNKORE.UI.WPF.Modern.Controls.NavigationView.OpenPaneLengthProperty, null);
+                SearchBox.BeginAnimation(UIElement.OpacityProperty, null);
+
+                NavigationView_Root.OpenPaneLength = isExclusive ? 0 : 290;
+                SearchBox.Opacity = isExclusive ? 0 : 1;
+                SearchBox.IsHitTestVisible = !isExclusive;
+                SearchBox.Visibility = isExclusive ? Visibility.Collapsed : Visibility.Visible;
+                NavigationView_Root.IsPaneVisible = !isExclusive;
+                return;
+            }
+
+            var ease = new CubicEase() { EasingMode = EasingMode.EaseInOut };
+            var paneDuration = TimeSpan.FromMilliseconds(300);
+            var searchDuration = TimeSpan.FromMilliseconds(200);
+
+            DoubleAnimation paneAnimation = new DoubleAnimation()
+            {
+                To = isExclusive ? 0 : 290,
+                Duration = paneDuration,
+                EasingFunction = ease
+            };
+            DoubleAnimation searchAnimation = new DoubleAnimation()
+            {
+                To = isExclusive ? 0 : 1,
+                Duration = searchDuration,
+                EasingFunction = ease
+            };
+
+            SearchBox.IsHitTestVisible = !isExclusive;
+            if (!isExclusive)
+            {
+                NavigationView_Root.IsPaneVisible = true;
+                SearchBox.Visibility = Visibility.Visible;
+            }
+            NavigationView_Root.BeginAnimation(iNKORE.UI.WPF.Modern.Controls.NavigationView.OpenPaneLengthProperty, paneAnimation);
+            SearchBox.BeginAnimation(UIElement.OpacityProperty, searchAnimation);
         }
     }
 }

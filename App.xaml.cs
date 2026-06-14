@@ -10,11 +10,24 @@ namespace MakuTweakerNew
 {
     public partial class App : Application
     {
+        private static Mutex _mutex = null;
         protected override void OnStartup(StartupEventArgs e)
         {
+            const string appName = "MakuTweaker_SingleInstance_Mutex";
+            bool createdNew;
+
+            _mutex = new Mutex(true, appName, out createdNew);
+
+            if (!createdNew)
+            {
+                Application.Current.Shutdown();
+                return;
+            }
+
             Environment.SetEnvironmentVariable("LHM_NO_RING0", "1");
             base.OnStartup(e);
         }
+
         private readonly string logFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
         public App()
@@ -47,7 +60,7 @@ namespace MakuTweakerNew
 
             Exception logException = ex.InnerException ?? ex;
 
-            string errorDetails = $"MakuTweaker May2026 Crash [{DateTime.Now:yyyy-MM-dd HH:mm:ss}]\n{errorType}\n\n" +
+            string errorDetails = $"MakuTweaker 5.7.0 Crash [{DateTime.Now:yyyy-MM-dd HH:mm:ss}]\n{errorType}\n\n" +
                                   GetExceptionDetails(logException);
 
             try

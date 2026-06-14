@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -19,6 +20,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Vortice.DXGI;
+using System.Security.Cryptography;
 
 namespace MakuTweakerNew
 {
@@ -29,6 +31,9 @@ namespace MakuTweakerNew
         private List<GpuInfo> _gpus = new List<GpuInfo>();
         private List<StorageInfo> _storageDevices = new List<StorageInfo>();
         private List<RamStickInfo> _ramSticks = new();
+
+        private double _lastSingleScore = 0;
+        private double _lastMultiScore = 0;
 
         public PCI()
         {
@@ -174,6 +179,13 @@ namespace MakuTweakerNew
             benchmarkResultText.Text = isMultithreaded
                 ? $"{pci["main"]["test1multi"]} {pci["main"]["test2"]} {scoreText} {pci["main"]["test3"]}"
                 : $"{pci["main"]["test1"]} {pci["main"]["test2"]} {scoreText} {pci["main"]["test3"]}";
+
+            string benchType = isMultithreaded ? "multi" : "single";
+
+            if (isMultithreaded)
+                _lastMultiScore = result.score;
+            else
+                _lastSingleScore = result.score;
 
             singleBench.IsEnabled = true;
             multiBench.IsEnabled = true;

@@ -48,35 +48,44 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock x:Name="label" Margin="15,11,0,10" FontSize="32" FontFamily="Segoe UI Semibold" Text="ProcessMGR"/>
 
-                <controls:Button x:Name="buttontooltip" Width="26" Height="26" Margin="10,10,0,0" VerticalAlignment="Center" Click="InfoBtn_Click">
+                <controls:Button x:Name="buttontooltip" FocusVisualStyle="{x:Null}" Width="26" Height="26" MinWidth="0" Padding="0" Margin="10,10,0,0" VerticalAlignment="Center" Click="InfoBtn_Click">
                     <ui:SymbolIcon x:Name="InfoIcon" Symbol="Help" FontSize="12"/>
                     <controls:Button.ToolTip>
                         <ToolTip MaxWidth="350" x:Name="mgr_tooltip"/>
                     </controls:Button.ToolTip>
                 </controls:Button>
 
-                <controls:Button x:Name="restartBtn" Width="26" Height="26" Margin="5,10,0,0" VerticalAlignment="Center" Click="restartBtn_Click">
-                    <ui:SymbolIcon Symbol="Refresh"  FontSize="12"/>
-                </controls:Button>
-
-                <controls:Button x:Name="PauseBtn" Width="26" Height="26" Margin="5,10,0,0" VerticalAlignment="Center" Click="PauseBtn_Click">
-                    <ui:SymbolIcon x:Name="PauseIcon" Symbol="Pause" FontSize="12"/>
-                </controls:Button>
-
-                <controls:Button x:Name="topmost" Width="26" Height="26" Margin="5,10,0,0" VerticalAlignment="Center" Click="TopmostBtn_Click">
-                    <ui:SymbolIcon x:Name="TopmostIcon" Symbol="Pin" FontSize="12"/>
-                </controls:Button>
-
-                <controls:Button x:Name="SettingsBtn" Width="26" Height="26" Margin="5,10,0,0" VerticalAlignment="Center" Click="SettingsBtn_Click">
-                    <ui:SymbolIcon Symbol="Setting" FontSize="12"/>
+                <controls:Button x:Name="restartBtn" FocusVisualStyle="{x:Null}" Width="26" Height="26" Margin="5,10,0,0" VerticalAlignment="Center" Click="restartBtn_Click">
+                    <ui:SymbolIcon Symbol="Refresh" FontSize="12"/>
                     <controls:Button.ToolTip>
-                        <ToolTip MaxWidth="350" x:Name="mgr1_tooltip"/>
+                        <ToolTip MaxWidth="350" x:Name="mgr_upd_tooltip"/>
                     </controls:Button.ToolTip>
                 </controls:Button>
 
-                <controls:Button x:Name="MakuYan" Height="26" Margin="5,10,0,0" Padding="8,0" VerticalAlignment="Center" Click="MakuYan_Click">
+                <controls:Button x:Name="PauseBtn" FocusVisualStyle="{x:Null}" Width="26" Height="26" Margin="5,10,0,0" VerticalAlignment="Center" Click="PauseBtn_Click">
+                    <ui:SymbolIcon x:Name="PauseIcon" Symbol="Pause" FontSize="12"/>
+                    <controls:Button.ToolTip>
+                        <ToolTip MaxWidth="350" x:Name="mgr_pause_tooltip"/>
+                    </controls:Button.ToolTip>
+                </controls:Button>
+
+                <controls:Button x:Name="topmost" FocusVisualStyle="{x:Null}" Width="26" Height="26" Margin="5,10,0,0" VerticalAlignment="Center" Click="TopmostBtn_Click">
+                    <ui:SymbolIcon x:Name="TopmostIcon" Symbol="Pin" FontSize="12"/>
+                    <controls:Button.ToolTip>
+                        <ToolTip MaxWidth="350" x:Name="mgr_pin_tooltip"/>
+                    </controls:Button.ToolTip>
+                </controls:Button>
+
+                <controls:Button x:Name="SettingsBtn" FocusVisualStyle="{x:Null}" Width="26" Height="26" Margin="5,10,0,0" VerticalAlignment="Center" Click="SettingsBtn_Click">
+                    <ui:SymbolIcon Symbol="Setting" FontSize="12"/>
+                    <controls:Button.ToolTip>
+                        <ToolTip MaxWidth="350" x:Name="mgr_set_tooltip"/>
+                    </controls:Button.ToolTip>
+                </controls:Button>
+
+                <controls:Button x:Name="MakuYan" FocusVisualStyle="{x:Null}" Height="26" Margin="5,10,0,0" Padding="8,0" VerticalAlignment="Center" Click="MakuYan_Click">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <ui:FontIcon Glyph="&#xE72E;" FontFamily="Segoe MDL2 Assets" FontSize="12" Margin="0,1,8,0" VerticalAlignment="Center"/>
+                        <ui:FontIcon x:Name="MakuYanIcon" Glyph="&#xE72E;" FontFamily="Segoe MDL2 Assets" FontSize="12" Margin="0,1,8,0" VerticalAlignment="Center"/>
                         <TextBlock x:Name="MakuYanText" Text="AppBlock" FontSize="13" VerticalAlignment="Center"/>
                     </StackPanel>
                 </controls:Button>
@@ -104,9 +113,9 @@
                                 <ColumnDefinition Width="50"/>
                                 <ColumnDefinition Width="14"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock x:Name="groupproc" Text="Process" Foreground="#B3B3B3" FontSize="13" FontWeight="SemiBold"/>
+                            <TextBlock x:Name="groupproc" Text="Process" FontSize="13" FontWeight="SemiBold"/>
                             <TextBlock Grid.Column="1"
-                           x:Name="groupmem" Text="Memory Usage" HorizontalAlignment="Left" Margin="10,0,0,0" TextAlignment="Right" Foreground="#B3B3B3" FontSize="13" FontWeight="SemiBold"/>
+                           x:Name="groupmem" Text="Memory Usage" HorizontalAlignment="Left" Margin="10,0,0,0" TextAlignment="Right" FontSize="13" FontWeight="SemiBold"/>
                             <Border Grid.ColumnSpan="4" BorderBrush="#10FFFFFF" BorderThickness="0,0,0,1" Margin="-20,25,-20,0"/>
                         </Grid>
 
@@ -114,7 +123,7 @@
                         Background="Transparent" BorderThickness="0"
                         ScrollViewer.VerticalScrollBarVisibility="Visible"
                         Tag="{Binding IsChecked, ElementName=CompactViewCheck}"
-                        KeyDown="ProcessListView_KeyDown" MouseDoubleClick="ProcessListView_MouseDoubleClick">
+                        KeyDown="ProcessListView_KeyDown" MouseDoubleClick="ProcessListView_MouseDoubleClick" SelectionMode="Extended">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
@@ -155,23 +164,13 @@
                                             <TextBlock Text="{Binding Name}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" FontSize="14"/>
                                         </StackPanel>
 
-                                        <Grid Grid.Column="1"
-      MinWidth="120"
-      MaxWidth="220"
-      VerticalAlignment="Center"
-      HorizontalAlignment="Stretch"
-      Margin="10,0,10,0">
+                                        <Grid Grid.Column="1" MinWidth="120" MaxWidth="220" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10,0,10,0">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto"/>
                                                 <RowDefinition Height="Auto"/>
                                             </Grid.RowDefinitions>
 
-                                            <TextBlock Text="{Binding MemoryUsage}"
-           Foreground="#D0FFFFFF"
-           FontSize="13"
-           HorizontalAlignment="Left"
-           TextAlignment="Left"
-           TextTrimming="CharacterEllipsis"/>
+                                            <TextBlock Text="{Binding MemoryUsage}" FontSize="13" HorizontalAlignment="Left" TextAlignment="Left" TextTrimming="CharacterEllipsis"/>
 
                                             <ProgressBar Grid.Row="1" Value="{Binding MemoryPercentage}" Maximum="100">
                                                 <ProgressBar.Style>
@@ -231,11 +230,11 @@
 
                         <Border Grid.Row="2" BorderBrush="#10FFFFFF" BorderThickness="0,1,0,0" Padding="15,12" Background="#03FFFFFF" CornerRadius="0,0,8,8">
                             <StackPanel x:Name="ControlPanel" Orientation="Horizontal">
-                                <ComboBox x:Name="MemoryLimitCombo" SelectedIndex="3" FontSize="13" Margin="0,0,15,0" 
+                                <ComboBox x:Name="MemoryLimitCombo" FocusVisualStyle="{x:Null}" SelectedIndex="3" FontSize="13" Margin="0,0,15,0" 
                                           SelectionChanged="FilterChanged"
                                           DropDownOpened="MemoryLimitCombo_DropDownOpened"
                                           DropDownClosed="MemoryLimitCombo_DropDownClosed"
-                                          Background="#0AFFFFFF" BorderThickness="0">
+                                          BorderThickness="0">
                                     <ComboBoxItem Content="All (0 MB)" Tag="0"/>
                                     <ComboBoxItem Content="From 50 MB" Tag="52428800"/>
                                     <ComboBoxItem Content="From 100 MB" Tag="104857600"/>
@@ -244,9 +243,10 @@
                                     <ComboBoxItem Content="From 1 GB" Tag="1073741824"/>
                                     <ComboBoxItem Content="From 2 GB" Tag="2147483648"/>
                                 </ComboBox>
-                                <CheckBox x:Name="GroupProcessesCheck" Content="Group identical" FontSize="13" Foreground="#B3B3B3" VerticalAlignment="Center" Checked="FilterChanged" Unchecked="FilterChanged" Margin="0,0,20,0"/>
-                                <CheckBox x:Name="CompactViewCheck" Content="Compact view" FontSize="13" Foreground="#B3B3B3" VerticalAlignment="Center" Checked="FilterChanged" Unchecked="FilterChanged" Margin="0,0,20,0"/>
-                                <CheckBox x:Name="OnlyNotRespondingCheck" Content="Show only frozen" FontSize="13" Foreground="#B3B3B3" VerticalAlignment="Center" Checked="FilterChanged" Unchecked="FilterChanged" Margin="0,0,20,0"/>
+                                <CheckBox x:Name="GroupProcessesCheck" Content="Group identical" FontSize="13" VerticalAlignment="Center" Checked="FilterChanged" Unchecked="FilterChanged" Margin="0,0,20,0"/>
+                                <CheckBox x:Name="CompactViewCheck" Content="Compact view" FontSize="13" VerticalAlignment="Center" Checked="FilterChanged" Unchecked="FilterChanged" Margin="0,0,20,0"/>
+                                <CheckBox x:Name="OnlyNotRespondingCheck" Content="Show only frozen" FontSize="13" VerticalAlignment="Center" Checked="FilterChanged" Unchecked="FilterChanged" Margin="0,0,20,0"/>
+                                <CheckBox x:Name="AutoStartCheck" Content="AutoStart" FontSize="13" VerticalAlignment="Center" Checked="AutoStart_Changed" Unchecked="AutoStart_Changed" Margin="0,0,20,0" Visibility="Collapsed"/>
                             </StackPanel>
                         </Border>
                     </Grid>

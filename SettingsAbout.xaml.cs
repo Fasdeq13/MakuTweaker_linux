@@ -20,13 +20,18 @@ namespace MakuTweakerNew
 {
     public partial class SettingsAbout : Page
     {
+        private const string AppPathsRoot = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths";
+        private readonly string[] _aliases = { "makut.exe", "maku.exe", "mt.exe" };
         private MainWindow mw = (MainWindow)System.Windows.Application.Current.MainWindow;
         bool isLoaded = false;
 
         public SettingsAbout()
         {
             InitializeComponent();
-            credN.Text = "5.6\nMark Adderly\nNikitori\nMaksimCeleron, Bruh_SomeBody, Massgrave";
+            WinRAliasCheck.IsChecked = CheckWinRAliasStatus();
+            disableAnalytics.IsChecked = Properties.Settings.Default.disableTelemetry;
+            string buildSuffix = GetBuildNumberFromResources();
+            credN.Text = $"5.7.3 ({buildSuffix})\nMark Adderly\nNikitori\nMaksimCeleron, Bruh_SomeBody, Massgrave";
             if (string.IsNullOrEmpty(Settings.Default.lang))
             {
                 string systemLang = CultureInfo.CurrentUICulture.Name.ToLower();
@@ -108,6 +113,68 @@ namespace MakuTweakerNew
             isLoaded = true;
         }
 
+        private void DisableAnalytics_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("In the GitHub version, this function is a stub. This checkbox controls the blocking of Google Analytics methods.", "MakuTweaker Github",MessageBoxButton.OK,MessageBoxImage.Information);
+            Properties.Settings.Default.disableTelemetry = (disableAnalytics.IsChecked == true);
+            Properties.Settings.Default.Save();
+        }
+
+        private bool CheckWinRAliasStatus()
+        {
+            try
+            {
+                using (RegistryKey key = Registry.LocalMachine.OpenSubKey($@"{AppPathsRoot}\mt.exe"))
+                {
+                    return key?.GetValue("") != null;
+                }
+            }
+            catch { return false; }
+        }
+
+        private void WinRAliasCheck_Click(object sender, RoutedEventArgs e)
+        {
+            bool shouldCreate = WinRAliasCheck.IsChecked ?? false;
+
+            try
+            {
+                string currentExePath = Assembly.GetExecutingAssembly().Location;
+                if (currentExePath.EndsWith(".dll", StringComparison.OrdinalIgnoreCase))
+                {
+                    currentExePath = Path.ChangeExtension(currentExePath, ".exe");
+                }
+                string currentDir = Path.GetDirectoryName(currentExePath);
+
+                if (shouldCreate)
+                {
+                    foreach (var alias in _aliases)
+                    {
+                        using (RegistryKey key = Registry.LocalMachine.CreateSubKey($@"{AppPathsRoot}\{alias}", true))
+                        {
+                            key.SetValue("", currentExePath);
+                            key.SetValue("Path", currentDir);
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (var alias in _aliases)
+                    {
+                        Registry.LocalMachine.DeleteSubKeyTree($@"{AppPathsRoot}\{alias}", false);
+                    }
+                }
+            }
+            catch (UnauthorizedAccessException)
+            {
+                iNKORE.UI.WPF.Modern.Controls.MessageBox.Show("MakuTweaker Registry Error", "MakuTweaker Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                WinRAliasCheck.IsChecked = !shouldCreate;
+            }
+            catch (Exception ex)
+            {
+                iNKORE.UI.WPF.Modern.Controls.MessageBox.Show(ex.Message, "MakuTweaker Registry Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                WinRAliasCheck.IsChecked = !shouldCreate;
+            }
+        }
         private int checkWinVer()
         {
             try
@@ -180,7 +247,15 @@ namespace MakuTweakerNew
         {
             var languageCode = Settings.Default.lang ?? "en";
             var ab = MainWindow.Localization.LoadLocalization(languageCode, "ab");
+            var abEn = languageCode != "en" ? MainWindow.Localization.LoadLocalization("en", "ab") : ab;
             var b = MainWindow.Localization.LoadLocalization(languageCode, "base");
+            var bEn = languageCode != "en" ? MainWindow.Localization.LoadLocalization("en", "base") : b;
+
+            string GetText(dynamic dict, dynamic dictEn, string category, string key)
+            {
+                try { return dict[category][key]; }
+                catch { return dictEn[category][key]; }
+            }
 
             credL.Text = ab["main"]["credL"];
             label.Text = ab["main"]["label"];
@@ -195,6 +270,10 @@ namespace MakuTweakerNew
             savePresetBtn.Content = ab["main"]["cfg_save"];
             importPresetBtn.Content = ab["main"]["cfg_import"];
             tooltip.Content = ab["main"]["cfg_info"];
+            WinRAliasCheck.Content = ab["main"]["winr"];
+            tooltipalias.Content = ab["main"]["winrinfo"];
+            disableAnalytics.Content = GetText(ab, abEn, "main", "disabletelemetry");
+            teltooltip.Content = GetText(ab, abEn, "main", "telemetryabt");
         }
 
         //CONFIG
@@ -888,6 +967,28 @@ namespace MakuTweakerNew
         private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private string GetBuildNumberFromResources()
+        {
+            try
+            {
+                var assembly = Assembly.GetExecutingAssembly();
+                string resourceName = "MakuTweakerNew.BuildNumber.txt";
+
+                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                {
+                    if (stream == null) return "Unknown";
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        return reader.ReadToEnd().Trim();
+                    }
+                }
+            }
+            catch
+            {
+                return "N/A";
+            }
         }
     }
 }

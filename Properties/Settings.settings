@@ -41,5 +41,35 @@
     <Setting Name="compact" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="onlyMB_processMGR" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="AutoStartExclusive" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ExclusiveWindowWidth" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">580</Value>
+    </Setting>
+    <Setting Name="ExclusiveWindowHeight" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">380</Value>
+    </Setting>
+    <Setting Name="ExclusiveWindowLeft" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">-10000</Value>
+    </Setting>
+    <Setting Name="ExclusiveWindowTop" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">-10000</Value>
+    </Setting>
+    <Setting Name="UwpChecked" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="UwpHidden" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="ProcessNameDisplayMode" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="disableTelemetry" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

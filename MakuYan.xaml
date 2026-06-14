@@ -11,6 +11,7 @@
         Height="400" Width="650"
         WindowStartupLocation="CenterOwner"
         ShowInTaskbar="False"
+        SystemBackdropType="Tabbed" 
         ResizeMode="NoResize"
         UseLayoutRounding="True"
         FocusVisualStyle="{x:Null}"

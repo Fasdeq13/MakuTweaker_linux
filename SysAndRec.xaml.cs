@@ -328,7 +328,7 @@ namespace MakuTweakerNew
                         return;
                     }
                 }
-            switch (uac.IsOn)
+                switch (uac.IsOn)
                 {
                     case true:
                         Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System").SetValue("EnableLUA", 0);

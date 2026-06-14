@@ -9,7 +9,7 @@
     <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
     <AssemblyName>MakuTweaker</AssemblyName>
     <Authors>MarkAdderly</Authors>
-    <Version>5.6</Version>
+    <Version>5.7.3</Version>
     <PackageIcon>MakuTweakerNEWnoround.png</PackageIcon>
     <PackageProjectUrl>https://adderly.top</PackageProjectUrl>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -17,8 +17,8 @@
 	  <ApplicationIcon>assets/icons/MakuTweaker.ico</ApplicationIcon>
 	  <PlatformTarget>x64</PlatformTarget>
     <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
-    <FileVersion>5.6</FileVersion>
-    <AssemblyVersion>5.6</AssemblyVersion>
+    <FileVersion>5.7.3</FileVersion>
+    <AssemblyVersion>5.7.3</AssemblyVersion>
     <Title>MakuTweaker</Title>
     <Copyright>MarkAdderly</Copyright>
     <PackageTags>makutweaker</PackageTags>

@@ -250,7 +250,6 @@ namespace MakuTweakerNew
                 MessageBoxImage.Warning);
 
             if (resultSure != MessageBoxResult.Yes) return;
-
             try
             {
                 string[] processes = { "msedge", "msedgewebview2", "MicrosoftEdgeUpdate" };
@@ -356,7 +355,6 @@ namespace MakuTweakerNew
         private void disindex_Toggled(object sender, RoutedEventArgs e)
         {
             if (!isLoaded) return;
-
             try
             {
                 Registry.LocalMachine.CreateSubKey(

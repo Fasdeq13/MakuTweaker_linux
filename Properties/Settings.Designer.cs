@@ -12,7 +12,7 @@ namespace MakuTweakerNew.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "18.5.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.14.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -176,6 +176,126 @@ namespace MakuTweakerNew.Properties {
             }
             set {
                 this["compact"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool onlyMB_processMGR {
+            get {
+                return ((bool)(this["onlyMB_processMGR"]));
+            }
+            set {
+                this["onlyMB_processMGR"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AutoStartExclusive {
+            get {
+                return ((bool)(this["AutoStartExclusive"]));
+            }
+            set {
+                this["AutoStartExclusive"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("580")]
+        public double ExclusiveWindowWidth {
+            get {
+                return ((double)(this["ExclusiveWindowWidth"]));
+            }
+            set {
+                this["ExclusiveWindowWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("380")]
+        public double ExclusiveWindowHeight {
+            get {
+                return ((double)(this["ExclusiveWindowHeight"]));
+            }
+            set {
+                this["ExclusiveWindowHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-10000")]
+        public double ExclusiveWindowLeft {
+            get {
+                return ((double)(this["ExclusiveWindowLeft"]));
+            }
+            set {
+                this["ExclusiveWindowLeft"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-10000")]
+        public double ExclusiveWindowTop {
+            get {
+                return ((double)(this["ExclusiveWindowTop"]));
+            }
+            set {
+                this["ExclusiveWindowTop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UwpChecked {
+            get {
+                return ((bool)(this["UwpChecked"]));
+            }
+            set {
+                this["UwpChecked"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UwpHidden {
+            get {
+                return ((bool)(this["UwpHidden"]));
+            }
+            set {
+                this["UwpHidden"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ProcessNameDisplayMode {
+            get {
+                return ((int)(this["ProcessNameDisplayMode"]));
+            }
+            set {
+                this["ProcessNameDisplayMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool disableTelemetry {
+            get {
+                return ((bool)(this["disableTelemetry"]));
+            }
+            set {
+                this["disableTelemetry"] = value;
             }
         }
     }

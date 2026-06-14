@@ -264,6 +264,23 @@ namespace MakuTweakerNew
 
             if (!isUpdatesBlocked)
             {
+                string targetVersion = "unknown";
+                switch (wu4.SelectedIndex)
+                {
+                    case 0: targetVersion = "1607"; break;
+                    case 1: targetVersion = "1709"; break;
+                    case 2: targetVersion = "1809"; break;
+                    case 3: targetVersion = "1909"; break;
+                    case 4: targetVersion = "2004"; break;
+                    case 5: targetVersion = "20H2"; break;
+                    case 6: targetVersion = "21H2"; break;
+                    case 7: targetVersion = "22H2"; break;
+                    case 8: targetVersion = "23H2"; break;
+                    case 9: targetVersion = "24H2"; break;
+                    case 10: targetVersion = "25H2"; break;
+                    case 11: targetVersion = "26H2"; break;
+                }
+
                 try
                 {
                     var wuKey = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate");
@@ -308,6 +325,7 @@ namespace MakuTweakerNew
                 isUpdatesBlocked = false;
                 block.Content = wul["main"]["wu6b"];
             }
+            mw.RebootNotify(1);
         }
 
         private void pause_Click(object sender, RoutedEventArgs e)
