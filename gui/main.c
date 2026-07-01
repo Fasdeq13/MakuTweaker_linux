@@ -1,3 +1,6 @@
+#define _DEFAULT_SOURCE
+#define _XOPEN_SOURCE 700
+
 #include <gtk/gtk.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,22 +10,32 @@
 static MakuAppWidgets g_app;
 
 static void maku_load_css(void) {
+    const char *candidates[] = {
+        "/usr/local/share/makutweaker/style.css",
+        "./styles/style.css",
+        "../styles/style.css",
+        NULL
+    };
+
+    const char *chosen = NULL;
+    for (int i = 0; candidates[i] != NULL; i++) {
+        if (g_file_test(candidates[i], G_FILE_TEST_EXISTS)) {
+            chosen = candidates[i];
+            break;
+        }
+    }
+
+    if (!chosen) {
+        return;
+    }
+
     GtkCssProvider *provider = gtk_css_provider_new();
-    GError *error = NULL;
-    gtk_css_provider_load_from_path(provider, "/usr/local/share/makutweaker/style.css", &error);
-    if (error) {
-        g_clear_error(&error);
-        gtk_css_provider_load_from_path(provider, "./styles/style.css", &error);
-    }
-    if (!error) {
-        gtk_style_context_add_provider_for_display(
-            gdk_display_get_default(),
-            GTK_STYLE_PROVIDER(provider),
-            GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
-        );
-    } else {
-        g_clear_error(&error);
-    }
+    gtk_css_provider_load_from_path(provider, chosen);
+    gtk_style_context_add_provider_for_display(
+        gdk_display_get_default(),
+        GTK_STYLE_PROVIDER(provider),
+        GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
+    );
     g_object_unref(provider);
 }
 

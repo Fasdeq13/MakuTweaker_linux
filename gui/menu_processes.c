@@ -1,3 +1,6 @@
+#define _DEFAULT_SOURCE
+#define _XOPEN_SOURCE 700
+
 #include <gtk/gtk.h>
 #include <dirent.h>
 #include <stdio.h>
