@@ -1,0 +1,116 @@
+#include "localization.h"
+
+const char *g_localization[LANG_COUNT][STR_COUNT] = {
+    [LANG_RU] = {
+        [STR_APP_TITLE] = "MakuTweaker",
+        [STR_MENU_INFO] = "Информация о ПК",
+        [STR_MENU_PERF] = "Производительность и Ядро",
+        [STR_MENU_COMPONENTS] = "Компоненты Linux",
+        [STR_MENU_PROCESSES] = "Процессы и Демоны",
+        [STR_MENU_PERSONALIZE] = "Персонализация",
+        [STR_MENU_DEBLOAT] = "Удаление приложений",
+        [STR_MENU_CLEANUP] = "Очистка диска",
+        [STR_MENU_SECURITY] = "Безопасность и Телеметрия",
+        [STR_MENU_FILEMGR] = "Проводник и Рабочий стол",
+        [STR_MENU_RECOVERY] = "Восстановление и Снапшоты",
+        [STR_DISTRO_LABEL] = "Дистрибутив",
+        [STR_SESSION_LABEL] = "Тип сессии",
+        [STR_SESSION_UNSUPPORTED] = "X11 сессия не поддерживается!",
+        [STR_CPU_LABEL] = "Процессор",
+        [STR_RAM_LABEL] = "Оперативная память",
+        [STR_UPTIME_LABEL] = "Время работы",
+        [STR_TOGGLE_MAX_CPU] = "Максимальный CPU",
+        [STR_TOGGLE_SWAPPINESS] = "Твик Swappiness",
+        [STR_TOGGLE_FILE_LIMITS] = "Лимиты файлов",
+        [STR_TOGGLE_SPLIT_LOCK] = "Split Lock Mitigations",
+        [STR_TOGGLE_BBR] = "Google BBR",
+        [STR_SVC_CUPS] = "Печать (CUPS)",
+        [STR_SVC_AVAHI] = "Сетевое обнаружение (Avahi)",
+        [STR_SVC_SAMBA] = "Общие папки (Samba)",
+        [STR_SVC_ABRT] = "Отчеты об ошибках (ABRT)",
+        [STR_PROC_KILL] = "Прибить",
+        [STR_PROC_FREEZE] = "Заморозить",
+        [STR_PROC_UNFREEZE] = "Разморозить",
+        [STR_PERSONALIZE_COLOR] = "Выбрать акцентный цвет",
+        [STR_PERSONALIZE_DARK] = "Темная тема GTK",
+        [STR_DEBLOAT_BROKEN] = "Битый",
+        [STR_DEBLOAT_REMOVE] = "Удалить с корнями",
+        [STR_CLEANUP_LOGS] = "Системные журналы",
+        [STR_CLEANUP_CACHE] = "Пользовательский кэш",
+        [STR_CLEANUP_PKGCACHE] = "Кэш пакетов",
+        [STR_CLEANUP_TRIM] = "Запустить TRIM",
+        [STR_SEC_FEDORA] = "Блокировка отчетов Fedora",
+        [STR_SEC_HOSTS] = "Hosts-блокиратор",
+        [STR_SEC_HISTORY] = "Очистка истории",
+        [STR_FM_HIDDEN] = "Показать скрытые файлы",
+        [STR_FM_GRID] = "Сетка",
+        [STR_FM_LIST] = "Список",
+        [STR_RECOVERY_BACKUP] = "Бэкап конфигов",
+        [STR_RECOVERY_RESET] = "Графический сброс",
+        [STR_RECOVERY_DROPCACHE] = "Очистить кэш RAM",
+    },
+    [LANG_EN] = {
+        [STR_APP_TITLE] = "MakuTweaker",
+        [STR_MENU_INFO] = "System Info",
+        [STR_MENU_PERF] = "Performance & Kernel",
+        [STR_MENU_COMPONENTS] = "Linux Components",
+        [STR_MENU_PROCESSES] = "Processes & Daemons",
+        [STR_MENU_PERSONALIZE] = "Personalization",
+        [STR_MENU_DEBLOAT] = "App Removal",
+        [STR_MENU_CLEANUP] = "Disk Cleanup",
+        [STR_MENU_SECURITY] = "Security & Telemetry",
+        [STR_MENU_FILEMGR] = "File Manager & Desktop",
+        [STR_MENU_RECOVERY] = "Recovery & Snapshots",
+        [STR_DISTRO_LABEL] = "Distribution",
+        [STR_SESSION_LABEL] = "Session type",
+        [STR_SESSION_UNSUPPORTED] = "X11 session is not supported!",
+        [STR_CPU_LABEL] = "Processor",
+        [STR_RAM_LABEL] = "Memory",
+        [STR_UPTIME_LABEL] = "Uptime",
+        [STR_TOGGLE_MAX_CPU] = "Max CPU Performance",
+        [STR_TOGGLE_SWAPPINESS] = "Swappiness Tweak",
+        [STR_TOGGLE_FILE_LIMITS] = "File Limits",
+        [STR_TOGGLE_SPLIT_LOCK] = "Split Lock Mitigations",
+        [STR_TOGGLE_BBR] = "Google BBR",
+        [STR_SVC_CUPS] = "Printing (CUPS)",
+        [STR_SVC_AVAHI] = "Network Discovery (Avahi)",
+        [STR_SVC_SAMBA] = "Shared Folders (Samba)",
+        [STR_SVC_ABRT] = "Crash Reports (ABRT)",
+        [STR_PROC_KILL] = "Kill",
+        [STR_PROC_FREEZE] = "Freeze",
+        [STR_PROC_UNFREEZE] = "Unfreeze",
+        [STR_PERSONALIZE_COLOR] = "Pick Accent Color",
+        [STR_PERSONALIZE_DARK] = "Dark GTK Theme",
+        [STR_DEBLOAT_BROKEN] = "Broken",
+        [STR_DEBLOAT_REMOVE] = "Remove with Roots",
+        [STR_CLEANUP_LOGS] = "System Logs",
+        [STR_CLEANUP_CACHE] = "User Cache",
+        [STR_CLEANUP_PKGCACHE] = "Package Cache",
+        [STR_CLEANUP_TRIM] = "Run TRIM",
+        [STR_SEC_FEDORA] = "Block Fedora Reports",
+        [STR_SEC_HOSTS] = "Hosts Blocker",
+        [STR_SEC_HISTORY] = "Clear History",
+        [STR_FM_HIDDEN] = "Show Hidden Files",
+        [STR_FM_GRID] = "Grid",
+        [STR_FM_LIST] = "List",
+        [STR_RECOVERY_BACKUP] = "Backup Configs",
+        [STR_RECOVERY_RESET] = "Graphics Reset",
+        [STR_RECOVERY_DROPCACHE] = "Drop RAM Cache",
+    },
+};
+
+static MakuLang g_current_lang = LANG_RU;
+
+const char *maku_tr(MakuStringId id) {
+    if (id < 0 || id >= STR_COUNT) return "";
+    const char *s = g_localization[g_current_lang][id];
+    return s ? s : "";
+}
+
+void maku_set_lang(MakuLang lang) {
+    if (lang >= 0 && lang < LANG_COUNT) g_current_lang = lang;
+}
+
+MakuLang maku_get_lang(void) {
+    return g_current_lang;
+}
