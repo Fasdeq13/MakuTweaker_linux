@@ -2,4 +2,4 @@
 2. Перейдите в терминале в директорию где они скачанны
 3. Перенесите бекенд в /usr/local/bin ```sudo cp tweaker_backend /usr/local/bin/```
 4. Сделайте файл исполняемым ```chmod +x makutweaker_gui```
-5.  ./makutweaker_gui радуйтесь
+5. ```./makutweaker_gui``` радуйтесь
