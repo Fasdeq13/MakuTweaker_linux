@@ -44,6 +44,24 @@ static void maku_format_size(off_t size, char *buf, size_t buflen) {
     }
 }
 
+static void maku_compute_parent_path(const char *path, char *out, size_t outlen) {
+    snprintf(out, outlen, "%s", path);
+    size_t len = strlen(out);
+    while (len > 1 && out[len - 1] == '/') {
+        out[--len] = '\0';
+    }
+    char *last_slash = strrchr(out, '/');
+    if (!last_slash) {
+        snprintf(out, outlen, "/");
+        return;
+    }
+    if (last_slash == out) {
+        out[1] = '\0';
+        return;
+    }
+    *last_slash = '\0';
+}
+
 static GtkWidget *maku_build_file_row(const MakuFileEntry *entry) {
     GtkWidget *row = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 8);
     gtk_widget_add_css_class(row, "maku-card");
@@ -77,6 +95,14 @@ static GtkWidget *maku_build_file_row(const MakuFileEntry *entry) {
 }
 
 static void maku_refresh_file_list(MakuAppWidgets *app) {
+    if (app->fm_path_label) {
+        gtk_label_set_text(GTK_LABEL(app->fm_path_label), app->fm_current_path);
+    }
+
+    if (app->fm_back_btn) {
+        gtk_widget_set_sensitive(app->fm_back_btn, strcmp(app->fm_current_path, "/") != 0);
+    }
+
     GtkWidget *child;
     while ((child = gtk_widget_get_first_child(app->fm_flowbox)) != NULL) {
         gtk_flow_box_remove(GTK_FLOW_BOX(app->fm_flowbox), child);
@@ -132,9 +158,42 @@ static void maku_refresh_file_list(MakuAppWidgets *app) {
     for (size_t i = 0; i < count; i++) {
         GtkWidget *row = maku_build_file_row(&entries[i]);
         gtk_flow_box_append(GTK_FLOW_BOX(app->fm_flowbox), row);
+
+        GtkFlowBoxChild *fbc = gtk_flow_box_get_child_at_index(
+            GTK_FLOW_BOX(app->fm_flowbox), (int)i);
+        if (fbc) {
+            g_object_set_data_full(G_OBJECT(fbc), "maku-full-path",
+                strdup(entries[i].full_path), free);
+            g_object_set_data(G_OBJECT(fbc), "maku-is-dir",
+                GINT_TO_POINTER(entries[i].is_dir));
+        }
     }
 
     free(entries);
+}
+
+static void on_flowbox_child_activated(GtkFlowBox *flowbox, GtkFlowBoxChild *child, gpointer user_data) {
+    (void)flowbox;
+    MakuAppWidgets *app = (MakuAppWidgets *)user_data;
+
+    int is_dir = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(child), "maku-is-dir"));
+    if (!is_dir) return;
+
+    const char *full_path = (const char *)g_object_get_data(G_OBJECT(child), "maku-full-path");
+    if (!full_path) return;
+
+    snprintf(app->fm_current_path, sizeof(app->fm_current_path), "%s", full_path);
+    maku_refresh_file_list(app);
+}
+
+static void on_btn_go_back(GtkButton *btn, gpointer user_data) {
+    (void)btn;
+    MakuAppWidgets *app = (MakuAppWidgets *)user_data;
+
+    char parent[4096];
+    maku_compute_parent_path(app->fm_current_path, parent, sizeof(parent));
+    snprintf(app->fm_current_path, sizeof(app->fm_current_path), "%s", parent);
+    maku_refresh_file_list(app);
 }
 
 static void on_toggle_hidden(GtkCheckButton *btn, gpointer user_data) {
@@ -158,16 +217,30 @@ GtkWidget *maku_build_menu_filemgr(MakuAppWidgets *app) {
     g_fm_show_hidden = maku_state_get_bool(MAKU_STATE_KEY_FM_HIDDEN, FALSE);
 
     GtkWidget *toolbar = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 8);
+
+    app->fm_back_btn = gtk_button_new_from_icon_name("go-up-symbolic");
+    g_signal_connect(app->fm_back_btn, "clicked", G_CALLBACK(on_btn_go_back), app);
+    gtk_box_append(GTK_BOX(toolbar), app->fm_back_btn);
+
+    app->fm_path_label = gtk_label_new(app->fm_current_path);
+    gtk_label_set_xalign(GTK_LABEL(app->fm_path_label), 0.0f);
+    gtk_widget_set_hexpand(app->fm_path_label, TRUE);
+    gtk_widget_add_css_class(app->fm_path_label, "maku-accent");
+    gtk_box_append(GTK_BOX(toolbar), app->fm_path_label);
+
     app->fm_hidden_toggle = gtk_check_button_new_with_label(maku_tr(STR_FM_HIDDEN));
     gtk_check_button_set_active(GTK_CHECK_BUTTON(app->fm_hidden_toggle), g_fm_show_hidden);
     g_signal_connect(app->fm_hidden_toggle, "toggled", G_CALLBACK(on_toggle_hidden), app);
     gtk_box_append(GTK_BOX(toolbar), app->fm_hidden_toggle);
+
     gtk_box_append(GTK_BOX(box), toolbar);
 
     app->fm_flowbox = gtk_flow_box_new();
     gtk_flow_box_set_selection_mode(GTK_FLOW_BOX(app->fm_flowbox), GTK_SELECTION_SINGLE);
     gtk_flow_box_set_max_children_per_line(GTK_FLOW_BOX(app->fm_flowbox), 1);
     gtk_flow_box_set_homogeneous(GTK_FLOW_BOX(app->fm_flowbox), TRUE);
+    gtk_flow_box_set_activate_on_single_click(GTK_FLOW_BOX(app->fm_flowbox), FALSE);
+    g_signal_connect(app->fm_flowbox, "child-activated", G_CALLBACK(on_flowbox_child_activated), app);
 
     GtkWidget *scroll = gtk_scrolled_window_new();
     gtk_widget_set_vexpand(scroll, TRUE);

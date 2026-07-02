@@ -22,6 +22,13 @@
 
 #define MAKU_STATE_KEY_FM_HIDDEN "filemgr_show_hidden"
 
+#define MAKU_STATE_KEY_GNOME_HOT_CORNERS "gnome_hot_corners"
+#define MAKU_STATE_KEY_GNOME_NAUTILUS_COUNT "gnome_nautilus_count"
+#define MAKU_STATE_KEY_GNOME_FRACTIONAL_SCALING "gnome_fractional_scaling"
+#define MAKU_STATE_KEY_GNOME_ANIMATIONS "gnome_animations"
+#define MAKU_STATE_KEY_GNOME_NIGHT_LIGHT "gnome_night_light"
+#define MAKU_STATE_KEY_GNOME_BATTERY_PERCENT "gnome_battery_percent"
+
 void maku_state_load(void);
 void maku_state_save(void);
 

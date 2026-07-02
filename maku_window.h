@@ -47,9 +47,18 @@ typedef struct {
 
     GtkWidget *fm_hidden_toggle;
     GtkWidget *fm_flowbox;
+    GtkWidget *fm_path_label;
+    GtkWidget *fm_back_btn;
     char fm_current_path[4096];
 
     guint info_timer_id;
+
+    GtkWidget *sw_gnome_hot_corners;
+    GtkWidget *sw_gnome_nautilus_count;
+    GtkWidget *sw_gnome_fractional_scaling;
+    GtkWidget *sw_gnome_animations;
+    GtkWidget *sw_gnome_night_light;
+    GtkWidget *sw_gnome_battery_percent;
 } MakuAppWidgets;
 
 GtkWidget *maku_build_menu_info(MakuAppWidgets *app);
@@ -62,6 +71,7 @@ GtkWidget *maku_build_menu_cleanup(MakuAppWidgets *app);
 GtkWidget *maku_build_menu_security(MakuAppWidgets *app);
 GtkWidget *maku_build_menu_filemgr(MakuAppWidgets *app);
 GtkWidget *maku_build_menu_recovery(MakuAppWidgets *app);
+GtkWidget *maku_build_menu_gnome(MakuAppWidgets *app);
 
 GtkWidget *maku_make_card(const char *title, const char *subtitle, GtkWidget *control);
 gboolean maku_info_timer_cb(gpointer user_data);

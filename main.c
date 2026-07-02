@@ -13,8 +13,7 @@ static MakuAppWidgets g_app;
 static void maku_load_css(void) {
     const char *candidates[] = {
         "/usr/local/share/makutweaker/style.css",
-        "./styles/style.css",
-        "../styles/style.css",
+        "./style.css",
         NULL
     };
 
@@ -47,9 +46,9 @@ static void maku_on_sidebar_row_selected(GtkListBox *box, GtkListBoxRow *row, gp
     gint index = gtk_list_box_row_get_index(row);
     const char *names[] = {
         "info", "perf", "components", "processes", "personalize",
-        "debloat", "cleanup", "security", "filemgr", "recovery"
+        "debloat", "cleanup", "security", "filemgr", "recovery", "gnome"
     };
-    if (index >= 0 && index < 10) {
+    if (index >= 0 && index < 11) {
         gtk_stack_set_visible_child_name(GTK_STACK(app->content_stack), names[index]);
     }
 }
@@ -72,9 +71,9 @@ static void maku_build_sidebar(MakuAppWidgets *app) {
     const MakuStringId ids[] = {
         STR_MENU_INFO, STR_MENU_PERF, STR_MENU_COMPONENTS, STR_MENU_PROCESSES,
         STR_MENU_PERSONALIZE, STR_MENU_DEBLOAT, STR_MENU_CLEANUP,
-        STR_MENU_SECURITY, STR_MENU_FILEMGR, STR_MENU_RECOVERY
+        STR_MENU_SECURITY, STR_MENU_FILEMGR, STR_MENU_RECOVERY, STR_MENU_GNOME
     };
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 11; i++) {
         GtkWidget *row = maku_sidebar_row_new(maku_tr(ids[i]));
         gtk_list_box_append(GTK_LIST_BOX(app->sidebar_list), row);
     }
@@ -113,6 +112,7 @@ static void maku_activate(GtkApplication *gtk_app, gpointer user_data) {
     GtkWidget *page_security = maku_build_menu_security(app);
     GtkWidget *page_filemgr = maku_build_menu_filemgr(app);
     GtkWidget *page_recovery = maku_build_menu_recovery(app);
+    GtkWidget *page_gnome = maku_build_menu_gnome(app);
 
     gtk_stack_add_named(GTK_STACK(app->content_stack), page_info, "info");
     gtk_stack_add_named(GTK_STACK(app->content_stack), page_perf, "perf");
@@ -124,6 +124,7 @@ static void maku_activate(GtkApplication *gtk_app, gpointer user_data) {
     gtk_stack_add_named(GTK_STACK(app->content_stack), page_security, "security");
     gtk_stack_add_named(GTK_STACK(app->content_stack), page_filemgr, "filemgr");
     gtk_stack_add_named(GTK_STACK(app->content_stack), page_recovery, "recovery");
+    gtk_stack_add_named(GTK_STACK(app->content_stack), page_gnome, "gnome");
 
     GtkWidget *content_scroll = gtk_scrolled_window_new();
     gtk_scrolled_window_set_child(GTK_SCROLLED_WINDOW(content_scroll), app->content_stack);
