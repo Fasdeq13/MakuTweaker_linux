@@ -16,6 +16,7 @@ GUI_SRCS := \
 	gui/localization.c \
 	gui/widgets_common.c \
 	gui/backend_bridge.c \
+	gui/maku_state.c \
 	gui/menu_info.c \
 	gui/menu_perf.c \
 	gui/menu_components.c \
@@ -36,18 +37,6 @@ BACKEND_SRCS := \
 
 GUI_BIN := makutweaker_gui
 BACKEND_BIN := tweaker_backend
-
-# Опциональный модуль видеообоев через wlr-layer-shell-unstable-v1.
-# Требует сгенерированного протокола (wayland-scanner) — не входит в
-# основную сборку, чтобы `make` не падал при отсутствии заголовка.
-# Как включить:
-#   1) wayland-scanner client-header \
-#        /usr/share/wlr-protocols/unstable/wlr-layer-shell-unstable-v1.xml \
-#        gui/wlr-layer-shell-unstable-v1-client-protocol.h
-#      wayland-scanner private-code \
-#        /usr/share/wlr-protocols/unstable/wlr-layer-shell-unstable-v1.xml \
-#        gui/wlr-layer-shell-unstable-v1-protocol.c
-#   2) make wallpaper
 WALLPAPER_SRCS := \
 	gui/menu_wallpaper_layershell.c \
 	gui/wlr-layer-shell-unstable-v1-protocol.c

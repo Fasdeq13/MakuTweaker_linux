@@ -11,6 +11,7 @@
 #include <time.h>
 #include "localization.h"
 #include "maku_window.h"
+#include "maku_state.h"
 
 typedef struct {
     char name[512];
@@ -76,11 +77,6 @@ static GtkWidget *maku_build_file_row(const MakuFileEntry *entry) {
 }
 
 static void maku_refresh_file_list(MakuAppWidgets *app) {
-    // Безопасный предохранитель от падения при ранней активации
-    if (!app || !app->fm_flowbox || !GTK_IS_WIDGET(app->fm_flowbox)) {
-        return;
-    }
-
     GtkWidget *child;
     while ((child = gtk_widget_get_first_child(app->fm_flowbox)) != NULL) {
         gtk_flow_box_remove(GTK_FLOW_BOX(app->fm_flowbox), child);
@@ -89,19 +85,29 @@ static void maku_refresh_file_list(MakuAppWidgets *app) {
     DIR *d = opendir(app->fm_current_path);
     if (!d) return;
 
-    // Выделяем память в куче, чтобы не взорвать стек (stack overflow) на 4096 записей
-    MakuFileEntry *entries = malloc(sizeof(MakuFileEntry) * 4096);
+    size_t capacity = 256;
+    MakuFileEntry *entries = malloc(capacity * sizeof(MakuFileEntry));
     if (!entries) {
         closedir(d);
         return;
     }
-    int count = 0;
+    size_t count = 0;
 
     struct dirent *de;
-    while ((de = readdir(d)) != NULL && count < 4096) {
+    while ((de = readdir(d)) != NULL) {
         if (strcmp(de->d_name, ".") == 0) continue;
         if (strcmp(de->d_name, "..") == 0) continue;
         if (de->d_name[0] == '.' && !g_fm_show_hidden) continue;
+
+        if (count == capacity) {
+            size_t new_capacity = capacity * 2;
+            MakuFileEntry *grown = realloc(entries, new_capacity * sizeof(MakuFileEntry));
+            if (!grown) {
+                break;
+            }
+            entries = grown;
+            capacity = new_capacity;
+        }
 
         MakuFileEntry *e = &entries[count];
         snprintf(e->name, sizeof(e->name), "%s", de->d_name);
@@ -121,9 +127,9 @@ static void maku_refresh_file_list(MakuAppWidgets *app) {
     }
     closedir(d);
 
-    qsort(entries, (size_t)count, sizeof(MakuFileEntry), maku_compare_entries);
+    qsort(entries, count, sizeof(MakuFileEntry), maku_compare_entries);
 
-    for (int i = 0; i < count; i++) {
+    for (size_t i = 0; i < count; i++) {
         GtkWidget *row = maku_build_file_row(&entries[i]);
         gtk_flow_box_append(GTK_FLOW_BOX(app->fm_flowbox), row);
     }
@@ -134,12 +140,11 @@ static void maku_refresh_file_list(MakuAppWidgets *app) {
 static void on_toggle_hidden(GtkCheckButton *btn, gpointer user_data) {
     MakuAppWidgets *app = (MakuAppWidgets *)user_data;
     g_fm_show_hidden = gtk_check_button_get_active(btn);
+    maku_state_set_bool(MAKU_STATE_KEY_FM_HIDDEN, g_fm_show_hidden);
     maku_refresh_file_list(app);
 }
 
 GtkWidget *maku_build_menu_filemgr(MakuAppWidgets *app) {
-    if (!app) return NULL;
-
     GtkWidget *box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 8);
     gtk_widget_set_margin_start(box, 16);
     gtk_widget_set_margin_end(box, 16);
@@ -150,8 +155,11 @@ GtkWidget *maku_build_menu_filemgr(MakuAppWidgets *app) {
     const char *home = getenv("HOME");
     snprintf(app->fm_current_path, sizeof(app->fm_current_path), "%s", home ? home : "/");
 
+    g_fm_show_hidden = maku_state_get_bool(MAKU_STATE_KEY_FM_HIDDEN, FALSE);
+
     GtkWidget *toolbar = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 8);
     app->fm_hidden_toggle = gtk_check_button_new_with_label(maku_tr(STR_FM_HIDDEN));
+    gtk_check_button_set_active(GTK_CHECK_BUTTON(app->fm_hidden_toggle), g_fm_show_hidden);
     g_signal_connect(app->fm_hidden_toggle, "toggled", G_CALLBACK(on_toggle_hidden), app);
     gtk_box_append(GTK_BOX(toolbar), app->fm_hidden_toggle);
     gtk_box_append(GTK_BOX(box), toolbar);

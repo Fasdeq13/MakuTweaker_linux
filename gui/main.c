@@ -6,6 +6,7 @@
 #include <string.h>
 #include "localization.h"
 #include "maku_window.h"
+#include "maku_state.h"
 
 static MakuAppWidgets g_app;
 
@@ -151,6 +152,8 @@ int main(int argc, char **argv) {
     }
 
     memset(&g_app, 0, sizeof(g_app));
+
+    maku_state_load();
 
     GtkApplication *gtk_app = gtk_application_new("org.maku.Tweaker", G_APPLICATION_DEFAULT_FLAGS);
     g_signal_connect(gtk_app, "activate", G_CALLBACK(maku_activate), &g_app);

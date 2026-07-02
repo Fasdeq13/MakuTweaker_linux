@@ -3,28 +3,33 @@
 #include "maku_window.h"
 #include "backend_bridge.h"
 #include "maku_common.h"
+#include "maku_state.h"
 
 static void on_toggle_cups(GtkSwitch *sw, gboolean state, gpointer user_data) {
     (void)user_data;
     maku_backend_call(state ? "--service-enable" : "--service-disable", "cups");
+    maku_state_set_bool(MAKU_STATE_KEY_SVC_CUPS, state);
     gtk_switch_set_state(sw, state);
 }
 
 static void on_toggle_avahi(GtkSwitch *sw, gboolean state, gpointer user_data) {
     (void)user_data;
     maku_backend_call(state ? "--service-enable" : "--service-disable", "avahi-daemon");
+    maku_state_set_bool(MAKU_STATE_KEY_SVC_AVAHI, state);
     gtk_switch_set_state(sw, state);
 }
 
 static void on_toggle_samba(GtkSwitch *sw, gboolean state, gpointer user_data) {
     (void)user_data;
     maku_backend_call(state ? "--service-enable" : "--service-disable", "smb");
+    maku_state_set_bool(MAKU_STATE_KEY_SVC_SAMBA, state);
     gtk_switch_set_state(sw, state);
 }
 
 static void on_toggle_abrt(GtkSwitch *sw, gboolean state, gpointer user_data) {
     (void)user_data;
     maku_backend_call(state ? "--service-enable" : "--service-disable", "abrtd");
+    maku_state_set_bool(MAKU_STATE_KEY_SVC_ABRT, state);
     gtk_switch_set_state(sw, state);
 }
 
@@ -53,22 +58,26 @@ GtkWidget *maku_build_menu_components(MakuAppWidgets *app) {
     gtk_box_append(GTK_BOX(box), lbl_init);
 
     app->sw_cups = gtk_switch_new();
-    gtk_switch_set_state(GTK_SWITCH(app->sw_cups), TRUE);
+    gtk_switch_set_state(GTK_SWITCH(app->sw_cups), maku_state_get_bool(MAKU_STATE_KEY_SVC_CUPS, TRUE));
+    gtk_switch_set_active(GTK_SWITCH(app->sw_cups), maku_state_get_bool(MAKU_STATE_KEY_SVC_CUPS, TRUE));
     g_signal_connect(app->sw_cups, "state-set", G_CALLBACK(on_toggle_cups), app);
     gtk_box_append(GTK_BOX(box), maku_make_card(maku_tr(STR_SVC_CUPS), NULL, app->sw_cups));
 
     app->sw_avahi = gtk_switch_new();
-    gtk_switch_set_state(GTK_SWITCH(app->sw_avahi), TRUE);
+    gtk_switch_set_state(GTK_SWITCH(app->sw_avahi), maku_state_get_bool(MAKU_STATE_KEY_SVC_AVAHI, TRUE));
+    gtk_switch_set_active(GTK_SWITCH(app->sw_avahi), maku_state_get_bool(MAKU_STATE_KEY_SVC_AVAHI, TRUE));
     g_signal_connect(app->sw_avahi, "state-set", G_CALLBACK(on_toggle_avahi), app);
     gtk_box_append(GTK_BOX(box), maku_make_card(maku_tr(STR_SVC_AVAHI), NULL, app->sw_avahi));
 
     app->sw_samba = gtk_switch_new();
-    gtk_switch_set_state(GTK_SWITCH(app->sw_samba), TRUE);
+    gtk_switch_set_state(GTK_SWITCH(app->sw_samba), maku_state_get_bool(MAKU_STATE_KEY_SVC_SAMBA, TRUE));
+    gtk_switch_set_active(GTK_SWITCH(app->sw_samba), maku_state_get_bool(MAKU_STATE_KEY_SVC_SAMBA, TRUE));
     g_signal_connect(app->sw_samba, "state-set", G_CALLBACK(on_toggle_samba), app);
     gtk_box_append(GTK_BOX(box), maku_make_card(maku_tr(STR_SVC_SAMBA), NULL, app->sw_samba));
 
     app->sw_abrt = gtk_switch_new();
-    gtk_switch_set_state(GTK_SWITCH(app->sw_abrt), TRUE);
+    gtk_switch_set_state(GTK_SWITCH(app->sw_abrt), maku_state_get_bool(MAKU_STATE_KEY_SVC_ABRT, TRUE));
+    gtk_switch_set_active(GTK_SWITCH(app->sw_abrt), maku_state_get_bool(MAKU_STATE_KEY_SVC_ABRT, TRUE));
     g_signal_connect(app->sw_abrt, "state-set", G_CALLBACK(on_toggle_abrt), app);
     gtk_box_append(GTK_BOX(box), maku_make_card(maku_tr(STR_SVC_ABRT), NULL, app->sw_abrt));
 
