@@ -46,7 +46,7 @@ BACKEND_BIN := tweaker_backend
 #      wayland-scanner private-code \
 #        /usr/share/wlr-protocols/unstable/wlr-layer-shell-unstable-v1.xml \
 #        wlr-layer-shell-unstable-v1-protocol.c
-#   2) make wallpaper
+#   2) make wallpaper эт по желанию
 WALLPAPER_SRCS := \
 	menu_wallpaper_layershell.c \
 	wlr-layer-shell-unstable-v1-protocol.c
